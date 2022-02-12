@@ -112,3 +112,9 @@ fabric.properties
 .idea/codestream.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/pycharm
+
+###
+
+.idea/misc.xml
+.idea/sparta_mc10th.iml
+.idea/workspace.xml
