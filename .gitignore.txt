@@ -118,3 +118,4 @@ fabric.properties
 .idea/misc.xml
 .idea/sparta_mc10th.iml
 .idea/workspace.xml
+.idea/vcs.xml
