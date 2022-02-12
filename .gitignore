@@ -2,12 +2,16 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/dictionaries
+.idea/shelf
 .idea/tt.txt
+.idea/misc.xml
+.idea/modules.xml
+.idea/sparta_mc10th.iml
+.idea/vcs.xml
 
 # AWS User-specific
 .idea/**/aws.xml
