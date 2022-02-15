@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <script src='http://code.jquery.com/jquery-3.3.1.js'></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic+Coding&family=Poor+Story&display=swap" rel="stylesheet">
+
+    <title>퀴즈 프로그램 만들기</title>
+
+<style type="text/css">
+        *{
+            background-color: #9FA9D8;
+            font-family: 'Poor Story', cursive;
+
+        }
+
+        .header {
+            text-align: center;
+            font-size: 200%;
+
+        }
+
+        .box{
+            margin: auto;
+            padding: 5px;
+            border: 1px solid #9FA9D8;
+            border-radius: 10px;
+            width: 400px;
+            height: 250x;
+            text-align: center;
+
+        }
+        .images {
+            width: 50px;
+            height: 50px;
+        }
+
+        .menu {
+            text-align: 10px;
+            position: relative;
+            color: #5f6368;
+            border: solid 1px #dadce0;
+            border-radius: 1vw;
+            display: inline-block;
+            padding: auto;
+            background-color: white;
+            width: 75px;
+            height: 35px;
+            font-size: 150%;
+            font-weight: bold;
+            box-shadow: none;
+            transition-duration: 0.1s;
+            /*padding: top right bottom left*/
+            cursor: pointer;
+        }
+
+        .menu1 {
+            text-align: 10px;
+            position: relative;
+            color: #5f6368;
+            border: solid 1px #dadce0;
+            border-radius: 1vw;
+            display: inline-block;
+            padding: auto;
+            background-color: white;
+            width: 75px;
+            height: 35px;
+            font-size: 150%;
+            font-weight: bold;
+            box-shadow: none;
+            transition-duration: 0.1s;
+            /*padding: top right bottom left*/
+            cursor: pointer;
+        }
+        @media media-type and (media-feature-rule) {
+  /* CSS rules go here */
+        }
+         .menu2 {
+            text-align: 10px;
+            position: relative;
+            color: #5f6368;
+            border: solid 1px #dadce0;
+            border-radius: 1vw;
+            display: inline-block;
+            padding: auto;
+            background-color: white;
+            width: 75px;
+            height: 35px;
+            font-size: 150%;
+            font-weight: bold;
+            box-shadow: none;
+            transition-duration: 0.1s;
+            /*padding: top right bottom left*/
+            cursor: pointer;
+        }
+
+          .menu3 {
+            text-align: 10px;
+            position: relative;
+            color: #5f6368;
+            border: solid 1px #dadce0;
+            border-radius: 1vw;
+            display: inline-block;
+            padding: auto;
+            background-color: white;
+            width: 75px;
+            height: 35px;
+            font-size: 150%;
+            font-weight: bold;
+            box-shadow: none;
+            transition-duration: 0.1s;
+            /*padding: top right bottom left*/
+            cursor: pointer;
+        }
+
+        .clicked_menu{
+            color: ;border-color: #FFB291;
+            color: #FFB291;
+            background: #FFEFD5;
+        }
+
+        .menu:active {
+            box-shadow: 4px 4px 4px #FF7878;
+            color: #FFB291;
+        }
+
+        .menu1:active {
+            box-shadow: 4px 4px 4px #FF7878;
+            color: #FFB291;
+        }
+
+          .menu2:active {
+            box-shadow: 4px 4px 4px #FF7878;
+            color: #FFB291;
+        }
+
+        .menu3:active {
+            box-shadow: 4px 4px 4px #FF7878;
+            color: #FFB291;
+        }
+        .questions_box {
+            text-align: justify;
+            line-height: 200%;
+            padding: 10px;
+            font-size: 130%;
+        }
+
+
+        body {
+            /*background: #2ecc71;*/
+            font-size: 90%;
+            background-image: url("static/banner.png");
+            background-repeat: no-repeat;
+            /*!*background-attachment: fixed;*!*/
+            background-position: 3% 5%;
+            background-size: 300px;
+
+        }
+
+
+
+        .btn {
+            display:block;
+            width:150px;
+            height:40px;
+            line-height:40px;
+            border:1px #3399dd solid;
+            margin:15px auto;
+            background-color:#66aaff;
+            text-align:center;
+            cursor: pointer;
+            color:#333;
+            transition:all 0.9s, color 0.3s;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .btn:hover{color:#fff;}
+
+        .hover1:hover{
+            box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.menu').each(function(index){
+                $(this).attr('menu-index', index);
+            }).click(function(){
+                var index = $(this).attr('menu-index');
+                $('.menu[menu-index=' + index + ']').addClass('clicked_menu');
+                $('.menu[menu-index!=' + index + ']').removeClass('clicked_menu');
+
+            });
+
+        });
+
+        $(document).ready(function(){
+            $('.menu1').each(function(index){
+                $(this).attr('menu-index', index);
+            }).click(function(){
+                var index = $(this).attr('menu-index');
+                $('.menu1[menu-index=' + index + ']').addClass('clicked_menu');
+                $('.menu1[menu-index!=' + index + ']').removeClass('clicked_menu');
+
+            });
+
+        });
+
+        $(document).ready(function(){
+            $('.menu2').each(function(index){
+                $(this).attr('menu-index', index);
+            }).click(function(){
+                var index = $(this).attr('menu-index');
+                $('.menu2[menu-index=' + index + ']').addClass('clicked_menu');
+                $('.menu2[menu-index!=' + index + ']').removeClass('clicked_menu');
+
+            });
+
+        });
+
+        $(document).ready(function(){
+            $('.menu3').each(function(index){
+                $(this).attr('menu-index', index);
+            }).click(function(){
+                var index = $(this).attr('menu-index');
+                $('.menu3[menu-index=' + index + ']').addClass('clicked_menu');
+                $('.menu3[menu-index!=' + index + ']').removeClass('clicked_menu');
+
+            });
+
+        });
+
+
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>나만의 골라보드 <img  src="https://cdn-icons-png.flaticon.com/128/3292/3292072.png"
+        style="width: 50px; height: 50px"/></h1>
+    </div>
+<!--     <img src="static/banner.png">-->
+
+    <div class="box">
+        <div class="questions_box">
+            <h2> <img class="images"src="https://cdn-icons-png.flaticon.com/128/6770/6770295.png"/> 플레이어는 몇 명? </h2>
+        </div>
+        <div class="menu">2명</div>
+        <div class="menu">4명</div>
+        <div class="menu">6명</div>
+        <div class="menu">8명이상</div>
+    </div>
+
+    <div class="box">
+        <div class="questions_box">
+            <h2> <img class="images"src="https://cdn-icons-png.flaticon.com/128/6770/6770339.png"/>  원하는 게임 연령은? </h2>
+        </div>
+        <p>
+        <div class="menu1">5세이상</div>
+        <div class="menu1">8세이상</div>
+        <div class="menu1">14세이상</div>
+        <div class="menu1">성인</div>
+    </div>
+
+    <div class="box">
+        <div class="questions_box">
+            <h2> <img class="images"src="https://cdn-icons-png.flaticon.com/128/6770/6770285.png"/>  원하는 장르는? </h2>
+        </div>
+        <p>
+        <div class="menu2">전략</div>
+        <div class="menu2">추리</div>
+        <div class="menu2">카드</div>
+        <div class="menu2">퍼즐</div>
+    </div>
+
+    <div class="box">
+        <div class="questions_box">
+            <h2> <img class="images"src="https://cdn-icons-png.flaticon.com/128/6770/6770242.png"/>  원하는 플레이타임은? </h2>
+        </div>
+        <p>
+        <div class="menu3">10min</div>
+        <div class="menu3">30min</div>
+        <div class="menu3">60min</div>
+        <div class="menu3">90min</div>
+    </div>
+    </div>
+    <button  class="btn hover1" onclick="location.href='http://www.naver.com' "> 결과 확인 </button>
+
+
+</body>
+</html>
+
