@@ -1,0 +1,181 @@
+*{
+            /*background-color: #9FA9D8;*/
+            font-family: 'Poor Story', cursive;
+            background-image: url("/static/background_img.png");
+            background-repeat: no-repeat;
+            background-size : cover ;
+
+
+        }
+
+        .header {
+            text-align: center;
+            font-size: 200%;
+
+
+
+
+        }
+
+        .box{
+            margin: auto;
+            padding: 5px;
+            border: 1px solid #9FA9D8;
+            border-radius: 10px;
+            width: 400px;
+            height: 250x;
+            text-align: center;
+
+
+        }
+
+        .images {
+            width: 50px;
+            height: 50px;
+        }
+
+        .menu {
+            text-align: 10px;
+            position: relative;
+            color: #5f6368;
+            border: solid 1px #dadce0;
+            border-radius: 1vw;
+            display: inline-block;
+            padding: auto;
+            background-color: white;
+            width: 75px;
+            height: 35px;
+            font-size: 150%;
+            font-weight: bold;
+            box-shadow: none;
+            transition-duration: 0.1s;
+            /*padding: top right bottom left*/
+            cursor: pointer;
+        }
+
+        .menu1 {
+            text-align: 10px;
+            position: relative;
+            color: #5f6368;
+            border: solid 1px #dadce0;
+            border-radius: 1vw;
+            display: inline-block;
+            padding: auto;
+            background-color: white;
+            width: 75px;
+            height: 35px;
+            font-size: 150%;
+            font-weight: bold;
+            box-shadow: none;
+            transition-duration: 0.1s;
+            /*padding: top right bottom left*/
+            cursor: pointer;
+        }
+        @media media-type and (media-feature-rule) {
+  /* CSS rules go here */
+        }
+         .menu2 {
+            text-align: 10px;
+            position: relative;
+            color: #5f6368;
+            border: solid 1px #dadce0;
+            border-radius: 1vw;
+            display: inline-block;
+            padding: auto;
+            background-color: white;
+            width: 75px;
+            height: 35px;
+            font-size: 150%;
+            font-weight: bold;
+            box-shadow: none;
+            transition-duration: 0.1s;
+            /*padding: top right bottom left*/
+            cursor: pointer;
+        }
+
+          .menu3 {
+            text-align: 10px;
+            position: relative;
+            color: #5f6368;
+            border: solid 1px #dadce0;
+            border-radius: 1vw;
+            display: inline-block;
+            padding: auto;
+            background-color: white;
+            width: 75px;
+            height: 35px;
+            font-size: 150%;
+            font-weight: bold;
+            box-shadow: none;
+            transition-duration: 0.1s;
+            /*padding: top right bottom left*/
+            cursor: pointer;
+        }
+
+        .clicked_menu{
+            color: ;border-color: #FFB291;
+            color: #FFB291;
+            background: #FFEFD5;
+        }
+
+        .menu:active {
+            box-shadow: 4px 4px 4px #FF7878;
+            /*color: #FFB291;*/
+        }
+
+        .menu1:active {
+            box-shadow: 4px 4px 4px #FF7878;
+            /*color: #FFB291;*/
+        }
+
+          .menu2:active {
+            box-shadow: 4px 4px 4px #FF7878;
+            /*color: #FFB291;*/
+        }
+
+        .menu3:active {
+            box-shadow: 4px 4px 4px #FF7878;
+            /*color: #FFB291;*/
+        }
+        .questions_box {
+            text-align: justify;
+            line-height: 200%;
+            padding: 10px;
+            font-size: 130%;
+
+        }
+
+
+        body {
+            /*background: #2ecc71;*/
+            font-size: 90%;
+            background-image: url("/static/banner.png");
+            background-repeat: no-repeat;
+            /*!*background-attachment: fixed;*!*/
+            background-position: 3% 5%;
+            background-size: 300px;
+
+        }
+
+
+
+        .btn {
+            display:block;
+            width:150px;
+            height:40px;
+            line-height:40px;
+            border:1px #3399dd solid;
+            margin:15px auto;
+            background-color:#66aaff;
+            text-align:center;
+            cursor: pointer;
+            color:#333;
+            transition:all 0.9s, color 0.3s;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .btn:hover{color:#fff;}
+
+        .hover1:hover{
+            box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
+        }
