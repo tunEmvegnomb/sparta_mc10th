@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="./result.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>보드게임 추천-Handmade</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      function handleModal() {
+        let status = $("#modal").css("display");
+        if (status === "none") {
+          $("#modal").css("display", "flex");
+        } else {
+          $("#modal").hide();
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <img class="banner-img" src="./../static/banner.png" alt="배너" />
+    </header>
+    <div>
+      <div id="contents">
+        <h1 class="result-sentence">당신에게 추천하는 게임은 바로!</h1>
+        <h1 class="result-sentence">부루마불 입니다!</h1>
+        <img
+          onclick="handleModal()"
+          class="result-img"
+          src="./../static/boardExample.jpeg"
+          alt="보드게임이미지"
+        />
+      </div>
+      <div id="buttons">
+        <button type="button">
+          <div class="button-sentence">다시 추천받기</div>
+          <img
+            class="button-img"
+            src="./../static/chess.png"
+            alt="체스이미지"
+          />
+        </button>
+        <button type="button" onclick="location.reload();">
+          <div class="button-sentence">다른 추천게임</div>
+          <img class="button-img" src="./../static/card.png" alt="카드이미지" />
+        </button>
+        <button type="button">
+          <div class="button-sentence">전체 리스트보기</div>
+          <img
+            class="button-img"
+            src="./../static/dice.png"
+            alt="주사위이미지"
+          />
+        </button>
+      </div>
+    </div>
+    <div id="modal" onclick="handleModal()">
+      <div id="modal-view" onclick="event.stopPropagation()">
+        <table class="wiki-table" style="width: 100%">
+          <tbody>
+            <tr id="board-title">
+              <td colspan="2">부루마불</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <img
+                  class="result-img"
+                  src="./../static/boardExample.jpeg"
+                  alt="보드게임이미지"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>인원</td>
+              <td>2~4명</td>
+            </tr>
+            <tr>
+              <td>플레이 시간</td>
+              <td>90분</td>
+            </tr>
+            <tr>
+              <td>연령</td>
+              <td>8세 이상</td>
+            </tr>
+            <tr>
+              <td>장르</td>
+              <td>가족</td>
+            </tr>
+            <tr id="board-link">
+              <td>링크</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
