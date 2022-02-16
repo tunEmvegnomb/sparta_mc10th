@@ -1,254 +1,230 @@
-*{
-            /*background-color: #9FA9D8;*/
-            font-family: 'Poor Story', cursive;
+* {
+  /*background-color: #9FA9D8;*/
+  font-family: "Poor Story", cursive;
+}
 
+.banner {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+}
 
+.header {
+  text-align: center;
+  font-size: 250%;
+  white-space: nowrap;
+}
 
-        }
+.images {
+  width: 50px;
+  height: 50px;
+}
 
-        .banner {
-            width: 50px;
-            height: 50px;
-            position: fixed;
-        }
+.box {
+  /*margin: auto;*/
+  position: absolute;
+  top: 35%;
+  left: 23%;
+  padding: 10px;
+  border: 1px solid #4689b5;
+  border-radius: 20px;
+  width: 500px;
+  height: 200px;
+  display: block;
+  float: inside;
+  text-align: center;
+  font-size: 100%;
+  background-color: white;
+}
 
-        .header {
-            text-align: center;
-            font-size: 250%;
-            white-space : nowrap;
+.box1 {
+  /*margin: auto;*/
+  position: absolute;
+  top: 35%;
+  right: 21.5%;
+  padding: 10px;
+  border: 1px solid #4689b5;
+  border-radius: 20px;
+  width: 500px;
+  height: 200px;
+  display: block;
+  float: inside;
+  text-align: center;
+  font-size: 100%;
+  background-color: white;
+}
 
-        }
+.box2 {
+  /*margin: auto;*/
+  position: absolute;
+  top: 60%;
+  left: 23%;
+  padding: 10px;
+  border: 1px solid #4689b5;
+  border-radius: 20px;
+  width: 500px;
+  height: 200px;
+  display: block;
+  float: inside;
+  text-align: center;
+  font-size: 100%;
+  background-color: white;
+}
 
-         .images {
-            width: 50px;
-            height: 50px;
-        }
+.box3 {
+  /*margin: auto;*/
+  position: absolute;
+  top: 60%;
+  right: 21.5%;
+  padding: 10px;
+  border: 1px solid #4689b5;
+  border-radius: 20px;
+  width: 500px;
+  height: 200px;
+  display: block;
+  float: inside;
+  text-align: center;
+  font-size: 100%;
+  background-color: white;
+}
 
-        .box{
-            /*margin: auto;*/
-            position: absolute;
-            top: 35%;
-            left: 23%;
-            padding: 10px;
-            border: 1px solid #4689b5;
-            border-radius: 20px;
-            width: 500px;
-            height: 200px;
-            display: block;
-            float: inside;
-            text-align: center;
-            font-size: 100%;
-            background-color: white;
+.menu {
+  text-align: 10px;
+  position: relative;
+  color: #5f6368;
+  border: solid 1px #dadce0;
+  border-radius: 2vw;
+  display: inline-block;
+  padding: auto;
+  background-color: white;
+  width: 85px;
+  height: 35px;
+  font-size: 150%;
+  font-weight: bold;
+  box-shadow: none;
+  transition-duration: 0.1s;
+  /*padding: top right bottom left*/
+  cursor: pointer;
+}
 
-
-
-        }
-
-        .box1 {
-            /*margin: auto;*/
-            position: absolute;
-            top: 35%;
-            right: 21.5%;
-            padding: 10px;
-            border: 1px solid #4689b5;
-            border-radius: 20px;
-            width: 500px;
-            height: 200px;
-            display: block;
-            float: inside;
-            text-align: center;
-            font-size: 100%;
-            background-color: white;
-
-        }
-
-
-
-        .box2{
-            /*margin: auto;*/
-            position: absolute;
-            top: 60%;
-            left: 23%;
-            padding: 10px;
-            border: 1px solid #4689b5;
-            border-radius: 20px;
-            width: 500px;
-            height: 200px;
-            display: block;
-            float: inside;
-            text-align: center;
-            font-size: 100%;
-            background-color: white;
-
-
-
-        }
-
-        .box3{
-            /*margin: auto;*/
-            position: absolute;
-            top: 60%;
-            right: 21.5%;
-            padding: 10px;
-            border: 1px solid #4689b5;
-            border-radius: 20px;
-            width: 500px;
-            height: 200px;
-            display: block;
-            float: inside;
-            text-align: center;
-            font-size: 100%;
-            background-color: white;
-
-
-        }
-
-
-        .menu {
-            text-align: 10px;
-            position: relative;
-            color: #5f6368;
-            border: solid 1px #dadce0;
-            border-radius: 2vw;
-            display: inline-block;
-            padding: auto;
-            background-color: white;
-            width: 85px;
-            height: 35px;
-            font-size: 150%;
-            font-weight: bold;
-            box-shadow: none;
-            transition-duration: 0.1s;
-            /*padding: top right bottom left*/
-            cursor: pointer;
-        }
-
-        .menu1 {
-            text-align: 10px;
-            position: relative;
-            color: #5f6368;
-            border: solid 1px #dadce0;
-            border-radius: 2vw;
-            display: inline-block;
-            padding: auto;
-            background-color: white;
-            width: 85px;
-            height: 35px;
-            font-size: 150%;
-            font-weight: bold;
-            box-shadow: none;
-            transition-duration: 0.1s;
-            /*padding: top right bottom left*/
-            cursor: pointer;
-        }
-        @media media-type and (media-feature-rule) {
+.menu1 {
+  text-align: 10px;
+  position: relative;
+  color: #5f6368;
+  border: solid 1px #dadce0;
+  border-radius: 2vw;
+  display: inline-block;
+  padding: auto;
+  background-color: white;
+  width: 85px;
+  height: 35px;
+  font-size: 150%;
+  font-weight: bold;
+  box-shadow: none;
+  transition-duration: 0.1s;
+  /*padding: top right bottom left*/
+  cursor: pointer;
+}
+@media media-type and (media-feature-rule) {
   /* CSS rules go here */
-        }
-         .menu2 {
-            text-align: 10px;
-            position: relative;
-            color: #5f6368;
-            border: solid 1px #dadce0;
-            border-radius: 2vw;
-            display: inline-block;
-            padding: auto;
-            background-color: white;
-            width: 85px;
-            height: 35px;
-            font-size: 150%;
-            font-weight: bold;
-            box-shadow: none;
-            transition-duration: 0.1s;
-            /*padding: top right bottom left*/
-            cursor: pointer;
+}
+.menu2 {
+  text-align: 10px;
+  position: relative;
+  color: #5f6368;
+  border: solid 1px #dadce0;
+  border-radius: 2vw;
+  display: inline-block;
+  padding: auto;
+  background-color: white;
+  width: 85px;
+  height: 35px;
+  font-size: 150%;
+  font-weight: bold;
+  box-shadow: none;
+  transition-duration: 0.1s;
+  /*padding: top right bottom left*/
+  cursor: pointer;
+}
 
-        }
+.menu3 {
+  text-align: 10px;
+  position: relative;
+  color: #5f6368;
+  border: solid 1px #dadce0;
+  border-radius: 2vw;
+  display: inline-block;
+  padding: auto;
+  background-color: white;
+  width: 85px;
+  height: 35px;
+  font-size: 150%;
+  font-weight: bold;
+  box-shadow: none;
+  transition-duration: 0.1s;
+  /*padding: top right bottom left*/
+  cursor: pointer;
+}
 
-          .menu3 {
-            text-align: 10px;
-            position: relative;
-            color: #5f6368;
-            border: solid 1px #dadce0;
-            border-radius: 2vw;
-            display: inline-block;
-            padding: auto;
-            background-color: white;
-            width: 85px;
-            height: 35px;
-            font-size: 150%;
-            font-weight: bold;
-            box-shadow: none;
-            transition-duration: 0.1s;
-            /*padding: top right bottom left*/
-            cursor: pointer;
-        }
+.clicked_menu {
+  color: ;
+  border-color: #0288d1;
+  color: #0288d1;
+  background: #80deea;
+}
 
-        .clicked_menu{
-            color: ;border-color: #0288d1;
-            color: #0288d1;
-            background: #80deea;
-        }
+.menu:active {
+  box-shadow: 5px 5px 5px #006064;
+  /*color: #FFB291;*/
+}
 
-        .menu:active {
-            box-shadow: 5px 5px 5px #006064;
-            /*color: #FFB291;*/
-        }
+.menu1:active {
+  box-shadow: 5px 5px 5px #006064;
+  /*color: #FFB291;*/
+}
 
-        .menu1:active {
-            box-shadow: 5px 5px 5px #006064;
-            /*color: #FFB291;*/
-        }
+.menu2:active {
+  box-shadow: 5px 5px 5px #006064;
+  /*color: #FFB291;*/
+}
 
-        .menu2:active {
-            box-shadow: 5px 5px 5px #006064;
-            /*color: #FFB291;*/
-        }
+.menu3:active {
+  box-shadow: 5px 5px 5px #006064;
+  /*color: #FFB291;*/
+}
+.questions_box {
+  text-align: justify;
+  line-height: 200%;
+  padding: 9px;
+  font-size: 170%;
+}
 
-        .menu3:active {
-            box-shadow: 5px 5px 5px #006064;
-            /*color: #FFB291;*/
-        }
-        .questions_box {
-            text-align: justify;
-            line-height: 200%;
-            padding: 9px;
-            font-size: 170%;
+body {
+  background: white url("./../static/background_img.png") 100% 100% no-repeat
+    fixed;
+  height: 100vh;
+  background-size: cover;
+}
 
-        }
+.btn {
+  display: block;
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px #3399dd none;
+  margin: 15px auto;
+  background-color: #69f0ae;
+  text-align: center;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.9s, color 0.3s;
+  font-size: 20px;
+  font-weight: bold;
+}
+.btn:hover {
+  color: #fff;
+}
 
-
-        body {
-
-            background: white url("/static/background_img.png") 100% 100%
-            no-repeat fixed;
-            height: 100vh;
-            background-size : cover;
-
-
-
-
-        }
-
-
-
-        .btn {
-            display:block;
-            width:150px;
-            height:40px;
-            line-height:40px;
-            border:1px #3399dd none;
-            margin:15px auto;
-            background-color:#69f0ae;
-            text-align:center;
-            cursor: pointer;
-            color:#333;
-            transition:all 0.9s, color 0.3s;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .btn:hover{color:#fff;}
-
-        .hover1:hover{
-            box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
-        }
-
+.hover1:hover {
+  box-shadow: 200px 0 0 0 rgba(0, 0, 0, 0.5) inset;
+}
