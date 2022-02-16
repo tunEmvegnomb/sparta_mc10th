@@ -6,7 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>보드게임 추천-Handmade</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic+Coding&family=Poor+Story&display=swap"
       rel="stylesheet"
     />
     <script>
@@ -18,25 +18,100 @@
           $("#modal").hide();
         }
       }
+
+      // Created for an Articles on:
+      // https://www.html5andbeyond.com/bubbling-text-effect-no-canvas-required/
+
+      jQuery(document).ready(function ($) {
+        // Define a blank array for the effect positions. This will be populated based on width of the title.
+        var bArray = [];
+        // Define a size array, this will be used to vary bubble sizes
+        var sArray = [4, 6, 8, 10];
+
+        // Push the header width values to bArray
+        for (var i = 0; i < $(".bubbles").width(); i++) {
+          bArray.push(i);
+        }
+
+        // Function to select random array element
+        // Used within the setInterval a few times
+        function randomValue(arr) {
+          return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        // setInterval function used to create new bubble every 350 milliseconds
+        setInterval(function () {
+          // Get a random size, defined as variable so it can be used for both width and height
+          var size = randomValue(sArray);
+          // New bubble appeneded to div with it's size and left position being set inline
+          // Left value is set through getting a random value from bArray
+          $(".bubbles").append(
+            '<div class="individual-bubble" style="left: ' +
+              randomValue(bArray) +
+              "px; width: " +
+              size +
+              "px; height:" +
+              size +
+              'px;"></div>'
+          );
+
+          // Animate each bubble to the top (bottom 100%) and reduce opacity as it moves
+          // Callback function used to remove finsihed animations from the page
+          $(".individual-bubble").animate(
+            {
+              bottom: "100%",
+              opacity: "-=0.7",
+            },
+            3000,
+            function () {
+              $(this).remove();
+            }
+          );
+        }, 350);
+      });
     </script>
   </head>
   <body>
     <header>
-      <img class="banner-img" src="./../static/banner.png" alt="배너" />
+      <img
+        onclick="document.location.href='./index.html'"
+        class="banner-img"
+        src="./../static/banner.png"
+        alt="배너"
+      />
     </header>
     <div>
       <div id="contents">
-        <h1 class="result-sentence">당신에게 추천하는 게임은 바로!</h1>
-        <h1 class="result-sentence">부루마불 입니다!</h1>
-        <img
-          onclick="handleModal()"
-          class="result-img"
-          src="./../static/boardExample.jpeg"
-          alt="보드게임이미지"
-        />
+        <div class="bubbles">
+          <h1>당신에게 추천하는 게임은 바로!</h1>
+        </div>
+        <h1 class="result-sentence">
+          <span>부</span>
+          <span>루</span>
+          <span>마</span>
+          <span>불</span>
+          <span></span>
+          <span>입</span>
+          <span>니</span>
+          <span>다</span>
+          <span>!</span>
+        </h1>
+        <button type="button" onclick="location.reload();">
+          <div class="button-sentence">다른 추천게임</div>
+          <img class="button-img" src="./../static/card.png" alt="카드이미지" />
+        </button>
+        <div id="result-view">
+          <img
+            onclick="handleModal()"
+            class="result-img"
+            src="./../static/boardExample.jpeg"
+            alt="보드게임이미지"
+          />
+          <div class="speech-bubble">이미지를 눌러보세요</div>
+        </div>
       </div>
       <div id="buttons">
-        <button type="button">
+        <button type="button" onclick="document.location.href='./2page.html'">
           <div class="button-sentence">다시 추천받기</div>
           <img
             class="button-img"
@@ -44,11 +119,10 @@
             alt="체스이미지"
           />
         </button>
-        <button type="button" onclick="location.reload();">
-          <div class="button-sentence">다른 추천게임</div>
-          <img class="button-img" src="./../static/card.png" alt="카드이미지" />
-        </button>
-        <button type="button">
+        <button
+          type="button"
+          onclick="document.location.href='./full_list.html'"
+        >
           <div class="button-sentence">전체 리스트보기</div>
           <img
             class="button-img"
@@ -60,6 +134,7 @@
     </div>
     <div id="modal" onclick="handleModal()">
       <div id="modal-view" onclick="event.stopPropagation()">
+        <div id="close-btn" onclick="handleModal()">&times;</div>
         <table class="wiki-table" style="width: 100%">
           <tbody>
             <tr id="board-title">
@@ -79,16 +154,20 @@
               <td>2~4명</td>
             </tr>
             <tr>
-              <td>플레이 시간</td>
-              <td>90분</td>
-            </tr>
-            <tr>
               <td>연령</td>
               <td>8세 이상</td>
             </tr>
             <tr>
+              <td>플레이 시간</td>
+              <td>90분</td>
+            </tr>
+            <tr>
               <td>장르</td>
               <td>가족</td>
+            </tr>
+            <tr>
+              <td>테마</td>
+              <td>완구, 클래식, 주사위</td>
             </tr>
             <tr id="board-link">
               <td>링크</td>
