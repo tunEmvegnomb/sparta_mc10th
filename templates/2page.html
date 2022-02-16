@@ -2,23 +2,23 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='http://code.jquery.com/jquery-3.3.1.js'></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic+Coding&family=Poor+Story&display=swap" rel="stylesheet">
 
 
-<!--    <script src="main.js" defer></script>-->
-<!--    <link rel="stylesheet" href="style.css">-->
+    <!--    <script src="main.js" defer></script>-->
+    <!--    <link rel="stylesheet" href="style.css">-->
     <link rel="icon" type="image/png" href="/static/favicon.png"/>
     <link href="./style2.css" rel="stylesheet" />
     <title>보드게임 추천-Handmade</title>
 
 
-<!--<style type="text/css">-->
+    <!--<style type="text/css">-->
 
-<!--    </style>-->
+    <!--    </style>-->
 
     <script type="text/javascript">
         $(document).ready(function(){
@@ -73,12 +73,16 @@
     </script>
 </head>
 <body>
-    <div class="header">
-        <h1>나만의 골라보드 <img  src="https://cdn-icons-png.flaticon.com/128/3292/3292072.png"
-        style="width: 50px; height: 50px"/></h1>
-    </div>
-<!--     <img src="static/banner.png">-->
+<div class="banner" >
+    <img src="./../static/banner.png" width="300" height="300"/>
+</div>
 
+<div class="header">
+    <h1>나만의 골라보드 <img  src="https://cdn-icons-png.flaticon.com/128/3292/3292072.png"
+                       style="width: 50px; height: 50px"/></h1>
+</div>
+
+<div class="wrap_box">
     <div class="box">
         <div class="questions_box">
             <h2> <img class="images"src="https://cdn-icons-png.flaticon.com/128/6770/6770295.png"/> 플레이어는 몇 명? </h2>
@@ -88,41 +92,38 @@
         <div class="menu">6명</div>
         <div class="menu">8명이상</div>
     </div>
-
-    <div class="box">
+    <div class="box1">
         <div class="questions_box">
             <h2> <img class="images"src="https://cdn-icons-png.flaticon.com/128/6770/6770339.png"/>  원하는 게임 연령은? </h2>
         </div>
-        <p>
         <div class="menu1">5세이상</div>
         <div class="menu1">8세이상</div>
         <div class="menu1">14세이상</div>
         <div class="menu1">성인</div>
     </div>
-
-    <div class="box">
+    <div class="box2">
         <div class="questions_box">
             <h2> <img class="images"src="https://cdn-icons-png.flaticon.com/128/6770/6770285.png"/>  원하는 장르는? </h2>
         </div>
-        <p>
         <div class="menu2">전략</div>
         <div class="menu2">추리</div>
         <div class="menu2">카드</div>
         <div class="menu2">퍼즐</div>
     </div>
-
-    <div class="box">
+    <div class="box3">
         <div class="questions_box">
-            <h2> <img class="images"src="https://cdn-icons-png.flaticon.com/128/6770/6770242.png"/>  원하는 플레이타임은? </h2>
+            <h2> <img class="images"src="https://cdn-icons-png.flaticon.com/128/6770/6770242.png"/>
+                원하는 플레이 타임은? </h2>
         </div>
-        <p>
         <div class="menu3">10min</div>
         <div class="menu3">30min</div>
         <div class="menu3">60min</div>
         <div class="menu3">90min</div>
     </div>
-    </div>
     <button  class="btn hover1" onclick="location.href='result.html' "> 결과 확인 </button>
+</div>
+
+
 
 
 </body>

@@ -1,49 +1,119 @@
 *{
             /*background-color: #9FA9D8;*/
             font-family: 'Poor Story', cursive;
-            background-image: url("/static/background_img.png");
-            background-repeat: no-repeat;
-            background-size : cover ;
 
 
+
+        }
+
+        .banner {
+            width: 50px;
+            height: 50px;
+            position: fixed;
         }
 
         .header {
             text-align: center;
-            font-size: 200%;
-
-
-
+            font-size: 250%;
+            white-space : nowrap;
 
         }
 
-        .box{
-            margin: auto;
-            padding: 5px;
-            border: 1px solid #9FA9D8;
-            border-radius: 10px;
-            width: 400px;
-            height: 250x;
-            text-align: center;
-
-
-        }
-
-        .images {
+         .images {
             width: 50px;
             height: 50px;
         }
+
+        .box{
+            /*margin: auto;*/
+            position: absolute;
+            top: 35%;
+            left: 23%;
+            padding: 10px;
+            border: 1px solid #4689b5;
+            border-radius: 20px;
+            width: 500px;
+            height: 200px;
+            display: block;
+            float: inside;
+            text-align: center;
+            font-size: 100%;
+            background-color: white;
+
+
+
+        }
+
+        .box1 {
+            /*margin: auto;*/
+            position: absolute;
+            top: 35%;
+            right: 21.5%;
+            padding: 10px;
+            border: 1px solid #4689b5;
+            border-radius: 20px;
+            width: 500px;
+            height: 200px;
+            display: block;
+            float: inside;
+            text-align: center;
+            font-size: 100%;
+            background-color: white;
+
+        }
+
+
+
+        .box2{
+            /*margin: auto;*/
+            position: absolute;
+            top: 60%;
+            left: 23%;
+            padding: 10px;
+            border: 1px solid #4689b5;
+            border-radius: 20px;
+            width: 500px;
+            height: 200px;
+            display: block;
+            float: inside;
+            text-align: center;
+            font-size: 100%;
+            background-color: white;
+
+
+
+        }
+
+        .box3{
+            /*margin: auto;*/
+            position: absolute;
+            top: 60%;
+            right: 21.5%;
+            padding: 10px;
+            border: 1px solid #4689b5;
+            border-radius: 20px;
+            width: 500px;
+            height: 200px;
+            display: block;
+            float: inside;
+            text-align: center;
+            font-size: 100%;
+            background-color: white;
+
+
+        }
+
 
         .menu {
             text-align: 10px;
             position: relative;
             color: #5f6368;
             border: solid 1px #dadce0;
-            border-radius: 1vw;
+            border-radius: 2vw;
             display: inline-block;
             padding: auto;
             background-color: white;
-            width: 75px;
+            width: 85px;
             height: 35px;
             font-size: 150%;
             font-weight: bold;
@@ -58,11 +128,11 @@
             position: relative;
             color: #5f6368;
             border: solid 1px #dadce0;
-            border-radius: 1vw;
+            border-radius: 2vw;
             display: inline-block;
             padding: auto;
             background-color: white;
-            width: 75px;
+            width: 85px;
             height: 35px;
             font-size: 150%;
             font-weight: bold;
@@ -79,11 +149,11 @@
             position: relative;
             color: #5f6368;
             border: solid 1px #dadce0;
-            border-radius: 1vw;
+            border-radius: 2vw;
             display: inline-block;
             padding: auto;
             background-color: white;
-            width: 75px;
+            width: 85px;
             height: 35px;
             font-size: 150%;
             font-weight: bold;
@@ -91,6 +161,7 @@
             transition-duration: 0.1s;
             /*padding: top right bottom left*/
             cursor: pointer;
+
         }
 
           .menu3 {
@@ -98,11 +169,11 @@
             position: relative;
             color: #5f6368;
             border: solid 1px #dadce0;
-            border-radius: 1vw;
+            border-radius: 2vw;
             display: inline-block;
             padding: auto;
             background-color: white;
-            width: 75px;
+            width: 85px;
             height: 35px;
             font-size: 150%;
             font-weight: bold;
@@ -113,47 +184,48 @@
         }
 
         .clicked_menu{
-            color: ;border-color: #FFB291;
-            color: #FFB291;
-            background: #FFEFD5;
+            color: ;border-color: #0288d1;
+            color: #0288d1;
+            background: #80deea;
         }
 
         .menu:active {
-            box-shadow: 4px 4px 4px #FF7878;
+            box-shadow: 5px 5px 5px #006064;
             /*color: #FFB291;*/
         }
 
         .menu1:active {
-            box-shadow: 4px 4px 4px #FF7878;
+            box-shadow: 5px 5px 5px #006064;
             /*color: #FFB291;*/
         }
 
-          .menu2:active {
-            box-shadow: 4px 4px 4px #FF7878;
+        .menu2:active {
+            box-shadow: 5px 5px 5px #006064;
             /*color: #FFB291;*/
         }
 
         .menu3:active {
-            box-shadow: 4px 4px 4px #FF7878;
+            box-shadow: 5px 5px 5px #006064;
             /*color: #FFB291;*/
         }
         .questions_box {
             text-align: justify;
             line-height: 200%;
-            padding: 10px;
-            font-size: 130%;
+            padding: 9px;
+            font-size: 170%;
 
         }
 
 
         body {
-            /*background: #2ecc71;*/
-            font-size: 90%;
-            background-image: url("/static/banner.png");
-            background-repeat: no-repeat;
-            /*!*background-attachment: fixed;*!*/
-            background-position: 3% 5%;
-            background-size: 300px;
+
+            background: white url("/static/background_img.png") 100% 100%
+            no-repeat fixed;
+            height: 100vh;
+            background-size : cover;
+
+
+
 
         }
 
@@ -164,9 +236,9 @@
             width:150px;
             height:40px;
             line-height:40px;
-            border:1px #3399dd solid;
+            border:1px #3399dd none;
             margin:15px auto;
-            background-color:#66aaff;
+            background-color:#69f0ae;
             text-align:center;
             cursor: pointer;
             color:#333;
@@ -179,3 +251,4 @@
         .hover1:hover{
             box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
         }
+
