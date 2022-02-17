@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+    <link href="./style2.css" rel="stylesheet" />
+<!--    <script src="http://code.jquery.com/jquery-3.3.1.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>보드게임 추천-Handmade</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,17 +14,9 @@
       rel="stylesheet"
     />
 
-    <!--    <script src="main.js" defer></script>-->
-    <!--    <link rel="stylesheet" href="style.css">-->
-    <link rel="icon" type="image/png" href="/static/favicon.png" />
-    <link href="./style2.css" rel="stylesheet" />
-    <title>보드게임 추천-Handmade</title>
 
-    <!--<style type="text/css">-->
 
-    <!--    </style>-->
-
-    <script type="text/javascript">
+   <script type="text/javascript">
       $(document).ready(function () {
         $(".menu")
           .each(function (index) {
@@ -69,21 +64,49 @@
             $(".menu3[menu-index!=" + index + "]").removeClass("clicked_menu");
           });
       });
+
+
     </script>
   </head>
-  <body>
-    <div class="banner">
-      <img src="./../static/banner.png" width="300" height="300" />
-    </div>
 
-    <div class="header">
-      <h1>
-        나만의 골라보드
-        <img
-          src="https://cdn-icons-png.flaticon.com/128/3292/3292072.png"
-          style="width: 50px; height: 50px"
-        />
-      </h1>
+  <body>
+   <header>
+      <img
+        onclick="document.location.href='./index.html'"
+        class="banner-img"
+        src="./../static/banner.png"
+        alt="배너"
+      />
+    </header>
+  <section class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </section>
+
+
+    <div>
+      <div id="contents">
+        <h1 class="result-sentence">
+          <span style="height: 500px">나</span>
+          <span>만</span>
+          <span>의</span>
+          <span>골</span>
+          <span>라</span>
+          <span>보</span>
+          <span>드</span>
+          <img src="https://cdn-icons-png.flaticon.com/128/3292/3292072.png" width="70" height="70">
+        </h1>
+      </div>
     </div>
 
     <div class="wrap_box">
@@ -93,7 +116,7 @@
             <img
               class="images"
               src="https://cdn-icons-png.flaticon.com/128/6770/6770295.png"
-            />
+              width="60" height="60"/>
             플레이어는 몇 명?
           </h2>
         </div>
@@ -108,7 +131,7 @@
             <img
               class="images"
               src="https://cdn-icons-png.flaticon.com/128/6770/6770339.png"
-            />
+             width="60" height="60"/>
             원하는 게임 연령은?
           </h2>
         </div>
@@ -123,7 +146,7 @@
             <img
               class="images"
               src="https://cdn-icons-png.flaticon.com/128/6770/6770285.png"
-            />
+             width="60" height="60"/>
             원하는 장르는?
           </h2>
         </div>
@@ -138,7 +161,7 @@
             <img
               class="images"
               src="https://cdn-icons-png.flaticon.com/128/6770/6770242.png"
-            />
+             width="60" height="60"/>
             원하는 플레이 타임은?
           </h2>
         </div>
@@ -147,7 +170,7 @@
         <div class="menu3">60min</div>
         <div class="menu3">90min</div>
       </div>
-      <button class="btn hover1" onclick="location.href='result.html' ">
+        <button class="btn hover1" onclick="location.href='result.html'">
         결과 확인
       </button>
     </div>
