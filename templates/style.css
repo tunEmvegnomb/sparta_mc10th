@@ -1,32 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy");
 
-:root {
-    --color-background: #31037D;
-
-    --axis-x: 1px;
-    --axis-y: 1rem;
-    --delay: 10;
-
-
-    /* Font size */
-    --font-large: 48px;
-    --font-medium: 28px;
-    --font-regular: 18px;
-    --font-small: 16px;
-    --font-micro: 14px;
-
-    /* Color */
-    --color-white: #ffffff;
-    --color-light-white: #eeeeee;
-    --color-dark-white: #bdbdbd;
-
-    /* Font weight */
-    --weight-bold: 700;
-    --weight-semi-bold: 600;
-    --weight-regular: 400;
-
-}
-
 
 * {
     margin: 0;
