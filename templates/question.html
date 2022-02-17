@@ -10,12 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic+Coding&family=Poor+Story&display=swap"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic+Coding&family=Poor+Story&display=swap"
+            rel="stylesheet"
     />
-
-
-
    <script type="text/javascript">
       $(document).ready(function () {
         $(".menu")
@@ -29,29 +26,29 @@
           });
       });
 
-      $(document).ready(function () {
-        $(".menu1")
-          .each(function (index) {
-            $(this).attr("menu-index", index);
-          })
-          .click(function () {
-            var index = $(this).attr("menu-index");
-            $(".menu1[menu-index=" + index + "]").addClass("clicked_menu");
-            $(".menu1[menu-index!=" + index + "]").removeClass("clicked_menu");
-          });
-      });
+        $(document).ready(function () {
+            $(".menu1")
+                .each(function (index) {
+                    $(this).attr("menu-index", index);
+                })
+                .click(function () {
+                    var index = $(this).attr("menu-index");
+                    $(".menu1[menu-index=" + index + "]").addClass("clicked_menu");
+                    $(".menu1[menu-index!=" + index + "]").removeClass("clicked_menu");
+                });
+        });
 
-      $(document).ready(function () {
-        $(".menu2")
-          .each(function (index) {
-            $(this).attr("menu-index", index);
-          })
-          .click(function () {
-            var index = $(this).attr("menu-index");
-            $(".menu2[menu-index=" + index + "]").addClass("clicked_menu");
-            $(".menu2[menu-index!=" + index + "]").removeClass("clicked_menu");
-          });
-      });
+        $(document).ready(function () {
+            $(".menu2")
+                .each(function (index) {
+                    $(this).attr("menu-index", index);
+                })
+                .click(function () {
+                    var index = $(this).attr("menu-index");
+                    $(".menu2[menu-index=" + index + "]").addClass("clicked_menu");
+                    $(".menu2[menu-index!=" + index + "]").removeClass("clicked_menu");
+                });
+        });
 
       $(document).ready(function () {
         $(".menu3")
@@ -92,8 +89,6 @@
             <li></li>
         </ul>
     </section>
-
-
     <div>
       <div id="contents">
         <h1 class="result-sentence">
@@ -109,8 +104,8 @@
       </div>
     </div>
 
-    <div class="wrap_box">
-      <div class="box">
+<div class="wrap_box">
+    <div class="box">
         <div class="questions_box">
           <h2>
             <img
@@ -124,8 +119,8 @@
         <div class="menu">4명</div>
         <div class="menu">6명</div>
         <div class="menu">8명이상</div>
-      </div>
-      <div class="box1">
+    </div>
+    <div class="box1">
         <div class="questions_box">
           <h2>
             <img
@@ -139,8 +134,8 @@
         <div class="menu1">8세이상</div>
         <div class="menu1">14세이상</div>
         <div class="menu1">성인</div>
-      </div>
-      <div class="box2">
+    </div>
+    <div class="box2">
         <div class="questions_box">
           <h2>
             <img
@@ -154,8 +149,8 @@
         <div class="menu2">추리</div>
         <div class="menu2">카드</div>
         <div class="menu2">퍼즐</div>
-      </div>
-      <div class="box3">
+    </div>
+    <div class="box3">
         <div class="questions_box">
           <h2>
             <img
@@ -174,5 +169,9 @@
         결과 확인
       </button>
     </div>
-  </body>
+    <button class="btn hover1" onclick="location.href='result.html' ">
+        결과 확인
+    </button>
+</div>
+</body>
 </html>
