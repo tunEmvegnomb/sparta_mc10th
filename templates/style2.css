@@ -1,6 +1,5 @@
 * {
   font-family: "Poor Story", cursive;
-
 }
 
 body {
@@ -9,23 +8,20 @@ body {
   margin: 0;
   background-attachment: fixed;
   background-size: 100% 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-
+  /* overflow-x: hidden;
+  overflow-y: auto; */
+  /* overflow: hidden; */
 }
 ::-webkit-scrollbar {
   width: 10px; /*스크롤바의 너비*/
 }
 ::-webkit-scrollbar-thumb {
-  background-color:	#6B8E23; /*스크롤바의 색상*/
+  background-color: #6b8e23; /*스크롤바의 색상*/
   border-radius: 10px; /*스크롤바 라운드*/
 }
 ::-webkit-scrollbar-track {
-  background-color: #F0FFF0; /*스크롤바 트랙 색상*/
+  background-color: #f0fff0; /*스크롤바 트랙 색상*/
 }
-
-
-
 
 /* Animation */
 .area {
@@ -281,7 +277,6 @@ h1 span:nth-child(14) {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .boxes {
@@ -289,7 +284,6 @@ h1 span:nth-child(14) {
   display: flex;
   justify-content: space-evenly;
   margin: 30px;
-
 }
 
 .box {
@@ -306,10 +300,6 @@ h1 span:nth-child(14) {
   text-align: center;
   font-size: 100%;
   background-color: ghostwhite;
-
-
-
-
 }
 
 .box1 {
