@@ -33,7 +33,7 @@ body {
 
 /*Animation*/
 .area {
-  background: -webkit-linear-gradient(to left, #9fa9d8, #0a53be);
+  /*background: -webkit-linear-gradient(to left, #9fa9d8, #0a53be);*/
   width: 100%;
   height: 100vh;
   position: absolute;
@@ -136,7 +136,7 @@ body {
 
 @keyframes animate {
   0% {
-    transform: translateY(-1000px) rotate(0 deg);
+    transform: translateY(-1000px) rotate(0deg);
     opacity: 1;
     border-radius: 0;
   }
@@ -146,6 +146,7 @@ body {
     border-radius: 50%;
   }
 }
+
 /* CLOUDS */
 /* body:before {
   content: "";
@@ -966,6 +967,8 @@ h2 {
   transform: rotateX(90deg) translateZ(-40px) scale(1.01);
   filter: brightness(90%);
 }
+
+
 
 /* For below 2030px screen width */
 /* @media screen and (max-width: 2030px) { */
