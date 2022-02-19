@@ -1,10 +1,22 @@
+@font-face {
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
   background-image: url("./../static/background_img.png");
   background-repeat: no-repeat;
   margin: 0;
   background-attachment: fixed;
   background-size: 100% 100%;
+  overflow: hidden;
+  font-family: 'ONE-Mobile-POP';
+
+
 }
+
 
 /* Animation */
 .area {
@@ -125,66 +137,86 @@ body {
 
 header {
   text-align: center;
-  background: green;
-}
-
-h1 {
-  background: pink;
-  text-align: center;
-  margin: 0;
 }
 
 .banner-img {
   width: 100px;
   cursor: pointer;
 }
-
-.body {
-  position: relative;
-  width: 70%;
-  height: 100%;
-  display: flex;
-  background: blue;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 100px;
-}
-
-.list {
-  flex: 8 0 0;
-}
-
-.card-deck {
-  background: coral;
-  width: 100%;
-  margin-bottom: 30px;
-}
-
-.card {
-  text-align: center;
-}
-
-.card-body {
-  padding: 10px;
-}
-
-.card-title {
-  margin: 0;
-}
-
-nav {
-  position: sticky;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: red;
-  margin-left: 20px;
-  flex: 2 0 0;
-}
-
-.buttons {
-  background: black;
+#title{
   text-align: center;
   font-size: 20px;
 }
+.parent {
+    height: 3em; /* 애니메이션 높이 */
+    overflow-y: hidden;
+    display: block;
+}
+.parent .child {
+    font-size: 3em;/* 애니메이션 높이 */
+    font-weight: bold;
+    line-height: 1;
+    animation-name: grow;
+    animation-duration: 1s;/* 애니메이션 시간 */
+
+}
+/* 키프레임 애니메이션 */
+@keyframes grow {
+    from { transform: translateY(3em) }/* 애니메이션 높이 */
+    to { transform: translateY(0) }
+}
+
+
+.body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.card-deck {
+  margin-bottom: 30px;
+}
+
+nav {
+  width: 100%;
+  height: 300px;
+  background: red;
+}
+
+#footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+}
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  /*background-color:#EBF5FF;*/
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 100%;
+  /*transition: background-color .3s;*/
+  /*border: 1px solid #ddd;*/
+  margin: 0 4px;
+  cursor: pointer;
+  font-size: 20px;
+
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  /*border: 1px dotted #4CAF50;*/
+
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #41A541;}
+
