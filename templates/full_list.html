@@ -16,6 +16,7 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <script src="../static/full_list.js" defer></script>
     <link href="../static/full_list.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="./../static/favicon.png" />
     <script src="scrips.js" defer></script>
@@ -27,6 +28,17 @@
     .fw-bolder{font-family: 'Black Han Sans', sans-serif;} -->
 
     <title>보드게임 추천-Handmade</title>
+    <script>
+      // 모달창 on/off 함수
+      function handleModal() {
+        let status = $("#modal").css("display");
+        if (status === "none") {
+          $("#modal").css("display", "flex");
+        } else {
+          $("#modal").hide();
+        }
+      }
+    </script>
   </head>
   <body>
     <section class="area">
@@ -45,13 +57,23 @@
     </section>
     <header>
       <img
-        onclick="document.location.href='/'"
+        onclick="document.location.href='./index.html'"
         class="banner-img"
         src="./../static/banner.png"
         alt="배너"
       />
     </header>
-    <h1>보드게임 리스트</h1>
+    <div id="title">
+      <div class="parent">
+        <div class="child">
+          #보드게임 #리스트<img
+            src="./../static/dice-cube.png"
+            width="55"
+            height="55"
+          />
+        </div>
+      </div>
+    </div>
     <div class="body">
       <div class="list">
         <div class="card-columns">
@@ -60,6 +82,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -70,6 +93,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -80,6 +104,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -90,6 +115,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -100,6 +126,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -110,6 +137,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -120,6 +148,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -130,6 +159,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -140,6 +170,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -150,6 +181,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -160,6 +192,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -170,6 +203,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -180,6 +214,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -190,6 +225,7 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
@@ -200,20 +236,146 @@
               class="card-img-top"
               src="./../static/boardExample.jpeg"
               alt="Card image cap"
+              onclick="handleModal()"
             />
             <div class="card-body">
               <h5 class="card-title">부루마불</h5>
             </div>
           </div>
         </div>
-        <div class="buttons">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
+        <div id="footer">
+          <div class="pagination">
+            <div class="active">
+              <a href="#"><<</a>
+              <a href="#">1</a>
+              <a href="#">2</a>
+              <a href="#">3</a>
+              <a href="#">4</a>
+              <a href="#">>></a>
+            </div>
+          </div>
         </div>
       </div>
-      <nav>필터기능 검색기능</nav>
+      <nav>
+        <section class="col-12" id="fs_rating">
+          <span class="heading"> Filter By </span>
+          <div id="bmr-calculator" class="wrapper">
+            <div class="calculator">
+              <label for="calc-playtime" id="calc-playtime_value"
+                >Playtime: 30min</label
+              >
+              <input
+                id="calc-playtime"
+                type="range"
+                value="30"
+                min="10"
+                max="90"
+                step="5"
+              />
+              <label for="calc-people" id="calc-people_value"
+                >People: 2명</label
+              >
+              <input
+                id="calc-people"
+                type="range"
+                value="2"
+                min="1"
+                max="24"
+                step="1"
+              />
+              <label for="calc-age" id="calc-age_value">Age: 8살</label>
+              <input
+                id="calc-age"
+                type="range"
+                value="8"
+                min="3"
+                max="20"
+                step="1"
+              />
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container">
+            <ul class="ks-cboxtags">
+              <li>
+                <input type="checkbox" id="checkboxOne" value="Family" /><label
+                  for="checkboxOne"
+                  >가족</label
+                >
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="checkboxTwo"
+                  value="Card"
+                  checked
+                /><label for="checkboxTwo">카드</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="checkboxThree"
+                  value="Puzzle"
+                  checked
+                /><label for="checkboxThree">퍼즐</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  id="checkboxFour"
+                  value="Strategy"
+                /><label for="checkboxFour">전략</label>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </nav>
+    </div>
+    <div id="modal" onclick="handleModal()">
+      <div id="modal-view" onclick="event.stopPropagation()">
+        <div id="close-btn" onclick="handleModal()">&times;</div>
+        <table class="wiki-table" style="width: 100%">
+          <tbody>
+            <tr id="board-title">
+              <td colspan="2">부루마불</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <img
+                  class="result-img"
+                  src="./../static/boardExample.jpeg"
+                  alt="보드게임이미지"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>인원</td>
+              <td>2~4명</td>
+            </tr>
+            <tr>
+              <td>연령</td>
+              <td>8세 이상</td>
+            </tr>
+            <tr>
+              <td>플레이 시간</td>
+              <td>90분</td>
+            </tr>
+            <tr>
+              <td>장르</td>
+              <td>가족</td>
+            </tr>
+            <tr>
+              <td>테마</td>
+              <td>완구, 클래식, 주사위</td>
+            </tr>
+            <tr id="board-link">
+              <td>링크</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </body>
 </html>
