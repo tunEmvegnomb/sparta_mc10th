@@ -6,5 +6,17 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/survey')
+def survey():
+    return render_template('question.html')
+
+@app.route('/result')
+def result():
+    return render_template('result.html')
+
+@app.route('/whole')
+def whole():
+    return render_template('full_list.html')
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
