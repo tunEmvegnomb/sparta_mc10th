@@ -12,7 +12,7 @@
 /* BODY */
 body {
   /* z-index: 0; */
-  background-image: url("./../static/background_img.png");
+  background-image: url("background_img.png");
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
