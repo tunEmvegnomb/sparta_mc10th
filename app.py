@@ -2,6 +2,9 @@ from flask import Flask, render_template, jsonify, request
 
 from pymongo import MongoClient
 
+import random
+
+import math
 # client = MongoClient('mongodb://test:test@localhost', 27017)
 client = MongoClient('localhost', 27017)
 db = client.mc10th
@@ -12,6 +15,28 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return render_template('index.html')
+
+# 메인 페이지 API
+# API 설계
+    # 데이터베이스에서 이미지와 랭크 값을 가져옴
+    # 랜덤함수 3번을 돌려 나온 숫자
+    # 그 숫자의 값을 랭크 값과 매치 시켜서
+    # 이미지를 뿌려줌
+@app.route('/rand', methods=['GET'])
+def today_random():
+
+    randnum1 = random.randrange(1, 85)
+    randnum2 = random.randrange(1, 85)
+    randnum3 = random.randrange(1, 85)
+
+    todaygame1 = db.gameList.find_one({'opt_rank': randnum1})['opt_img']
+    todaygame2 = db.gameList.find_one({'opt_rank': randnum2})['opt_img']
+    todaygame3 = db.gameList.find_one({'opt_rank': randnum3})['opt_img']
+
+    todaygames = [todaygame1, todaygame2, todaygame3]
+    return jsonify('todaygames', todaygames)
+
+
 
 # 질문 페이지
 @app.route('/survey')
@@ -55,7 +80,6 @@ def show_gameList():
     games = list(db.gameList.find({}, {'_id': False}))
 
     return jsonify({'all_games': games})
-
 
 
 
