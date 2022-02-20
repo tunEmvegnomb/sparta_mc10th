@@ -50,9 +50,10 @@ def whole():
 
 # 전체 리스트 페이지 API
 # DB_gameList의 데이터를 불러와 출력하기
-@app.route('/whole', methods=['GET'])
+@app.route('/whole/list', methods=['GET'])
 def show_gameList():
-    games = list(db.mc10th.find({}, {'_id':False}))
+    games = list(db.gameList.find({}, {'_id': False}))
+
     return jsonify({'all_games': games})
 
 
