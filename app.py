@@ -68,6 +68,26 @@ def search_survey():
 def result():
     return render_template('result.html')
 
+# 결과값 보내주기
+@app.route('/resultData', methods=['POST'])
+def output_result():
+    player_receive = request.form['player_give']
+    age_receive = request.form['age_give']
+    genre_receive = request.form['genre_give']
+    time_receive = request.form['time_give']
+    # print(int(age_receive.split(',')[0]))
+    # print(player_receive, age_receive, genre_receive, time_receive)
+    all_games = list(db.mc10th.find({"opt_genre":genre_receive},{'_id':False}))
+    filtered_games = []
+    min_age = int(age_receive.split(',')[0])
+    max_age = int(age_receive.split(',')[1])
+    min_time = int(time_receive.split(',')[0])
+    max_time = int(time_receive.split(',')[1]) 
+    for game in all_games:
+        if (int(game['opt_minNum']) <= int(player_receive) <= int(game['opt_maxNum'])) and (min_age <= int(game['opt_age']) <= max_age) and ( min_time <= int(game['opt_time']) <= max_time ) :
+            filtered_games.append(game)
+    return jsonify({'filtered_games': filtered_games})
+
 # 전체 리스트 페이지
 @app.route('/whole')
 def whole():

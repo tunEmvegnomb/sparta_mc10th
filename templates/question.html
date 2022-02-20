@@ -14,7 +14,57 @@
       href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic+Coding&family=Poor+Story&display=swap"
       rel="stylesheet"
     />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
+      let player = "";
+      let age = "";
+      let genre = "";
+      let time = "";
+
+      // 선택된 값 저장하는 함수
+      $(document).ready(function () {
+        $(".menu").click(function () {
+          const index = $(this).attr("menu-index");
+          // console.log(index);
+          if (index === "0") player = 2;
+          else if (index === "1") player = 4;
+          else if (index === "2") player = 6;
+          else if (index === "3") player = 8;
+          // console.log(player);
+        });
+
+        $(".menu1").click(function () {
+          const index = $(this).attr("menu-index");
+          // console.log(index);
+          if (index === "0") age = [3, 11];
+          else if (index === "1") age = [12, 14];
+          else if (index === "2") age = [15, 19];
+          else if (index === "3") age = [20, 100];
+          console.log(age);
+        });
+
+        $(".menu2").click(function () {
+          const index = $(this).attr("menu-index");
+          // console.log(index);
+          if (index === "0") genre = "전략";
+          else if (index === "1") genre = "가족";
+          else if (index === "2") genre = "퍼즐";
+          else if (index === "3") genre = "카드";
+          // console.log(genre);
+        });
+
+        $(".menu3").click(function () {
+          const index = $(this).attr("menu-index");
+          // console.log(index);
+          if (index === "0") time = [10, 29];
+          else if (index === "1") time = [30, 59];
+          else if (index === "2") time = [60, 89];
+          else if (index === "3") time = [90, 1000];
+          // console.log(time);
+        });
+      });
+
+      // 클린된 값 css설정을 위한 함수(클래스, 속성추가)
       $(document).ready(function () {
         $(".menu")
           .each(function (index) {
@@ -63,6 +113,20 @@
           });
       });
 
+      // 결과확인 버튼을 눌렀을 때 결과페이지로 이동하는 함수
+      function showResult() {
+        console.log(player, age, genre, time);
+        if (player && age && genre && time) {
+          document.location.href = `/result?player=${player}&age=${age}&genre=${genre}&time=${time}`;
+        } else {
+          Swal.fire({
+            title: "모든 질문에 답해주세요!",
+            text: "",
+            icon: "warning",
+            confirmButtonText: "ok",
+          });
+        }
+      }
     </script>
   </head>
 
@@ -98,13 +162,16 @@
         <span>라</span>
         <span>보</span>
         <span>드</span>
-        <img src="https://cdn-icons-png.flaticon.com/128/3292/3292072.png" width="70" height="70">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/3292/3292072.png"
+          width="70"
+          height="70"
+        />
       </h1>
-
     </div>
 
     <div id="main">
-      <div class="wrap_box" >
+      <div class="wrap_box">
         <div class="boxes">
           <div class="box">
             <div class="questions_box">
@@ -180,9 +247,7 @@
       </div>
     </div>
     <div id="footer">
-      <button class="btn hover1" onclick="location.href='/result'">
-        결과 확인
-      </button>
+      <button class="btn hover1" onclick="showResult()">결과 확인</button>
     </div>
   </body>
 </html>
