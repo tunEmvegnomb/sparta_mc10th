@@ -19,8 +19,9 @@
     <script src="../static/full_list.js" defer></script>
     <link href="../static/full_list.css" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="./../static/favicon.png"/>
-    <script src="scrips.js" defer></script>
+    <!--    <script src="scrips.js" defer></script>-->
     <link rel="icon" type="image/png" href="/static/favicon.png"/>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
 
     <!--font-->
     <!-- @import
@@ -46,10 +47,11 @@
         function showGames() {
             $.ajax({
                 type: 'GET',
-                url: '/whole',
+                url: '/whole/list',
                 data: {},
                 success: function (response) {
                     let games = response['all_games']
+                    console.log(response)
                     for (i = 0; i < games.length; i++) {
                         let rank = games[i]['opt_rank']
                         let name = games[i]['opt_name']
@@ -63,16 +65,23 @@
                         let tag2 = games[i]['opt_tag2']
                         let tag3 = games[i]['opt_tag3']
 
-                        console.log(rank,name,img)
 
-
-
-                        let temp_html = ``
-                        $('#star-box').append(temp_html)
-
+                        let temp_html = `<div class="card">
+                                            <img
+                                                    class="card-img-top"
+                                                    src="${img}"
+                                                    alt="Card image cap"
+                                                    onclick="handleModal()"
+                                            />
+                                            <div class="card-body">
+                                                <h5 class="card-title">${name}</h5>
+                                            </div>
+                                        </div>`
+                        $('#card-columns').append(temp_html)
                     }
                 }
-            });
+
+            })
         }
     </script>
 </head>
@@ -112,172 +121,172 @@
 </div>
 <div class="body">
     <div class="list">
-        <div class="card-columns">
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                        class="card-img-top"
-                        src="./../static/boardExample.jpeg"
-                        alt="Card image cap"
-                        onclick="handleModal()"
-                />
-                <div class="card-body">
-                    <h5 class="card-title">부루마불</h5>
-                </div>
-            </div>
+        <div class="card-columns" id="card-columns">
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card">-->
+<!--                <img-->
+<!--                        class="card-img-top"-->
+<!--                        src="./../static/boardExample.jpeg"-->
+<!--                        alt="Card image cap"-->
+<!--                        onclick="handleModal()"-->
+<!--                />-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">부루마불</h5>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
         <div id="footer">
             <div class="pagination">
