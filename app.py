@@ -77,7 +77,7 @@ def output_result():
     time_receive = request.form['time_give']
     # print(int(age_receive.split(',')[0]))
     # print(player_receive, age_receive, genre_receive, time_receive)
-    all_games = list(db.mc10th.find({"opt_genre":genre_receive},{'_id':False}))
+    all_games = list(db.gameList.find({"opt_genre":genre_receive},{'_id':False}))
     filtered_games = []
     min_age = int(age_receive.split(',')[0])
     max_age = int(age_receive.split(',')[1])
