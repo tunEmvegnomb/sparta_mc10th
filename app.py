@@ -5,8 +5,8 @@ from pymongo import MongoClient
 import random
 
 import math
-# client = MongoClient('mongodb://test:test@localhost', 27017)
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb://test:test@localhost', 27017)
+# client = MongoClient('localhost', 27017)
 db = client.mc10th
 
 app = Flask(__name__)

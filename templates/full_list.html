@@ -56,11 +56,25 @@
                 success: function (response) {
                     let items = response['limit_items']
                     console.log(items)
+                    if (pageNo === 7) {
+
+                        pageNo = 6
+                        showPage();
+                    }
                     $('#card-columns').empty();
 
                     for (i = 0; i < items.length; i++) {
                         let name = items[i]['opt_name']
                         let img = items[i]['opt_img']
+                        let minNum = items[i]['opt_minNum']
+                        let maxNum = items[i]['opt_maxNum']
+                        let genre = items[i]['opt_genre']
+                        let time = items[i]['opt_time']
+                        let age = items[i]['opt_age']
+                        let tag1 = items[i]['opt_tag1']
+                        let tag2 = items[i]['opt_tag2']
+                        let tag3 = items[i]['opt_tag3']
+
 
                         let temp_html = `<div class="card">
                                             <img
@@ -71,6 +85,47 @@
                                             />
                                             <div class="card-body">
                                                 <h5 class="card-title">${name}</h5>
+                                            </div>
+                                        </div>
+                                        <div id="modal" onclick="handleModal()">
+                                            <div id="modal-view" onclick="event.stopPropagation()">
+                                                <div id="close-btn" onclick="handleModal()">&times;</div>
+                                                <table class="wiki-table" style="width: 100%">
+                                                    <tbody>
+                                                    <tr id="board-title">
+                                                        <td colspan="2">${name}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <img
+                                                                    class="result-img"
+                                                                    src="${img}"
+                                                                    alt="보드게임이미지"
+                                                            />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>인원</td>
+                                                        <td>${minNum}~${maxNum}명</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>연령</td>
+                                                        <td>${age}세 이상</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>플레이 시간</td>
+                                                        <td>${time}분</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>장르</td>
+                                                        <td>${genre}</td>
+                                                    </tr>
+                                                    <tr id="board-tag">
+                                                        <td>테마</td>
+                                                        <td>${tag1},${tag2},${tag3}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>`
 
@@ -118,6 +173,74 @@
         function page_6() {
             pageNo = 6
             showPage()
+        }
+
+        let player = "";
+        let age = "";
+        let time = "";
+        let genre = "";
+
+        // 선택된 값 저장하는 함수_인원 수
+        $(document).ready(function () {
+            $(".rad-design").click(function () {
+                const index = $(this).attr("rad-index");
+                //console.log(index);
+                if (index === "0") player = 2;
+                else if (index === "1") player = 4;
+                else if (index === "2") player = 6;
+                else if (index === "3") player = 8;
+                console.log(player);
+            });
+        })
+        // 선택된 값 저장하는 함수_연령
+        $(document).ready(function () {
+            $(".rad-design2").click(function () {
+                const index = $(this).attr("rad-index");
+                // console.log(index);
+                if (index === "0") age = [3, 11];
+                else if (index === "1") age = [12, 14];
+                else if (index === "2") age = [15, 19];
+                else if (index === "3") age = [20, 100];
+                console.log(age);
+            });
+        })
+        // 선택된 값 저장하는 함수
+        $(document).ready(function () {
+            $(".rad-design").click(function () {
+                const index = $(this).attr("rad-index");
+                // console.log(index);
+                if (index === "0") time = [10, 29];
+                else if (index === "1") time = [30, 59];
+                else if (index === "2") time = [60, 89];
+                else if (index === "3") time = [90, 1000];
+                // console.log(player);
+            });
+        })
+
+        // 선택된 값 저장하는 함수_장르
+        $(document).ready(function () {
+            $(".rad-design3").click(function () {
+                const index = $(this).attr("rad-index");
+                // console.log(index);
+                if (index === "0") genre = "가족"
+                else if (index === "1") genre = "카드"
+                else if (index === "2") genre = "퍼즐"
+                else if (index === "3") genre = "전략"
+                console.log(genre);
+            });
+        })
+
+        // 필터 데이터 출력하는 함수
+        function genreFilter(genre) {
+            $.ajax({
+                type: 'POST',
+                url: '/api/like',
+                data: {name_give: name},
+                success: function (response) {
+                    alert(response['msg']);
+                    window.location.reload()
+                }
+            });
         }
 
     </script>
@@ -266,25 +389,25 @@
                         <div>
                             <label class="rad-label">
                                 <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
+                                <div class="rad-design" rad-index="0"></div>
                                 <div class="rad-text">2명</div>
                             </label>
 
                             <label class="rad-label">
                                 <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
+                                <div class="rad-design" rad-index="1"></div>
                                 <div class="rad-text">4명</div>
                             </label>
 
                             <label class="rad-label">
                                 <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
+                                <div class="rad-design" rad-index="2"></div>
                                 <div class="rad-text">6명</div>
                             </label>
 
                             <label class="rad-label">
                                 <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
+                                <div class="rad-design" rad-index="3"></div>
                                 <div class="rad-text">8명이상</div>
                             </label>
                         </div>
@@ -306,25 +429,25 @@
                         <div>
                             <label class="rad-label2">
                                 <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
+                                <div class="rad-design2" rad-index="0"></div>
                                 <div class="rad-text2">어린이</div>
                             </label>
 
                             <label class="rad-label2">
                                 <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
+                                <div class="rad-design2" rad-index="1"></div>
                                 <div class="rad-text2">12세</div>
                             </label>
 
                             <label class="rad-label2">
                                 <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
+                                <div class="rad-design2" rad-index="2"></div>
                                 <div class="rad-text2">15세</div>
                             </label>
 
                             <label class="rad-label2">
                                 <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
+                                <div class="rad-design2" rad-index="3"></div>
                                 <div class="rad-text2">성인</div>
                             </label>
                         </div>
@@ -386,7 +509,7 @@
                             </div>
                         </div>
                     </div>
-                        <div class="box border-bottom">
+                    <div class="box border-bottom">
                         <div class="box-label text-uppercase d-flex align-items-center">
                             장르
                             <button
@@ -400,64 +523,65 @@
                                 <span class="fas fa-plus"></span>
                             </button>
                         </div>
-                                 <div>
-                                    <label class="rad-label3">
-                                        <input type="radio" class="rad-input3" name="rad3"/>
-                                        <div class="rad-design3"></div>
-                                        <div class="rad-text3">가족</div>
-                                    </label>
+                        <div>
+                            <label class="rad-label3">
+                                <input type="radio" class="rad-input3" name="rad3"/>
+                                <div class="rad-design3" rad-index="0"></div>
+                                <div class="rad-text3">가족</div>
+                            </label>
 
-                                    <label class="rad-label3">
-                                        <input type="radio" class="rad-input3" name="rad3"/>
-                                        <div class="rad-design3"></div>
-                                        <div class="rad-text3">카드</div>
-                                    </label>
+                            <label class="rad-label3">
+                                <input type="radio" class="rad-input3" name="rad3"/>
+                                <div class="rad-design3" rad-index="1"></div>
+                                <div class="rad-text3">카드</div>
+                            </label>
 
-                                    <label class="rad-label2">
-                                        <input type="radio" class="rad-input3" name="rad3"/>
-                                        <div class="rad-design3"></div>
-                                        <div class="rad-text3">퍼즐</div>
-                                    </label>
+                            <label class="rad-label2">
+                                <input type="radio" class="rad-input3" name="rad3"/>
+                                <div class="rad-design3" rad-index="2"></div>
+                                <div class="rad-text3">퍼즐</div>
+                            </label>
 
-                                    <label class="rad-label3">
-                                        <input type="radio" class="rad-input3" name="rad3"/>
-                                        <div class="rad-design3"></div>
-                                        <div class="rad-text3">전략</div>
-                                    </label>
-                                </div>
+                            <label class="rad-label3">
+                                <input type="radio" class="rad-input3" name="rad3"/>
+                                <div class="rad-design3" rad-index="3"></div>
+                                <div class="rad-text3">전략</div>
+                            </label>
+                        </div>
 
-
-{#                        <div class="container">#}
-{#                            <ul class="ks-cboxtags">#}
-{#                                <li>#}
-{#                                    <input type="checkbox" id="checkboxOne" value="Family"/>#}
-{#                                    <label for="checkboxOne">가족</label>#}
-{#                                </li>#}
-{#                                <li>#}
-{#                                    <input#}
-{#                                            type="checkbox"#}
-{#                                            id="checkboxTwo"#}
-{#                                            value="Card"#}
-{#                                            checked#}
-{#                                    /><label for="checkboxTwo">카드</label>#}
-{#                                </li>#}
-{#                                <li>#}
-{#                                    <input#}
-{#                                            type="checkbox"#}
-{#                                            id="checkboxThree"#}
-{#                                            value="Puzzle"#}
-{#                                            checked#}
-{#                                    /><label for="checkboxThree">퍼즐</label>#}
-{#                                </li>#}
-{#                                <li>#}
-{#                                    <input#}
-{#                                            type="checkbox"#}
-{#                                            id="checkboxFour"#}
-{#                                            value="Strategy"#}
-{#                                    /><label for="checkboxFour">전략</label>#}
-{#                                </li>#}
-{#                            </ul>#}
-{#                        </div>#}
+                        <!--
+                                                <div class="container">
+                                                    <ul class="ks-cboxtags">
+                                                        <li>
+                                                            <input type="checkbox" id="checkboxOne" value="Family"/>
+                                                            <label for="checkboxOne">가족</label>
+                                                        </li>
+                                                        <li>
+                                                            <input
+                                                                    type="checkbox"
+                                                                    id="checkboxTwo"
+                                                                    value="Card"
+                                                                    checked
+                                                            /><label for="checkboxTwo">카드</label>
+                                                        </li>
+                                                        <li>
+                                                            <input
+                                                                    type="checkbox"
+                                                                    id="checkboxThree"
+                                                                    value="Puzzle"
+                                                                    checked
+                                                            /><label for="checkboxThree">퍼즐</label>
+                                                        </li>
+                                                        <li>
+                                                            <input
+                                                                    type="checkbox"
+                                                                    id="checkboxFour"
+                                                                    value="Strategy"
+                                                            /><label for="checkboxFour">전략</label>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                    !-->
                     </div>
                 </div>
             </div>
