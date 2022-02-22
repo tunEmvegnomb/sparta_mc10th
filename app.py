@@ -4,6 +4,7 @@ from pymongo import MongoClient
 
 import random
 
+import math
 # client = MongoClient('mongodb://test:test@localhost', 27017)
 client = MongoClient('localhost', 27017)
 db = client.mc10th
@@ -81,7 +82,7 @@ def output_result():
     min_age = int(age_receive.split(',')[0])
     max_age = int(age_receive.split(',')[1])
     min_time = int(time_receive.split(',')[0])
-    max_time = int(time_receive.split(',')[1])
+    max_time = int(time_receive.split(',')[1]) 
     for game in all_games:
         if (int(game['opt_minNum']) <= int(player_receive) <= int(game['opt_maxNum'])) and (min_age <= int(game['opt_age']) <= max_age) and ( min_time <= int(game['opt_time']) <= max_time ) :
             filtered_games.append(game)
@@ -90,7 +91,6 @@ def output_result():
 # 전체 리스트 페이지
 @app.route('/whole')
 def whole():
-
     return render_template('full_list.html')
 
 #페이지네이션
@@ -111,9 +111,6 @@ def item_pagination():
 
     # 데이터 리턴(games는 데이터를 받아오고, items는 페이지네이션을 담당한다)
     return jsonify({'limit_items': items})
-
-
-
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
