@@ -19,7 +19,13 @@ todayGame2 = db.gameList.find_one({'opt_rank':randNum2})['opt_img']
 todayGame3 = db.gameList.find_one({'opt_rank':randNum3})['opt_img']
 
 todaygames = [todayGame1,todayGame2,todayGame3]
-print(todaygames)
+
+
+a = 2
+b = [3,10]
+c = "가나다"
+
+print(a, b, c)
 
 
 
