@@ -41,30 +41,25 @@
         }
 
         $(document).ready(function () {
-            showGames();
+            showPage()
         });
 
-        function showGames() {
+        let pageNo = 1
+
+        function showPage() {
+
             $.ajax({
-                type: 'GET',
-                url: '/whole/list',
+                url: `/whole/page?page=${pageNo}`,
+                type: "GET",
                 data: {},
                 success: function (response) {
-                    let games = response['all_games']
-                    console.log(response)
-                    for (i = 0; i < games.length; i++) {
-                        let rank = games[i]['opt_rank']
-                        let name = games[i]['opt_name']
-                        let img = games[i]['opt_img']
-                        let minNum = games[i]['opt_minNum']
-                        let maxNum = games[i]['opt_maxNum']
-                        let age = games[i]['opt_age']
-                        let time = games[i]['opt_time']
-                        let genre = games[i]['opt_genre']
-                        let tag1 = games[i]['opt_tag1']
-                        let tag2 = games[i]['opt_tag2']
-                        let tag3 = games[i]['opt_tag3']
+                    let items = response['limit_items']
+                    console.log(items)
+                    $('#card-columns').empty();
 
+                    for (i = 0; i < items.length; i++) {
+                        let name = items[i]['opt_name']
+                        let img = items[i]['opt_img']
 
                         let temp_html = `<div class="card">
                                             <img
@@ -77,11 +72,51 @@
                                                 <h5 class="card-title">${name}</h5>
                                             </div>
                                         </div>`
-                        $('#card-columns').append(temp_html)
+
+                        $('#card-columns').append(temp_html);
                     }
                 }
-
             })
+        }
+
+        function nextPage() {
+            pageNo += 1;
+            showPage();
+        }
+
+        function prevPage() {
+            pageNo -= 1;
+            showPage();
+        }
+
+        function page_1() {
+            pageNo = 1
+            showPage()
+        }
+
+        function page_2() {
+            pageNo = 2
+            showPage()
+        }
+
+        function page_3() {
+            pageNo = 3
+            showPage()
+        }
+
+        function page_4() {
+            pageNo = 4
+            showPage()
+        }
+
+        function page_5() {
+            pageNo = 5
+            showPage()
+        }
+
+        function page_6() {
+            pageNo = 6
+            showPage()
         }
     </script>
 </head>
