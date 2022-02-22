@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
     <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous"
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
     />
     <script src="../static/full_list.js" defer></script>
-    <link href="../static/full_list.css" rel="stylesheet"/>
-    <link rel="icon" type="image/png" href="./../static/favicon.png"/>
+    <link href="../static/full_list.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="./../static/favicon.png" />
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
     <!--    <script src="scrips.js" defer></script>-->
-    <link rel="icon" type="image/png" href="/static/favicon.png"/>
+    <link rel="icon" type="image/png" href="/static/favicon.png" />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 
     <!--font-->
@@ -31,131 +31,190 @@
 
     <title>보드게임 추천-Handmade</title>
     <script>
-        // 모달창 on/off 함수
-        function handleModal() {
-            let status = $("#modal").css("display");
-            if (status === "none") {
-                $("#modal").css("display", "flex");
-            } else {
-                $("#modal").hide();
-            }
-        }
+      // $(document).ready(function () {
+      //   $(".card").click(function () {
+      //     const index = $(this).attr("card-index");
+      //     console.log(index);
+      //   });
+      // });
 
-        $(document).ready(function () {
-            showPage()
+      //   // 모달창 on/off 함수
+      //   function handleModal() {
+      //     let status = $("#modal").css("display");
+      //     if (status === "none") {
+      //       $("#modal").css("display", "flex");
+      //     } else {
+      //       $("#modal").hide();
+      //     }
+      //   }
+      let boardList = [];
+      function handleModal() {
+        $(".card").click(function () {
+          const index = $(this).attr("card-index");
+          const clickedBoard = boardList[index];
+          console.log(clickedBoard);
+          $("#modal").remove();
+          let temp_html = `<div id="modal" onclick="handleModal()">
+        <div id="modal-view" onclick="event.stopPropagation()">
+            <div id="close-btn" onclick="handleModal()">&times;</div>
+            <table class="wiki-table" style="width: 100%">
+            <tbody>
+                <tr id="board-title">
+                <td colspan="2">${clickedBoard["opt_name"]}</td>
+                </tr>
+                <tr>
+                <td colspan="2">
+                    <img
+                    class="result-img"
+                    src=${clickedBoard["opt_img"]}
+                    alt="보드게임이미지"
+                    />
+                </td>
+                </tr>
+                <tr>
+                <td>인원</td>
+                <td>${clickedBoard["opt_minNum"]}~${clickedBoard["opt_maxNum"]}명</td>
+                </tr>
+                <tr>
+                <td>연령</td>
+                <td>${clickedBoard["opt_age"]}세 이상</td>
+                </tr>
+                <tr>
+                <td>플레이 시간</td>
+                <td>${clickedBoard["opt_time"]}분</td>
+                </tr>
+                <tr>
+                <td>장르</td>
+                <td>${clickedBoard["opt_genre"]}</td>
+                </tr>
+                <tr id="board-tag">
+                <td>테마</td>
+                <td>${clickedBoard["opt_tag1"]}, ${clickedBoard["opt_tag2"]}, ${clickedBoard["opt_tag3"]}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>`;
+          $("body").append(temp_html);
+          $("#modal").css("display", "flex");
         });
+        $("#modal").hide();
+      }
 
-        let pageNo = 1
+      $(document).ready(function () {
+        showPage();
+      });
 
-        function showPage() {
+      let pageNo = 1;
 
-            $.ajax({
-                url: `/whole/page?page=${pageNo}`,
-                type: "GET",
-                data: {},
-                success: function (response) {
-                    let items = response['limit_items']
-                    console.log(items)
-                    $('#card-columns').empty();
+      function showPage() {
+        $.ajax({
+          url: `/whole/page?page=${pageNo}`,
+          type: "GET",
+          data: {},
+          success: function (response) {
+            let items = response["limit_items"];
+            boardList = items;
+            // console.log(items);
+            $(".card-columns").empty();
 
-                    for (i = 0; i < items.length; i++) {
-                        let name = items[i]['opt_name']
-                        let img = items[i]['opt_img']
+            for (i = 0; i < items.length; i++) {
+              let name = items[i]["opt_name"];
+              let img = items[i]["opt_img"];
 
-                        let temp_html = `<div class="card">
+              let temp_html = `<div class="card" card-index=${i} onclick="handleModal()">
                                             <img
                                                     class="card-img-top"
                                                     src="${img}"
                                                     alt="Card image cap"
-                                                    onclick="handleModal()"
                                             />
                                             <div class="card-body">
                                                 <h5 class="card-title">${name}</h5>
                                             </div>
-                                        </div>`
+                                        </div>`;
 
-                        $('#card-columns').append(temp_html);
-                    }
-                }
-            })
-        }
+              $(".card-columns").append(temp_html);
+            }
+          },
+        });
+      }
 
-        function nextPage() {
-            pageNo += 1;
-            showPage();
-        }
+      function nextPage() {
+        pageNo += 1;
+        showPage();
+      }
 
-        function prevPage() {
-            pageNo -= 1;
-            showPage();
-        }
+      function prevPage() {
+        pageNo -= 1;
+        showPage();
+      }
 
-        function page_1() {
-            pageNo = 1
-            showPage()
-        }
+      function page_1() {
+        pageNo = 1;
+        showPage();
+      }
 
-        function page_2() {
-            pageNo = 2
-            showPage()
-        }
+      function page_2() {
+        pageNo = 2;
+        showPage();
+      }
 
-        function page_3() {
-            pageNo = 3
-            showPage()
-        }
+      function page_3() {
+        pageNo = 3;
+        showPage();
+      }
 
-        function page_4() {
-            pageNo = 4
-            showPage()
-        }
+      function page_4() {
+        pageNo = 4;
+        showPage();
+      }
 
-        function page_5() {
-            pageNo = 5
-            showPage()
-        }
+      function page_5() {
+        pageNo = 5;
+        showPage();
+      }
 
-        function page_6() {
-            pageNo = 6
-            showPage()
-        }
+      function page_6() {
+        pageNo = 6;
+        showPage();
+      }
       function openclose() {
-          let status = $('#label-box').css('display');
-          if (status == 'block') {
-              $('#label-box').hide()
-          } else {
-              $('#label-box').show()
-          }
+        let status = $("#label-box").css("display");
+        if (status == "block") {
+          $("#label-box").hide();
+        } else {
+          $("#label-box").show();
+        }
       }
-         function openclose2() {
-          let status = $('#label-box2').css('display');
-          if (status == 'block') {
-              $('#label-box2').hide()
-          } else {
-              $('#label-box2').show()
-          }
+      function openclose2() {
+        let status = $("#label-box2").css("display");
+        if (status == "block") {
+          $("#label-box2").hide();
+        } else {
+          $("#label-box2").show();
+        }
       }
-            function openclose3() {
-          let status = $('#time').css('display');
-          if (status == 'block') {
-              $('#time').hide()
-          } else {
-              $('#time').show()
-          }
+      function openclose3() {
+        let status = $("#time").css("display");
+        if (status == "block") {
+          $("#time").hide();
+        } else {
+          $("#time").show();
+        }
       }
-            function openclose4() {
-          let status = $('#label-box4').css('display');
-          if (status == 'block') {
-              $('#label-box4').hide()
-          } else {
-              $('#label-box4').show()
-          }
+      function openclose4() {
+        let status = $("#label-box4").css("display");
+        if (status == "block") {
+          $("#label-box4").hide();
+        } else {
+          $("#label-box4").show();
+        }
       }
     </script>
-</head>
-<body>
-<section class="area">
-    <ul class="circles">
+  </head>
+  <body>
+    <section class="area">
+      <ul class="circles">
         <li></li>
         <li></li>
         <li></li>
@@ -166,29 +225,29 @@
         <li></li>
         <li></li>
         <li></li>
-    </ul>
-</section>
-<header>
-    <img
-            onclick="document.location.href='/'"
-            class="banner-img"
-            src="./../static/banner.png"
-            alt="배너"
-    />
-</header>
-<!--<div id="title">-->
-<!--    <div class="parent">-->
-<!--        <div class="child">-->
-<!--            #보드게임 #리스트<img-->
-<!--                src="./../static/dice-cube.png"-->
-<!--                width="55"-->
-<!--                height="55"-->
-<!--        />-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<div id="title">
-    <h1 class="result-sentence">
+      </ul>
+    </section>
+    <header>
+      <img
+        onclick="document.location.href='/'"
+        class="banner-img"
+        src="./../static/banner.png"
+        alt="배너"
+      />
+    </header>
+    <!--<div id="title">-->
+    <!--    <div class="parent">-->
+    <!--        <div class="child">-->
+    <!--            #보드게임 #리스트<img-->
+    <!--                src="./../static/dice-cube.png"-->
+    <!--                width="55"-->
+    <!--                height="55"-->
+    <!--        />-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</div>-->
+    <div id="title">
+      <h1 class="result-sentence">
         <span>#</span>
         <span>보</span>
         <span>드</span>
@@ -199,314 +258,309 @@
         <span>스</span>
         <span>트</span>
         <img
-                class="result-sentence"
-                src="./../static/dice3.png"
-                width="80"
-                height="80"
+          class="result-sentence"
+          src="./../static/dice3.png"
+          width="80"
+          height="80"
         />
-    </h1>
-</div>
-<div class="body">
-    <div class="list">
-        <div class="card-columns" id="card-columns">
-            <!--            <div class="card">-->
-            <!--                <img-->
-            <!--                        class="card-img-top"-->
-            <!--                        src="./../static/boardExample.jpeg"-->
-            <!--                        alt="Card image cap"-->
-            <!--                        onclick="handleModal()"-->
-            <!--                />-->
-            <!--                <div class="card-body">-->
-            <!--                    <h5 class="card-title">부루마불</h5>-->
-            <!--                </div>-->
-            <!--            </div>-->
-
+      </h1>
+    </div>
+    <div class="body">
+      <div class="list">
+        <div class="card-columns">
+          <!-- <div class="card">
+            <img
+              class="card-img-top"
+              src="./../static/boardExample.jpeg"
+              alt="Card image cap"
+              onclick="handleModal()"
+            />
+            <div class="card-body">
+              <h5 class="card-title">부루마불</h5>
+            </div>
+          </div> -->
         </div>
         <div id="footer">
-            <div class="pagination">
-                <div class="active">
-                    <a href="#" onclick="prevPage()"><</a>
-                    <a href="#" onclick="page_1()">1</a>
-                    <a href="#" onclick="page_2()">2</a>
-                    <a href="#" onclick="page_3()">3</a>
-                    <a href="#" onclick="page_4()">4</a>
-                    <a href="#" onclick="page_5()">5</a>
-                    <a href="#" onclick="page_6()">6</a>
-                    <a href="#" onclick="nextPage()">></a>
-                </div>
+          <div class="pagination">
+            <div class="active">
+              <a href="#" onclick="prevPage()"><</a>
+              <a href="#" onclick="page_1()">1</a>
+              <a href="#" onclick="page_2()">2</a>
+              <a href="#" onclick="page_3()">3</a>
+              <a href="#" onclick="page_4()">4</a>
+              <a href="#" onclick="page_5()">5</a>
+              <a href="#" onclick="page_6()">6</a>
+              <a href="#" onclick="nextPage()">></a>
             </div>
+          </div>
         </div>
-    </div>
-    <nav>
+      </div>
+      <nav>
         <section class="col-12" id="fs_rating">
-            <!--            <div id="bmr-calculator" class="wrapper">-->
-            <!--                <div class="calculator">-->
-            <!--                    <label for="calc-playtime" id="calc-playtime_value"-->
-            <!--                    >Playtime: 30min</label-->
-            <!--                    >-->
-            <!--                    <input-->
-            <!--                            id="calc-playtime"-->
-            <!--                            type="range"-->
-            <!--                            value="30"-->
-            <!--                            min="10"-->
-            <!--                            max="90"-->
-            <!--                            step="5"-->
-            <!--                    />-->
-            <!--                    <label for="calc-people" id="calc-people_value"-->
-            <!--                    >People: 2명</label-->
-            <!--                    >-->
-            <!--                    <input-->
-            <!--                            id="calc-people"-->
-            <!--                            type="range"-->
-            <!--                            value="2"-->
-            <!--                            min="1"-->
-            <!--                            max="24"-->
-            <!--                            step="1"-->
-            <!--                    />-->
-            <!--                    <label for="calc-age" id="calc-age_value">Age: 8살</label>-->
-            <!--                    <input-->
-            <!--                            id="calc-age"-->
-            <!--                            type="range"-->
-            <!--                            value="8"-->
-            <!--                            min="3"-->
-            <!--                            max="20"-->
-            <!--                            step="1"-->
-            <!--                    />-->
-            <!--                </div>-->
-            <!--            </div>-->
+          <!--            <div id="bmr-calculator" class="wrapper">-->
+          <!--                <div class="calculator">-->
+          <!--                    <label for="calc-playtime" id="calc-playtime_value"-->
+          <!--                    >Playtime: 30min</label-->
+          <!--                    >-->
+          <!--                    <input-->
+          <!--                            id="calc-playtime"-->
+          <!--                            type="range"-->
+          <!--                            value="30"-->
+          <!--                            min="10"-->
+          <!--                            max="90"-->
+          <!--                            step="5"-->
+          <!--                    />-->
+          <!--                    <label for="calc-people" id="calc-people_value"-->
+          <!--                    >People: 2명</label-->
+          <!--                    >-->
+          <!--                    <input-->
+          <!--                            id="calc-people"-->
+          <!--                            type="range"-->
+          <!--                            value="2"-->
+          <!--                            min="1"-->
+          <!--                            max="24"-->
+          <!--                            step="1"-->
+          <!--                    />-->
+          <!--                    <label for="calc-age" id="calc-age_value">Age: 8살</label>-->
+          <!--                    <input-->
+          <!--                            id="calc-age"-->
+          <!--                            type="range"-->
+          <!--                            value="8"-->
+          <!--                            min="3"-->
+          <!--                            max="20"-->
+          <!--                            step="1"-->
+          <!--                    />-->
+          <!--                </div>-->
+          <!--            </div>-->
         </section>
         <section>
-            <div id="content" class="my-5">
-                <div id="filterer" class="collapse">
-                    <div class="box border-bottom">
-                        <div class="box-label text-uppercase d-flex align-items-center">
-
-                            인원수
-                            <button
-                                    class="btn ml-auto"
-                                    type="button"
-                                    data-toggle="collapse"
-                                    data-target="#inner-box"
-                                    aria-expanded="false"
-                                    aria-controls="inner-box"
-                                    id="out"
-                                    onclick="outerFilter()"
-                            >
-                            </button>
-                            <a onclick="openclose()"  href="#" class="fas fa-plus"></a>
-                        </div>
-                        <div id="label-box">
-                            <label class="rad-label">
-                                <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
-                                <div class="rad-text">2명</div>
-                            </label>
-
-                            <label class="rad-label">
-                                <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
-                                <div class="rad-text">4명</div>
-                            </label>
-
-                            <label class="rad-label">
-                                <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
-                                <div class="rad-text">6명</div>
-                            </label>
-
-                            <label class="rad-label">
-                                <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
-                                <div class="rad-text">8명이상</div>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="box border-bottom">
-                        <div class="box-label text-uppercase d-flex align-items-center">
-                            게임연령
-                            <button
-                                    class="btn ml-auto"
-                                    type="button"
-                                    data-toggle="collapse"
-                                    data-target="#inner-box2"
-                                    aria-expanded="false"
-                                    aria-controls="inner-box2"
-                            >
-                                <a onclick="openclose2()"  href="#" class="fas fa-plus"></a>
-                            </button>
-                        </div>
-                        <div id="label-box2">
-                            <label class="rad-label2">
-                                <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
-                                <div class="rad-text2">어린이</div>
-                            </label>
-
-                            <label class="rad-label2">
-                                <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
-                                <div class="rad-text2">12세</div>
-                            </label>
-
-                            <label class="rad-label2">
-                                <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
-                                <div class="rad-text2">15세</div>
-                            </label>
-
-                            <label class="rad-label2">
-                                <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
-                                <div class="rad-text2">성인</div>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="box border-bottom">
-                        <div class="box-label text-uppercase d-flex align-items-center">
-                            Play Time
-                            <button
-                                    class="btn ml-auto"
-                                    type="button"
-                                    data-toggle="collapse"
-                                    data-target="#time"
-                                    aria-expanded="false"
-                                    aria-controls="time"
-                            >
-                                <a onclick="openclose3()"  href="#" class="fas fa-plus"></a>
-                            </button>
-                        </div>
-                            <div class="collapse" id="time">
-                            <div class="middle"  >
-                                <div class="multi-range-slider">
-                                    <label for="input-left" id="input-left_value"></label>
-                                    <input
-                                            type="range"
-                                            id="input-left"
-                                            min="0"
-                                            max="120"
-                                            value="10"
-                                            step="10"
-                                    />
-                                    <label for="input-right" id="input-right_value"></label>
-                                    <input
-                                            type="range"
-                                            id="input-right"
-                                            min="0"
-                                            max="120"
-                                            value="50"
-                                            step="10"
-                                    />
-                                    <div class="slider">
-                                        <div class="track"></div>
-                                        <div class="range"></div>
-                                        <div class="thumb left"></div>
-                                        <div class="thumb right"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                    class="d-flex align-items-center justify-content-between mt-2"
-                            >
-                                <div>
-                                    <span id="amount-left" class="font-weight-bold"></span>
-                                    min
-                                </div>
-                                <div>
-                                    <span id="amount-right" class="font-weight-bold"></span>
-                                    min
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="box border-bottom">
-                    <div class="box-label text-uppercase d-flex align-items-center">
-                        장르
-                        <button
-                                class="btn ml-auto"
-                                type="button"
-                                data-toggle="collapse"
-                                data-target="#inner-box3"
-                                aria-expanded="false"
-                                aria-controls="inner-box3"
-                        >
-                        <a onclick="openclose4()"  href="#" class="fas fa-plus"></a>
-                        </button>
-                    </div>
-                             <div id="label-box4">
-                                <label class="rad-label3">
-                                    <input type="radio" class="rad-input3" name="rad3"/>
-                                    <div class="rad-design3"></div>
-                                    <div class="rad-text3">가족</div>
-                                </label>
-
-                                <label class="rad-label3">
-                                    <input type="radio" class="rad-input3" name="rad3"/>
-                                    <div class="rad-design3"></div>
-                                    <div class="rad-text3">카드</div>
-                                </label>
-
-                                <label class="rad-label3">
-                                    <input type="radio" class="rad-input3" name="rad3"/>
-                                    <div class="rad-design3"></div>
-                                    <div class="rad-text3">퍼즐</div>
-                                </label>
-
-                                <label class="rad-label3">
-                                    <input type="radio" class="rad-input3" name="rad3"/>
-                                    <div class="rad-design3"></div>
-                                    <div class="rad-text3">전략</div>
-                                </label>
-                            </div>
-
+          <div id="content" class="my-5">
+            <div id="filterer" class="collapse">
+              <div class="box border-bottom">
+                <div class="box-label text-uppercase d-flex align-items-center">
+                  인원수
+                  <button
+                    class="btn ml-auto"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#inner-box"
+                    aria-expanded="false"
+                    aria-controls="inner-box"
+                    id="out"
+                    onclick="outerFilter()"
+                  ></button>
+                  <a onclick="openclose()" href="#" class="fas fa-plus"></a>
                 </div>
+                <div id="label-box">
+                  <label class="rad-label">
+                    <input type="radio" class="rad-input" name="rad" />
+                    <div class="rad-design"></div>
+                    <div class="rad-text">2명</div>
+                  </label>
+
+                  <label class="rad-label">
+                    <input type="radio" class="rad-input" name="rad" />
+                    <div class="rad-design"></div>
+                    <div class="rad-text">4명</div>
+                  </label>
+
+                  <label class="rad-label">
+                    <input type="radio" class="rad-input" name="rad" />
+                    <div class="rad-design"></div>
+                    <div class="rad-text">6명</div>
+                  </label>
+
+                  <label class="rad-label">
+                    <input type="radio" class="rad-input" name="rad" />
+                    <div class="rad-design"></div>
+                    <div class="rad-text">8명이상</div>
+                  </label>
                 </div>
+              </div>
+              <div class="box border-bottom">
+                <div class="box-label text-uppercase d-flex align-items-center">
+                  게임연령
+                  <button
+                    class="btn ml-auto"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#inner-box2"
+                    aria-expanded="false"
+                    aria-controls="inner-box2"
+                  >
+                    <a onclick="openclose2()" href="#" class="fas fa-plus"></a>
+                  </button>
+                </div>
+                <div id="label-box2">
+                  <label class="rad-label2">
+                    <input type="radio" class="rad-input2" name="rad2" />
+                    <div class="rad-design2"></div>
+                    <div class="rad-text2">어린이</div>
+                  </label>
+
+                  <label class="rad-label2">
+                    <input type="radio" class="rad-input2" name="rad2" />
+                    <div class="rad-design2"></div>
+                    <div class="rad-text2">12세</div>
+                  </label>
+
+                  <label class="rad-label2">
+                    <input type="radio" class="rad-input2" name="rad2" />
+                    <div class="rad-design2"></div>
+                    <div class="rad-text2">15세</div>
+                  </label>
+
+                  <label class="rad-label2">
+                    <input type="radio" class="rad-input2" name="rad2" />
+                    <div class="rad-design2"></div>
+                    <div class="rad-text2">성인</div>
+                  </label>
+                </div>
+              </div>
+              <div class="box border-bottom">
+                <div class="box-label text-uppercase d-flex align-items-center">
+                  Play Time
+                  <button
+                    class="btn ml-auto"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#time"
+                    aria-expanded="false"
+                    aria-controls="time"
+                  >
+                    <a onclick="openclose3()" href="#" class="fas fa-plus"></a>
+                  </button>
+                </div>
+                <div class="collapse" id="time">
+                  <div class="middle">
+                    <div class="multi-range-slider">
+                      <label for="input-left" id="input-left_value"></label>
+                      <input
+                        type="range"
+                        id="input-left"
+                        min="0"
+                        max="120"
+                        value="10"
+                        step="10"
+                      />
+                      <label for="input-right" id="input-right_value"></label>
+                      <input
+                        type="range"
+                        id="input-right"
+                        min="0"
+                        max="120"
+                        value="50"
+                        step="10"
+                      />
+                      <div class="slider">
+                        <div class="track"></div>
+                        <div class="range"></div>
+                        <div class="thumb left"></div>
+                        <div class="thumb right"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="d-flex align-items-center justify-content-between mt-2"
+                  >
+                    <div>
+                      <span id="amount-left" class="font-weight-bold"></span>
+                      min
+                    </div>
+                    <div>
+                      <span id="amount-right" class="font-weight-bold"></span>
+                      min
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="box border-bottom">
+                <div class="box-label text-uppercase d-flex align-items-center">
+                  장르
+                  <button
+                    class="btn ml-auto"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#inner-box3"
+                    aria-expanded="false"
+                    aria-controls="inner-box3"
+                  >
+                    <a onclick="openclose4()" href="#" class="fas fa-plus"></a>
+                  </button>
+                </div>
+                <div id="label-box4">
+                  <label class="rad-label3">
+                    <input type="radio" class="rad-input3" name="rad3" />
+                    <div class="rad-design3"></div>
+                    <div class="rad-text3">가족</div>
+                  </label>
+
+                  <label class="rad-label3">
+                    <input type="radio" class="rad-input3" name="rad3" />
+                    <div class="rad-design3"></div>
+                    <div class="rad-text3">카드</div>
+                  </label>
+
+                  <label class="rad-label3">
+                    <input type="radio" class="rad-input3" name="rad3" />
+                    <div class="rad-design3"></div>
+                    <div class="rad-text3">퍼즐</div>
+                  </label>
+
+                  <label class="rad-label3">
+                    <input type="radio" class="rad-input3" name="rad3" />
+                    <div class="rad-design3"></div>
+                    <div class="rad-text3">전략</div>
+                  </label>
+                </div>
+              </div>
             </div>
+          </div>
         </section>
-    </nav>
-</div>
-
-<div id="modal" onclick="handleModal()">
-    <div id="modal-view" onclick="event.stopPropagation()">
+      </nav>
+    </div>
+    <!-- 
+    <div id="modal" onclick="handleModal()">
+      <div id="modal-view" onclick="event.stopPropagation()">
         <div id="close-btn" onclick="handleModal()">&times;</div>
         <table class="wiki-table" style="width: 100%">
-            <tbody>
+          <tbody>
             <tr id="board-title">
-                <td colspan="2">부루마불</td>
+              <td colspan="2">부루마불</td>
             </tr>
             <tr>
-                <td colspan="2">
-                    <img
-                            class="result-img"
-                            src="./../static/boardExample.jpeg"
-                            alt="보드게임이미지"
-                    />
-                </td>
+              <td colspan="2">
+                <img
+                  class="result-img"
+                  src="./../static/boardExample.jpeg"
+                  alt="보드게임이미지"
+                />
+              </td>
             </tr>
             <tr>
-                <td>인원</td>
-                <td>2~4명</td>
+              <td>인원</td>
+              <td>2~4명</td>
             </tr>
             <tr>
-                <td>연령</td>
-                <td>8세 이상</td>
+              <td>연령</td>
+              <td>8세 이상</td>
             </tr>
             <tr>
-                <td>플레이 시간</td>
-                <td>90분</td>
+              <td>플레이 시간</td>
+              <td>90분</td>
             </tr>
             <tr>
-                <td>장르</td>
-                <td>가족</td>
+              <td>장르</td>
+              <td>가족</td>
             </tr>
             <tr id="board-tag">
-                <td>테마</td>
-                <td>완구, 클래식, 주사위</td>
+              <td>테마</td>
+              <td>완구, 클래식, 주사위</td>
             </tr>
-            </tbody>
+          </tbody>
         </table>
-    </div>
-</div>
-</body>
+      </div>
+    </div> -->
+  </body>
 </html>

@@ -1,17 +1,18 @@
 /*selector*/
 @font-face {
   font-family: "Cafe24Ssurround";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff") format("woff");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-    font-family: 'Cafe24Dongdong';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Dongdong.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Cafe24Dongdong";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Dongdong.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
-
 
 :root {
   --primary-color: #435fda;
@@ -45,8 +46,7 @@ body {
   margin: 0;
   background-attachment: fixed;
   background-size: 100% 100%;
-  font-family: 'Cafe24Dongdong';
-
+  font-family: "Cafe24Dongdong";
 }
 
 /* Animation */
@@ -326,10 +326,10 @@ h1 span:nth-child(10) {
   margin-bottom: 30px;
 }
 
-.card {
+/* .card {
   text-align: center;
   cursor: pointer;
-}
+} */
 
 .card-body {
   padding: 10px;
@@ -350,17 +350,19 @@ nav {
 }
 
 .card {
+  text-align: center;
+  cursor: pointer;
   position: relative;
   margin: auto;
   max-width: 400px;
   border-radius: 20px;
   background-color: #ffffff;
   color: #363c5f;
-  padding: 40px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%);
+  /* clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%); */
 }
 
 .card::after {
@@ -792,11 +794,12 @@ button.btn.btn-hide {
 .navbar {
   display: inline-flex;
 }
-.card {
+
+/* .card {
   padding: 10px;
   cursor: pointer;
   transition: 0.3s all ease-in-out;
-}
+} */
 
 .card:hover {
   box-shadow: 2px 2px 15px #fd9a6ce5;
@@ -937,7 +940,7 @@ label {
 
 #inner-box,
 #inner-box2,
-#inner-box3{
+#inner-box3 {
   height: 150px;
   overflow-y: scroll;
 }
@@ -961,7 +964,7 @@ label {
 
 #inner-box::-webkit-scrollbar-thumb,
 #inner-box2::-webkit-scrollbar-thumb,
-#inner-box3::-webkit-scrollbar-thumb{
+#inner-box3::-webkit-scrollbar-thumb {
   background-color: #333;
   border-radius: 2px;
 }
@@ -1156,7 +1159,7 @@ input[type="range"]::-webkit-slider-thumb {
 /*인원수 선택*/
 .rad-label,
 .rad-label2,
-.rad-label3{
+.rad-label3 {
   display: flex;
   align-items: center;
 
@@ -1173,13 +1176,13 @@ input[type="range"]::-webkit-slider-thumb {
 .rad-label2:hover,
 .rad-label2:focus-within,
 .rad-label3:hover,
-.rad-label3:focus-within{
+.rad-label3:focus-within {
   background: hsla(0, 0%, 80%, 0.14);
 }
 
 .rad-input,
 .rad-input2,
-.rad-input3{
+.rad-input3 {
   position: absolute;
   left: 0;
   top: 0;
@@ -1191,7 +1194,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 .rad-design,
 .rad-design2,
-.rad-design3{
+.rad-design3 {
   width: 22px;
   height: 22px;
   border-radius: 100px;
@@ -1206,7 +1209,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 .rad-design::before,
 .rad-design2::before,
-.rad-design3::before{
+.rad-design3::before {
   content: "";
 
   display: inline-block;
@@ -1221,13 +1224,13 @@ input[type="range"]::-webkit-slider-thumb {
 
 .rad-input:checked + .rad-design::before,
 .rad-input2:checked + .rad-design2::before,
-.rad-input3:checked + .rad-design3::before{
+.rad-input3:checked + .rad-design3::before {
   transform: scale(0);
 }
 
 .rad-text,
 .rad-text2,
-.rad-text3{
+.rad-text3 {
   color: hsl(0, 0%, 60%);
   margin-left: 14px;
   letter-spacing: 3px;
@@ -1240,6 +1243,6 @@ input[type="range"]::-webkit-slider-thumb {
 
 .rad-input:checked ~ .rad-text,
 .rad-input2:checked ~ .rad-text2,
-.rad-input3:checked ~ .rad-text3{
+.rad-input3:checked ~ .rad-text3 {
   color: hsl(0, 0%, 40%);
 }
