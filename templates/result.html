@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic+Coding&family=Poor+Story&display=swap"
       rel="stylesheet"
     />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       // 페이지 켜지면서 실행되는 함수
       $(document).ready(function () {
@@ -19,80 +20,98 @@
         const age = urlParams.get("age");
         const genre = urlParams.get("genre");
         const time = urlParams.get("time");
-        console.log(player, age, genre, time);
+        // console.log(player, age, genre, time);
         $.ajax({
-          type: "POST",
-          url: "/resultData",
+          type: "GET",
+          url: `/resultData?player=${player}&age=${age}&genre=${genre}&time=${time}`,
           data: {
-            player_give: player,
-            age_give: age,
-            genre_give: genre,
-            time_give: time,
+            // player_give: player,
+            // age_give: age,
+            // genre_give: genre,
+            // time_give: time,
           },
           success: function (response) {
-            console.log(response["filtered_games"]);
-            const games = response["filtered_games"];
-            const game = games[Math.floor(Math.random() * games.length)];
-            let title = game["opt_name"];
-            let img = game["opt_img"];
-            let minNum = game["opt_minNum"];
-            let maxNum = game["opt_maxNum"];
-            let age = game["opt_age"];
-            let time = game["opt_time"];
-            let genre = game["opt_genre"];
-            let tag1 = game["opt_tag1"];
-            let tag2 = game["opt_tag2"];
-            let tag3 = game["opt_tag3"];
-            for (let i = 0; i < title.length; i++) {
-              $(".result-sentence").append(`<span>${title[i]}</span>`);
+            if (response["filtered_games"].length) {
+              // console.log(response["filtered_games"]);
+              const games = response["filtered_games"];
+              const game = games[Math.floor(Math.random() * games.length)];
+              let title = game["opt_name"];
+              let img = game["opt_img"];
+              let minNum = game["opt_minNum"];
+              let maxNum = game["opt_maxNum"];
+              let age = game["opt_age"];
+              let time = game["opt_time"];
+              let genre = game["opt_genre"];
+              let tag1 = game["opt_tag1"];
+              let tag2 = game["opt_tag2"];
+              let tag3 = game["opt_tag3"];
+              $(".result-sentence").empty();
+              for (let i = 0; i < title.length; i++) {
+                $(".result-sentence").append(`<span>${title[i]}</span>`);
+              }
+              $("#result-view").append(`<img
+                                          onclick="handleModal()"
+                                          class="result-img"
+                                          src=${img}
+                                          alt="보드게임이미지"
+                                        />
+                                        <div class="speech-bubble">이미지를 눌러보세요</div>`);
+              $("body").append(`<div id="modal" onclick="handleModal()">
+                                  <div id="modal-view" onclick="event.stopPropagation()">
+                                    <div id="close-btn" onclick="handleModal()">&times;</div>
+                                    <table class="wiki-table" style="width: 100%">
+                                      <tbody>
+                                        <tr id="board-title">
+                                          <td colspan="2">${title}</td>
+                                        </tr>
+                                        <tr>
+                                          <td colspan="2">
+                                            <img
+                                              class="result-img"
+                                              src=${img}
+                                              alt="보드게임이미지"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>인원</td>
+                                          <td>${minNum}명~${maxNum}명</td>
+                                        </tr>
+                                        <tr>
+                                          <td>연령</td>
+                                          <td>${age}세 이상</td>
+                                        </tr>
+                                        <tr>
+                                          <td>플레이 시간</td>
+                                          <td>${time}분</td>
+                                        </tr>
+                                        <tr>
+                                          <td>장르</td>
+                                          <td>${genre}</td>
+                                        </tr>
+                                        <tr id="board-tag">
+                                          <td>테마</td>
+                                          <td>${tag1}, ${tag2}, ${tag3}</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>`);
+            } else {
+              Swal.fire({
+                title: "해당하는 보드게임이 없습니다.",
+                showConfirmButton: true,
+                showDenyButton: true,
+                confirmButtonText: "다시 추천받기",
+                denyButtonText: "전체 리스트보기",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  document.location.href = "/survey";
+                } else if (result.isDenied) {
+                  document.location.href = "/whole";
+                }
+              });
             }
-            $("#result-view").append(`         <img
-            onclick="handleModal()"
-            class="result-img"
-            src=${img}
-            alt="보드게임이미지"
-          />`);
-            $("body").append(`    <div id="modal" onclick="handleModal()">
-      <div id="modal-view" onclick="event.stopPropagation()">
-        <div id="close-btn" onclick="handleModal()">&times;</div>
-        <table class="wiki-table" style="width: 100%">
-          <tbody>
-            <tr id="board-title">
-              <td colspan="2">${title}</td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <img
-                  class="result-img"
-                  src=${img}
-                  alt="보드게임이미지"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>인원</td>
-              <td>${minNum}명~${maxNum}명</td>
-            </tr>
-            <tr>
-              <td>연령</td>
-              <td>${age}세 이상</td>
-            </tr>
-            <tr>
-              <td>플레이 시간</td>
-              <td>${time}분</td>
-            </tr>
-            <tr>
-              <td>장르</td>
-              <td>${genre}</td>
-            </tr>
-            <tr>
-              <td>테마</td>
-              <td>${tag1}, ${tag2}, ${tag3}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>`);
           },
         });
       });
@@ -187,14 +206,19 @@
         <div class="bubbles">
           <h1>당신에게 추천하는 게임은 바로!</h1>
         </div>
-        <h1 class="result-sentence"></h1>
+        <h1 class="result-sentence">
+          <span>다</span>
+          <span>시</span>
+          <span>추</span>
+          <span>천</span>
+          <span>받</span>
+          <span>기</span>
+        </h1>
         <button type="button" onclick="location.reload();">
           <div class="button-sentence">다른 추천게임</div>
           <img class="button-img" src="./../static/card.png" alt="카드이미지" />
         </button>
-        <div id="result-view">
-          <div class="speech-bubble">이미지를 눌러보세요</div>
-        </div>
+        <div id="result-view"></div>
       </div>
       <div id="buttons">
         <button type="button" onclick="document.location.href='/survey'">
@@ -205,7 +229,7 @@
             alt="체스이미지"
           />
         </button>
-        <button type="button" onclick="document.location.href='whole'">
+        <button type="button" onclick="document.location.href='/whole'">
           <div class="button-sentence">전체 리스트보기</div>
           <img
             class="button-img"
