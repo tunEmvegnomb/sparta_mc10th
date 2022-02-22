@@ -20,6 +20,16 @@
 //     var age = parseInt($("#calc-age").val(), 10);
 //
 // });
+// 모달창 on/off 함수
+      function handleModal() {
+        let status = $("#modal").css("display");
+        if (status === "none") {
+          $("#modal").css("display", "flex");
+        } else {
+          $("#modal").hide();
+        }
+      }
+
 
 
 // For Filters

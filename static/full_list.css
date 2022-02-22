@@ -636,7 +636,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 }
 
 #modal {
-  position: absolute;
+  position: fixed;
   z-index: 999;
   top: 0;
   left: 0;
@@ -651,7 +651,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 }
 
 #modal-view {
-  width: 2000px;
+  width: 800px;
   /* height: 1000px; */
   background: #afd5e6;
   border-radius: 20px;
@@ -677,6 +677,12 @@ td {
 
 tr > td {
   background: #7bbf81;
+}
+td>img{
+     height: 500px;
+    width: 600px;
+    border-radius: 30px;
+    margin-bottom: 20px;
 }
 
 tbody > tr:nth-child(2) > td > img {
