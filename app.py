@@ -69,12 +69,12 @@ def result():
     return render_template('result.html')
 
 # 결과값 보내주기
-@app.route('/resultData', methods=['POST'])
+@app.route('/resultData', methods=['GET'])
 def output_result():
-    player_receive = request.form['player_give']
-    age_receive = request.form['age_give']
-    genre_receive = request.form['genre_give']
-    time_receive = request.form['time_give']
+    player_receive = request.args.get('player')
+    age_receive = request.args.get('age')
+    genre_receive = request.args.get('genre')
+    time_receive = request.args.get('time')
     # print(int(age_receive.split(',')[0]))
     # print(player_receive, age_receive, genre_receive, time_receive)
     all_games = list(db.gameList.find({"opt_genre":genre_receive},{'_id':False}))
