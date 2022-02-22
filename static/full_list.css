@@ -1,4 +1,11 @@
 /*selector*/
+@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
   --primary-color: #435fda;
   --secondary-color: #d8415c;
@@ -155,31 +162,150 @@ header {
 }
 
 #title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0.7 0 0;
+
+}
+
+.result-sentence {
+  font-size: 4em;
+  font-weight: bold ;
+  font-family: 'Cafe24Ssurround';
+}
+
+.result-sentence span {
+  display: inline-block;
+  animation: float 0.2s ease-in-out infinite;
   text-align: center;
-  font-size: 20px;
-  margin-bottom: 20px;
 }
-.parent {
-  height: 3em; /* 애니메이션 높이 */
-  overflow-y: hidden;
-  display: block;
+h1 img {
+  display:inline-block;
+  animation:float .2s ease-in-out infinite;
 }
-.parent .child {
-  font-size: 3em; /* 애니메이션 높이 */
-  font-weight: bold;
-  line-height: 1;
-  animation-name: grow;
-  animation-duration: 1s; /* 애니메이션 시간 */
-}
-/* 키프레임 애니메이션 */
-@keyframes grow {
-  from {
-    transform: translateY(3em);
-  } /* 애니메이션 높이 */
-  to {
-    transform: translateY(0);
+
+
+@keyframes float {
+  0%,
+  100% {
+    transform: none;
+  }
+  33% {
+    transform: translateY(-1px) rotate(-2deg);
+  }
+  66% {
+    transform: translateY(1px) rotate(2deg);
   }
 }
+
+body:hover span {
+  animation: bounce 0.8s;
+}
+body:hover h1 img {
+  animation: bounce 1.9s;
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  25% {
+    transform: rotateX(20deg) translateY(2px) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(3deg) scale(1.1);
+  }
+}
+
+span:nth-child(4n) {
+  color: hsl(50, 75%, 55%);
+  text-shadow: 1px 1px hsl(50, 75%, 45%), 2px 2px hsl(50, 45%, 45%),
+    3px 3px hsl(50, 45%, 45%), 4px 4px hsl(50, 75%, 45%);
+}
+span:nth-child(4n-1) {
+  color: hsl(135, 35%, 55%);
+  text-shadow: 1px 1px hsl(135, 35%, 45%), 2px 2px hsl(135, 35%, 45%),
+    3px 3px hsl(135, 35%, 45%), 4px 4px hsl(135, 35%, 45%);
+}
+span:nth-child(4n-2) {
+  color: hsl(155, 35%, 60%);
+  text-shadow: 1px 1px hsl(155, 25%, 50%), 2px 2px hsl(155, 25%, 50%),
+    3px 3px hsl(155, 25%, 50%), 4px 4px hsl(140, 25%, 50%);
+}
+span:nth-child(4n-3) {
+  color: hsl(30, 65%, 60%);
+  text-shadow: 1px 1px hsl(30, 45%, 50%), 2px 2px hsl(30, 45%, 50%),
+    3px 3px hsl(30, 45%, 50%), 4px 4px hsl(30, 45%, 50%);
+}
+
+h1 span:nth-child(2) {
+  animation-delay: 0.05s;
+
+}
+h1 span:nth-child(3) {
+  animation-delay: 0.1s;
+}
+h1 span:nth-child(4) {
+  animation-delay: 0.15s;
+}
+h1 span:nth-child(5) {
+  animation-delay: 0.2s;
+}
+h1 span:nth-child(6) {
+  animation-delay: 0.25s;
+}
+h1 span:nth-child(7) {
+  animation-delay: 0.3s;
+}
+h1 span:nth-child(8) {
+  animation-delay: 0.35s;
+}
+h1 span:nth-child(9) {
+  animation-delay: 0.4s;
+}
+h1 span:nth-child(10) {
+  animation-delay: 0.45s;
+}
+/*h1 span:nth-child(11) {*/
+/*  animation-delay: 0.5s;*/
+/*}*/
+/*h1 span:nth-child(12) {*/
+/*  animation-delay: 0.55s;*/
+/*}*/
+/*h1 span:nth-child(13) {*/
+/*  animation-delay: 0.6s;*/
+/*}*/
+/*h1 span:nth-child(14) {*/
+/*  animation-delay: 0.65s;*/
+/*}*/
+
+/*#title {*/
+/*  text-align: center;*/
+/*  font-size: 20px;*/
+/*  margin-bottom: 20px;*/
+/*}*/
+/*.parent {*/
+/*  height: 3em; !* 애니메이션 높이 *!*/
+/*  overflow-y: hidden;*/
+/*  display: block;*/
+/*}*/
+/*.parent .child {*/
+/*  font-size: 3em; !* 애니메이션 높이 *!*/
+/*  font-weight: bold;*/
+/*  line-height: 1;*/
+/*  animation-name: grow;*/
+/*  animation-duration: 1s; !* 애니메이션 시간 *!*/
+/*}*/
+/*!* 키프레임 애니메이션 *!*/
+/*@keyframes grow {*/
+/*  from {*/
+/*    transform: translateY(3em);*/
+/*  } !* 애니메이션 높이 *!*/
+/*  to {*/
+/*    transform: translateY(0);*/
+/*  }*/
+/*}*/
 
 .banner-img {
   width: 100px;
@@ -505,6 +631,8 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   margin: 0 4px;
   cursor: pointer;
   font-size: 20px;
+  font-family: 'Cafe24Ssurround';
+
 }
 
 .pagination a.active {
@@ -526,13 +654,14 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   right: 0;
   background-color: rgba(0, 0, 0, 0.4);
   display: none;
-  /* display: flex; */
   align-items: center;
   justify-content: center;
+
+
 }
 
 #modal-view {
-  width: 800px;
+  width: 2000px;
   /* height: 1000px; */
   background: #afd5e6;
   border-radius: 20px;

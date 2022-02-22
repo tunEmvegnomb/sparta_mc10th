@@ -84,6 +84,7 @@
 
             })
         }
+
     </script>
 </head>
 <body>
@@ -109,17 +110,35 @@
             alt="배너"
     />
 </header>
+<!--<div id="title">-->
+<!--    <div class="parent">-->
+<!--        <div class="child">-->
+<!--            #보드게임 #리스트<img-->
+<!--                src="./../static/dice-cube.png"-->
+<!--                width="55"-->
+<!--                height="55"-->
+<!--        />-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <div id="title">
-    <div class="parent">
-        <div class="child">
-            #보드게임 #리스트<img
-                src="./../static/dice-cube.png"
-                width="55"
-                height="55"
+      <h1 class="result-sentence">
+          <span>#</span>
+          <span>보</span>
+          <span>드</span>
+          <span>게</span>
+          <span>임</span>
+          <span></span>
+          <span>리</span>
+          <span>스</span>
+          <span>트</span>
+        <img class="result-sentence"
+          src="./../static/dice3.png"
+          width="80"
+          height="80"
         />
-        </div>
+      </h1>
     </div>
-</div>
 <div class="body">
     <div class="list">
         <div class="card-columns" id="card-columns">
@@ -292,18 +311,19 @@
         <div id="footer">
             <div class="pagination">
                 <div class="active">
-                    <a href="#"><<</a>
+                    <a href="#"><</a>
                     <a href="#">1</a>
                     <a href="#">2</a>
                     <a href="#">3</a>
                     <a href="#">4</a>
-                    <a href="#">>></a>
+                    <a href="#">></a>
                 </div>
             </div>
         </div>
     </div>
     <nav>
         <section class="col-12" id="fs_rating">
+
             <!--            <div id="bmr-calculator" class="wrapper">-->
             <!--                <div class="calculator">-->
             <!--                    <label for="calc-playtime" id="calc-playtime_value"-->
@@ -339,6 +359,7 @@
             <!--                    />-->
             <!--                </div>-->
             <!--            </div>-->
+
         </section>
         <section>
             <div id="content" class="my-5">
@@ -467,7 +488,9 @@
         </section>
     </nav>
 </div>
-<div id="modal" class="modal-frame" onclick="handleModal()">
+
+<div id="modal" onclick="handleModal()">
+
     <div id="modal-view" onclick="event.stopPropagation()">
         <div id="close-btn" onclick="handleModal()">&times;</div>
         <table class="wiki-table" style="width: 100%">
