@@ -936,7 +936,8 @@ label {
 }
 
 #inner-box,
-#inner-box2 {
+#inner-box2,
+#inner-box3{
   height: 150px;
   overflow-y: scroll;
 }
@@ -946,18 +947,21 @@ label {
 }
 
 #inner-box::-webkit-scrollbar,
-#inner-box2::-webkit-scrollbar {
+#inner-box2::-webkit-scrollbar,
+#inner-box3::-webkit-scrollbar {
   width: 6px;
 }
 
 #inner-box::-webkit-scrollbar-track,
-#inner-box2::-webkit-scrollbar-track {
+#inner-box2::-webkit-scrollbar-track,
+#inner-box3::-webkit-scrollbar-track {
   background-color: #ddd;
   border-radius: 2px;
 }
 
 #inner-box::-webkit-scrollbar-thumb,
-#inner-box2::-webkit-scrollbar-thumb {
+#inner-box2::-webkit-scrollbar-thumb,
+#inner-box3::-webkit-scrollbar-thumb{
   background-color: #333;
   border-radius: 2px;
 }
@@ -975,30 +979,30 @@ label {
   border: none;
 }
 
-#genre .btn.btn-success {
-  background-color: #ddd;
-  color: #333;
-  border: none;
-  width: 40px;
-  font-size: 0.8rem;
-  border-radius: 0;
-}
+/*#genre .btn.btn-success {*/
+/*  background-color: #ddd;*/
+/*  color: #333;*/
+/*  border: none;*/
+/*  width: 40px;*/
+/*  font-size: 0.8rem;*/
+/*  border-radius: 0;*/
+/*}*/
 
-#genre .btn.btn-success:hover {
-  background-color: #aff1e1;
-  color: #444;
-}
+/*#genre .btn.btn-success:hover {*/
+/*  background-color: #aff1e1;*/
+/*  color: #444;*/
+/*}*/
 
-#genre .btn-success:not(:disabled):not(.disabled).active,
-#genre .btn-success:not(:disabled):not(.disabled):active {
-  background-color: #16c79a;
-  color: #fff;
-}
+/*#genre .btn-success:not(:disabled):not(.disabled).active,*/
+/*#genre .btn-success:not(:disabled):not(.disabled):active {*/
+/*  background-color: #16c79a;*/
+/*  color: #fff;*/
+/*}*/
 
-#genre label {
-  margin: 10px;
-  margin-left: 0px;
-}
+/*#genre label {*/
+/*  margin: 10px;*/
+/*  margin-left: 0px;*/
+/*}*/
 
 .card-body {
   padding-bottom: 0;
