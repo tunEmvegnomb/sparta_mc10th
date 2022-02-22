@@ -1,11 +1,17 @@
 /*selector*/
 @font-face {
   font-family: "Cafe24Ssurround";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff")
-    format("woff");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+    font-family: 'Cafe24Dongdong';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Dongdong.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 :root {
   --primary-color: #435fda;
@@ -39,6 +45,8 @@ body {
   margin: 0;
   background-attachment: fixed;
   background-size: 100% 100%;
+  font-family: 'Cafe24Dongdong';
+
 }
 
 /* Animation */
@@ -776,7 +784,8 @@ label {
 }
 
 #inner-box,
-#inner-box2 {
+#inner-box2,
+#inner-box3{
   height: 150px;
   overflow-y: scroll;
 }
@@ -786,18 +795,21 @@ label {
 }
 
 #inner-box::-webkit-scrollbar,
-#inner-box2::-webkit-scrollbar {
+#inner-box2::-webkit-scrollbar,
+#inner-box3::-webkit-scrollbar {
   width: 6px;
 }
 
 #inner-box::-webkit-scrollbar-track,
-#inner-box2::-webkit-scrollbar-track {
+#inner-box2::-webkit-scrollbar-track,
+#inner-box3::-webkit-scrollbar-track {
   background-color: #ddd;
   border-radius: 2px;
 }
 
 #inner-box::-webkit-scrollbar-thumb,
-#inner-box2::-webkit-scrollbar-thumb {
+#inner-box2::-webkit-scrollbar-thumb,
+#inner-box3::-webkit-scrollbar-thumb{
   background-color: #333;
   border-radius: 2px;
 }
@@ -863,7 +875,8 @@ label {
 
 /*인원수 선택*/
 .rad-label,
-.rad-label2 {
+.rad-label2,
+.rad-label3{
   display: flex;
   align-items: center;
 
@@ -878,12 +891,15 @@ label {
 .rad-label:hover,
 .rad-label:focus-within,
 .rad-label2:hover,
-.rad-label2:focus-within {
+.rad-label2:focus-within,
+.rad-label3:hover,
+.rad-label3:focus-within{
   background: hsla(0, 0%, 80%, 0.14);
 }
 
 .rad-input,
-.rad-input2 {
+.rad-input2,
+.rad-input3{
   position: absolute;
   left: 0;
   top: 0;
@@ -894,7 +910,8 @@ label {
 }
 
 .rad-design,
-.rad-design2 {
+.rad-design2,
+.rad-design3{
   width: 22px;
   height: 22px;
   border-radius: 100px;
@@ -908,7 +925,8 @@ label {
 }
 
 .rad-design::before,
-.rad-design2::before {
+.rad-design2::before,
+.rad-design3::before{
   content: "";
 
   display: inline-block;
@@ -922,12 +940,14 @@ label {
 }
 
 .rad-input:checked + .rad-design::before,
-.rad-input2:checked + .rad-design2::before {
+.rad-input2:checked + .rad-design2::before,
+.rad-input3:checked + .rad-design3::before{
   transform: scale(0);
 }
 
 .rad-text,
-.rad-text2 {
+.rad-text2,
+.rad-text3{
   color: hsl(0, 0%, 60%);
   margin-left: 14px;
   letter-spacing: 3px;
@@ -939,7 +959,8 @@ label {
 }
 
 .rad-input:checked ~ .rad-text,
-.rad-input2:checked ~ .rad-text2 {
+.rad-input2:checked ~ .rad-text2,
+.rad-input3:checked ~ .rad-text3{
   color: hsl(0, 0%, 40%);
 }
 
