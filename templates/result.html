@@ -22,13 +22,13 @@
         const time = urlParams.get("time");
         // console.log(player, age, genre, time);
         $.ajax({
-          type: "POST",
-          url: "/resultData",
+          type: "GET",
+          url: `/resultData?player=${player}&age=${age}&genre=${genre}&time=${time}`,
           data: {
-            player_give: player,
-            age_give: age,
-            genre_give: genre,
-            time_give: time,
+            // player_give: player,
+            // age_give: age,
+            // genre_give: genre,
+            // time_give: time,
           },
           success: function (response) {
             if (response["filtered_games"].length) {
