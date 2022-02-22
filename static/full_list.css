@@ -1148,3 +1148,78 @@ input[type=range]::-webkit-slider-thumb {
     background-color: red;
     -webkit-appearance: none
 }
+
+/*인원수 선택*/
+.rad-label, .rad-label2 {
+  display: flex;
+  align-items: center;
+
+  border-radius: 100px;
+  padding: 6px 16px;
+  margin: 10px 0;
+
+  cursor: pointer;
+  transition: .3s;
+}
+
+.rad-label:hover,
+.rad-label:focus-within,
+.rad-label2:hover,
+.rad-label2:focus-within
+{
+  background: hsla(0, 0%, 80%, .14);
+}
+
+.rad-input, .rad-input2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  z-index: -1;
+}
+
+.rad-design, .rad-design2 {
+  width: 22px;
+  height: 22px;
+  border-radius: 100px;
+
+  background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
+  position: relative;
+}
+
+.rad-design::before,
+.rad-design2::before{
+  content: '';
+
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+
+  background: hsl(0, 0%, 90%);
+  transform: scale(1.1);
+  transition: .3s;
+}
+
+.rad-input:checked+.rad-design::before,
+.rad-input2:checked+.rad-design2::before{
+  transform: scale(0);
+}
+
+.rad-text, .rad-text2 {
+  color: hsl(0, 0%, 60%);
+  margin-left: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 900;
+
+  transition: .3s;
+}
+
+.rad-input:checked~.rad-text,
+.rad-input2:checked~.rad-text2{
+  color: hsl(0, 0%, 40%);
+}
