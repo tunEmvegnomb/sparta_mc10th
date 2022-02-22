@@ -122,23 +122,23 @@
 <!--    </div>-->
 <!--</div>-->
 <div id="title">
-      <h1 class="result-sentence">
-          <span>#</span>
-          <span>보</span>
-          <span>드</span>
-          <span>게</span>
-          <span>임</span>
-          <span></span>
-          <span>리</span>
-          <span>스</span>
-          <span>트</span>
+    <h1 class="result-sentence">
+        <span>#</span>
+        <span>보</span>
+        <span>드</span>
+        <span>게</span>
+        <span>임</span>
+        <span></span>
+        <span>리</span>
+        <span>스</span>
+        <span>트</span>
         <img class="result-sentence"
-          src="./../static/dice3.png"
-          width="80"
-          height="80"
+             src="./../static/dice3.png"
+             width="80"
+             height="80"
         />
-      </h1>
-    </div>
+    </h1>
+</div>
 <div class="body">
     <div class="list">
         <div class="card-columns" id="card-columns">
@@ -371,23 +371,30 @@
                                     onclick="outerFilter()"><span
                                     class="fas fa-plus"></span></button>
                         </div>
-                        <div id="inner-box" class="collapse mt-2 mr-1">
-                            <div class="my-1"><label class="tick">1명 <input type="checkbox" checked="checked">
-                                <span class="check"></span> </label></div>
-                            <div class="my-1"><label class="tick">2명 <input type="checkbox"> <span
-                                    class="check"></span> </label></div>
-                            <div class="my-1"><label class="tick">3명 <input type="checkbox"> <span class="check"></span>
-                            </label></div>
-                            <div class="my-1"><label class="tick">4명 <input type="checkbox"> <span class="check"></span>
-                            </label></div>
-                            <div class="my-1"><label class="tick">5명 <input type="checkbox"> <span
-                                    class="check"></span> </label></div>
-                            <div class="my-1"><label class="tick">6명 <input type="checkbox" checked> <span
-                                    class="check"></span> </label></div>
-                            <div class="my-1"><label class="tick">7명 <input type="checkbox"> <span
-                                    class="check"></span> </label></div>
-                            <div class="my-1"><label class="tick">8명이상<input type="checkbox" checked> <span
-                                    class="check"></span> </label></div>
+                        <div>
+                            <label class="rad-label">
+                                <input type="radio" class="rad-input" name="rad">
+                                <div class="rad-design"></div>
+                                <div class="rad-text">2명</div>
+                            </label>
+
+                            <label class="rad-label">
+                                <input type="radio" class="rad-input" name="rad">
+                                <div class="rad-design"></div>
+                                <div class="rad-text">4명</div>
+                            </label>
+
+                            <label class="rad-label">
+                                <input type="radio" class="rad-input" name="rad">
+                                <div class="rad-design"></div>
+                                <div class="rad-text">6명</div>
+                            </label>
+
+                            <label class="rad-label">
+                                <input type="radio" class="rad-input" name="rad">
+                                <div class="rad-design"></div>
+                                <div class="rad-text">8명이상</div>
+                            </label>
                         </div>
                     </div>
                     <div class="box border-bottom">
@@ -396,19 +403,30 @@
                                     aria-expanded="false" aria-controls="inner-box2"><span class="fas fa-plus"></span>
                             </button>
                         </div>
-                        <div id="inner-box2" class="collapse mt-2 mr-1">
-                            <div class="my-1"><label class="tick">어린이 <input type="checkbox" checked="checked"> <span
-                                    class="check"></span> </label></div>
-                            <div class="my-1"><label class="tick">5살 이상 <input type="checkbox"> <span
-                                    class="check"></span>
-                            </label></div>
-                            <div class="my-1"><label class="tick">8살 이상<input type="checkbox" checked> <span
-                                    class="check"></span> </label></div>
-                            <div class="my-1"><label class="tick">14살이상 <input type="checkbox"> <span
-                                    class="check"></span>
-                            </label></div>
-                            <div class="my-1"><label class="tick">성인 <input type="checkbox"> <span class="check"></span>
-                            </label></div>
+                        <div>
+                            <label class="rad-label2">
+                                <input type="radio" class="rad-input2" name="rad2">
+                                <div class="rad-design2"></div>
+                                <div class="rad-text2">어린이</div>
+                            </label>
+
+                            <label class="rad-label2">
+                                <input type="radio" class="rad-input2" name="rad2">
+                                <div class="rad-design2"></div>
+                                <div class="rad-text2">12세</div>
+                            </label>
+
+                            <label class="rad-label2">
+                                <input type="radio" class="rad-input2" name="rad2">
+                                <div class="rad-design2"></div>
+                                <div class="rad-text2">15세</div>
+                            </label>
+
+                            <label class="rad-label2">
+                                <input type="radio" class="rad-input2" name="rad2">
+                                <div class="rad-design2"></div>
+                                <div class="rad-text2">성인</div>
+                            </label>
                         </div>
                     </div>
                     <div class="box border-bottom">
