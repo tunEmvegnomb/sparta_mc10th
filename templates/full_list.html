@@ -16,6 +16,12 @@
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/bootsnav.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/bootsnav.js"></script>
     <script src="../static/full_list.js" defer></script>
     <link href="../static/full_list.css" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="./../static/favicon.png"/>
@@ -207,43 +213,6 @@
         </div>
     </div>
     <nav>
-        <section class="col-12" id="fs_rating">
-            <!--            <div id="bmr-calculator" class="wrapper">-->
-            <!--                <div class="calculator">-->
-            <!--                    <label for="calc-playtime" id="calc-playtime_value"-->
-            <!--                    >Playtime: 30min</label-->
-            <!--                    >-->
-            <!--                    <input-->
-            <!--                            id="calc-playtime"-->
-            <!--                            type="range"-->
-            <!--                            value="30"-->
-            <!--                            min="10"-->
-            <!--                            max="90"-->
-            <!--                            step="5"-->
-            <!--                    />-->
-            <!--                    <label for="calc-people" id="calc-people_value"-->
-            <!--                    >People: 2명</label-->
-            <!--                    >-->
-            <!--                    <input-->
-            <!--                            id="calc-people"-->
-            <!--                            type="range"-->
-            <!--                            value="2"-->
-            <!--                            min="1"-->
-            <!--                            max="24"-->
-            <!--                            step="1"-->
-            <!--                    />-->
-            <!--                    <label for="calc-age" id="calc-age_value">Age: 8살</label>-->
-            <!--                    <input-->
-            <!--                            id="calc-age"-->
-            <!--                            type="range"-->
-            <!--                            value="8"-->
-            <!--                            min="3"-->
-            <!--                            max="20"-->
-            <!--                            step="1"-->
-            <!--                    />-->
-            <!--                </div>-->
-            <!--            </div>-->
-        </section>
         <section>
             <div id="content" class="my-5">
                 <div id="filterer" class="collapse">
@@ -343,46 +312,20 @@
                                 <span class="fas fa-plus"></span>
                             </button>
                         </div>
-                        <div class="collapse" id="time">
-                            <div class="middle">
-                                <div class="multi-range-slider">
-                                    <label for="input-left" id="input-left_value"></label>
-                                    <input
-                                            type="range"
-                                            id="input-left"
-                                            min="0"
-                                            max="120"
-                                            value="10"
-                                            step="10"
-                                    />
-                                    <label for="input-right" id="input-right_value"></label>
-                                    <input
-                                            type="range"
-                                            id="input-right"
-                                            min="0"
-                                            max="120"
-                                            value="50"
-                                            step="10"
-                                    />
-                                    <div class="slider">
-                                        <div class="track"></div>
-                                        <div class="range"></div>
-                                        <div class="thumb left"></div>
-                                        <div class="thumb right"></div>
-                                    </div>
-                                </div>
+                        <div class="wrapper">
+                            <div class="values">
+                             <span id="range1">
+                                    0min
+                             </span>
+                                <span> &dash; </span>
+                                <span id="range2">
+                                    100min
+                                </span>
                             </div>
-                            <div
-                                    class="d-flex align-items-center justify-content-between mt-2"
-                            >
-                                <div>
-                                    <span id="amount-left" class="font-weight-bold"></span>
-                                    min
-                                </div>
-                                <div>
-                                    <span id="amount-right" class="font-weight-bold"></span>
-                                    min
-                                </div>
+                            <div class="container3">
+                                <div class="slider-track"></div>
+                                <input type="range" min="0" max="100" value="30" step="10" id="slider-1" oninput="slideOne()">
+                                <input type="range" min="0" max="100" value="70" step="10" id="slider-2" oninput="slideTwo()">
                             </div>
                         </div>
                     </div>
@@ -429,6 +372,117 @@
                                             id="checkboxFour"
                                             value="Strategy"
                                     /><label for="checkboxFour">전략</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--태그-->
+                    <div class="box border-bottom">
+                        <div class="box-label text-uppercase d-flex align-items-center">
+                            태그
+                            <button
+                                    class="btn ml-auto"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#inner-box2"
+                                    aria-expanded="false"
+                                    aria-controls="inner-box2"
+                            >
+                                <span class="fas fa-plus"></span>
+                            </button>
+                        </div>
+                        <div class="md-select">
+                            <label for="ul-id">
+                                <button type="button" class="ng-binding">Select Tags</button>
+                            </label>
+                            <ul role="listbox" id="ul-id" class="md-whiteframe-z1" aria-activedescendant="state2_AK"
+                                name="ul-id">
+                                <li role="option" id="state2_AK" class="ng-binding ng-scope active" tabindex="-1"
+                                    aria-selected="true">파티
+                                </li>
+                                <li role="option" id="state2_AL" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">순발력
+                                </li>
+                                <li role="option" id="state2_AR" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">카드
+                                </li>
+                                <li role="option" id="state2_AS" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">숫자
+                                </li>
+                                <li role="option" id="state2_AZ" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">클래식
+                                </li>
+                                <li role="option" id="state2_CA" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">타일
+                                </li>
+                                <li role="option" id="state2_CO" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">심리전
+                                </li>
+                                <li role="option" id="state2_CT" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">어린이
+                                </li>
+                                <li role="option" id="state2_DC" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">완구
+                                </li>
+                                <li role="option" id="state2_DE" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">조작
+                                </li>
+                                <li role="option" id="state2_FL" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">점수내기
+                                </li>
+                                <li role="option" id="state2_FM" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">2인추천
+                                </li>
+                                <li role="option" id="state2_GA" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">인기
+                                </li>
+                                <li role="option" id="state2_GU" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">방탈출
+                                </li>
+                                <li role="option" id="state2_HI" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">수상작
+                                </li>
+                                <li role="option" id="state2_IA" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">피스
+                                </li>
+                                <li role="option" id="state2_ID" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">토큰
+                                </li>
+                                <li role="option" id="state2_IL" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">주사위
+                                </li>
+                                <li role="option" id="state2_IN" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">그림
+                                </li>
+                                <li role="option" id="state2_KS" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">퍼즐
+                                </li>
+                                <li role="option" id="state2_KY" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">사고력
+                                </li>
+                                <li role="option" id="state2_LA" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">부루마블
+                                </li>
+                                <li role="option" id="state2_MA" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">사다리
+                                </li>
+                                <li role="option" id="state2_MD" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">기억력
+                                </li>
+                                <li role="option" id="state2_ME" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">역할극
+                                </li>
+                                <li role="option" id="state2_MH" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">탈락제
+                                </li>
+                                <li role="option" id="state2_MI" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">우승제
+                                </li>
+                                <li role="option" id="state2_MN" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">룰렛
+                                </li>
+                                <li role="option" id="state2_MO" class="ng-binding ng-scope" tabindex="-1"
+                                    aria-selected="false">타이머
                                 </li>
                             </ul>
                         </div>
