@@ -4,7 +4,6 @@ from pymongo import MongoClient
 
 import random
 
-import math
 # client = MongoClient('mongodb://test:test@localhost', 27017)
 client = MongoClient('localhost', 27017)
 db = client.mc10th
@@ -82,7 +81,7 @@ def output_result():
     min_age = int(age_receive.split(',')[0])
     max_age = int(age_receive.split(',')[1])
     min_time = int(time_receive.split(',')[0])
-    max_time = int(time_receive.split(',')[1]) 
+    max_time = int(time_receive.split(',')[1])
     for game in all_games:
         if (int(game['opt_minNum']) <= int(player_receive) <= int(game['opt_maxNum'])) and (min_age <= int(game['opt_age']) <= max_age) and ( min_time <= int(game['opt_time']) <= max_time ) :
             filtered_games.append(game)
@@ -91,15 +90,28 @@ def output_result():
 # 전체 리스트 페이지
 @app.route('/whole')
 def whole():
+
     return render_template('full_list.html')
 
-# 전체 리스트 페이지 API
-# DB_gameList의 데이터를 불러와 출력하기
-@app.route('/whole/list', methods=['GET'])
-def show_gameList():
-    games = list(db.gameList.find({}, {'_id': False}))
+#페이지네이션
+@app.route('/whole/page', methods=['GET'])
+def item_pagination():
 
-    return jsonify({'all_games': games})
+    # 페이지 기본설정
+    page = int(request.args.get('page', 1))
+
+    # limit 변수. 한 페이지에 넣을 아이템의 개수
+    limit = 15
+
+    # offset 변수. 페이지 시작 지점 아이템을 가리킴. 아래 코드의 경우 값 0 = 0 번째 부터~
+    offset = (page - 1) * limit
+
+    # limit와 offset 변수를 활용해 아이템을 제한하고, 시작할 아이템을 지정
+    items = list(db.gameList.find({},{'_id': False}).limit(limit).skip(offset))
+
+    # 데이터 리턴(games는 데이터를 받아오고, items는 페이지네이션을 담당한다)
+    return jsonify({'limit_items': items})
+
 
 
 
