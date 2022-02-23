@@ -16,6 +16,10 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <script
+      src="https://kit.fontawesome.com/e84117090c.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="../static/full_list.js" defer></script>
     <link href="../static/full_list.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="./../static/favicon.png" />
@@ -57,7 +61,7 @@
           $("#modal").remove();
           let temp_html = `<div id="modal" onclick="handleModal()">
         <div id="modal-view" onclick="event.stopPropagation()">
-            <div id="close-btn" onclick="handleModal()">&times;</div>
+            <div id="close-btn" onclick="handleModal()"><i class="fa-solid fa-x"></i></div>
             <table class="wiki-table" style="width: 100%">
             <tbody>
                 <tr id="board-title">
@@ -88,9 +92,15 @@
                 <td>장르</td>
                 <td>${clickedBoard["opt_genre"]}</td>
                 </tr>
-                <tr id="board-tag">
+                <tr>
                 <td>테마</td>
                 <td>${clickedBoard["opt_tag1"]}, ${clickedBoard["opt_tag2"]}, ${clickedBoard["opt_tag3"]}</td>
+                </tr>
+                <tr id="board-link">
+                    <td>설명링크</td>
+                    <td>
+                    <a target="_blank" href=${clickedBoard["opt_link"]}>${clickedBoard["opt_link"]}</a>
+                    </td>
                 </tr>
             </tbody>
             </table>
@@ -550,7 +560,7 @@
                   <div class="wrapper">
                     <div class="values">
                       <span id="range1"> 0min </span>
-                      <span> &dash; </span>
+                      <i class="fa-solid fa-minus"></i>
                       <span id="range2"> 100min </span>
                     </div>
                     <div class="container3">
