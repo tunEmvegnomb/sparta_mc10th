@@ -124,68 +124,79 @@ def filter_whole():
     genre_receive = request.args.get('genre_give', '')
     # player = int(player_receive)
     filtered_games = []
-
     games = list(db.gameList.find({}, {'_id': False}))
 
     # 인원수만 필터링
     if player_receive != '' and age_receive == '' and genre_receive == '':
-        print(player_receive)
         for game in games:
+            player_receive = int(player_receive)
+            minNum_games = int(game['opt_minNum'])
+            maxNum_games = int(game['opt_maxNum'])
+            if minNum_games <= player_receive <= maxNum_games:
+                filtered_games.append(game)
+    # 연령만 필터링
+    if player_receive == '' and age_receive != '' and genre_receive == '':
+        for game in games:
+            min_age = age_receive.split(',')[0]
+            max_age = age_receive.split(',')[1]
+            min_age = int(min_age)
+            max_age = int(max_age)
+            if min_age <= game['opt_age'] <= max_age:
+                filtered_games.append(game)
+
+    # 장르만 필터링
+    if player_receive == '' and age_receive == '' and genre_receive != '':
+        find_genre = list(db.gameList.find({'opt_genre': genre_receive}, {'_id': False}))
+        for game in find_genre:
+            filtered_games.append(game)
+
+    # 인원수와 연령을 필터링
+    if player_receive != '' and age_receive != '' and genre_receive == '':
+        for game in games:
+            player_receive = int(player_receive)
+            minNum_games = int(game['opt_minNum'])
+            maxNum_games = int(game['opt_maxNum'])
+            min_age = age_receive.split(',')[0]
+            max_age = age_receive.split(',')[1]
+            min_age = int(min_age)
+            max_age = int(max_age)
+            if minNum_games <= player_receive <= maxNum_games and min_age <= game['opt_age'] <= max_age:
+                filtered_games.append(game)
+
+    # 인원수와 장르를 필터링
+    if player_receive != '' and age_receive == '' and genre_receive != '':
+        find_genre = list(db.gameList.find({'opt_genre': genre_receive}, {'_id': False}))
+        for game in find_genre:
+            player_receive = int(player_receive)
             minNum_games = int(game['opt_minNum'])
             maxNum_games = int(game['opt_maxNum'])
             if minNum_games <= player_receive <= maxNum_games:
                 filtered_games.append(game)
 
-    # # 연령만 필터링
-    #     if player_receive=='' and age_receive and genre_receive == '':
-    #         for game in games:
-    #             min_age = int(age_receive[0])
-    #             max_age = int(age_receive[1])
-    #
-    #             if min_age <= game['opt_age'] <= max_age:
-    #                 filtered_games.append(game)
-    #
-    # # 장르만 필터링
-    #     if player_receive=='' and age_receive == '' and genre_receive:
-    #         find_genre = list(db.gameList.find({'opt_genre': genre_receive}, {'_id': False}))
-    #         for game in find_genre:
-    #             filtered_games.append(game)
-    #
-    # # 인원수와 연령을 필터링
-    #     for game in games:
-    #         minNum_games = int(game['opt_minNum'])
-    #         maxNum_games = int(game['opt_maxNum'])
-    #         min_age = int(age_receive[0])
-    #         max_age = int(age_receive[1])
-    #         if minNum_games <= player_receive <= maxNum_games and min_age <= game['opt_age'] <= max_age:
-    #             filtered_games.append(game)
-    #
-    # # 인원수와 장르를 필터링
-    #     find_genre = list(db.gameList.find({'opt_genre': genre_receive}, {'_id': False}))
-    #     for game in find_genre:
-    #         minNum_games = int(game['opt_minNum'])
-    #         maxNum_games = int(game['opt_maxNum'])
-    #         if minNum_games <= player_receive <= maxNum_games:
-    #             filtered_games.append(game)
-    #
-    # # 연령과 장르를 필터링
-    #     find_genre = list(db.gameList.find({'opt_genre': genre_receive}, {'_id': False}))
-    #     for game in find_genre:
-    #         min_age = int(age_receive[0])
-    #         max_age = int(age_receive[1])
-    #
-    #         if min_age <= game['opt_age'] <= max_age:
-    #             filtered_games.append(game)
-    #
-    # # 모두를 필터링
-    #     find_genre = list(db.gameList.find({'opt_genre': genre_receive}, {'_id': False}))
-    #     for game in find_genre:
-    #         minNum_games = int(game['opt_minNum'])
-    #         maxNum_games = int(game['opt_maxNum'])
-    #         min_age = int(age_receive[0])
-    #         max_age = int(age_receive[1])
-    #         if minNum_games <= player_receive <= maxNum_games and min_age <= game['opt_age'] <= max_age:
-    #             filtered_games.append(game)
+    # 연령과 장르를 필터링
+    if player_receive == '' and age_receive != '' and genre_receive != '':
+        find_genre = list(db.gameList.find({'opt_genre': genre_receive}, {'_id': False}))
+        for game in find_genre:
+            min_age = age_receive.split(',')[0]
+            max_age = age_receive.split(',')[1]
+            min_age = int(min_age)
+            max_age = int(max_age)
+            if min_age <= game['opt_age'] <= max_age:
+                filtered_games.append(game)
+
+    # 모두를 필터링
+    if player_receive != '' and age_receive != '' and genre_receive != '':
+        find_genre = list(db.gameList.find({'opt_genre': genre_receive}, {'_id': False}))
+        for game in find_genre:
+            player_receive = int(player_receive)
+            minNum_games = int(game['opt_minNum'])
+            maxNum_games = int(game['opt_maxNum'])
+            min_age = age_receive.split(',')[0]
+            max_age = age_receive.split(',')[1]
+            min_age = int(min_age)
+            max_age = int(max_age)
+            if minNum_games <= player_receive <= maxNum_games and min_age <= game['opt_age'] <= max_age:
+                filtered_games.append(game)
 
 
 
