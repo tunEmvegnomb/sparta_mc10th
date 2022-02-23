@@ -28,13 +28,14 @@ def today_random():
     randnum1 = random.randrange(1, 85)
     randnum2 = random.randrange(1, 85)
     randnum3 = random.randrange(1, 85)
-
-    todaygame1 = db.gameList.find_one({'opt_rank': randnum1})['opt_img']
-    todaygame2 = db.gameList.find_one({'opt_rank': randnum2})['opt_img']
-    todaygame3 = db.gameList.find_one({'opt_rank': randnum3})['opt_img']
-
+   
+    todaygame1 = db.gameList.find_one({'opt_rank': randnum1},{'_id':False})
+    todaygame2 = db.gameList.find_one({'opt_rank': randnum2},{'_id':False})
+    todaygame3 = db.gameList.find_one({'opt_rank': randnum3},{'_id':False})
+  
     todaygames = [todaygame1, todaygame2, todaygame3]
-    return jsonify('todaygames', todaygames)
+    # print(todaygames)
+    return jsonify({'todaygames': todaygames})
 
 
 
