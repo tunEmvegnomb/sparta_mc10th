@@ -1,45 +1,125 @@
-import mongo as mongo
-import os
-from bson.objectid import ObjectId
-import math
-from flask import Flask, render_template, jsonify, request
-
 from pymongo import MongoClient
-
-# client = MongoClient('mongodb://test:test@localhost', 27017)
 client = MongoClient('localhost', 27017)
 db = client.mc10th
 
-app = Flask(__name__)
+def filter_whole():
+    # 체크한 인원수가 4명이라면
+    # db의 데이터에서 최소 인원이 4보다 작고, 최대 인원이 4보다 큰 데이터를 찾아
+    # 해당 데이터를 출력
+
+    player_receive = 6
+    age_receive = 12
+    genre_receive = '전략'
+
+
+    games = list(db.gameList.find({}, {'_id': False}))
+
+    # 인원수만 필터링
+    def filter_playerNum():
+        for game in games:
+            minNum_games = int(game['opt_minNum'])
+            maxNum_games = int(game['opt_maxNum'])
+            if minNum_games <= player_receive <= maxNum_games:
+                filtered_games = game
+                print(filtered_games)
+
+    # 연령만 필터링
+    def filter_playerAge():
+        for game in games:
+            min_age = int(age_receive.split(',')[0])
+            max_age = int(age_receive.split(',')[1])
+
+            if min_age <= game['opt_age'] <= max_age:
+                filtered_games = game
+                print(filtered_games)
+
+    # 장르만 필터링
+    def filter_playerGenre():
+        find_genre = list(db.gameList.find({'opt_genre': genre_receive}, {'_id': False}))
+        for game in find_genre:
+            filtered_games = game
+            print(filtered_games)
+
+    # 인원수와 연령을 필터링
+    def filter_numAndAge():
+        for game in games:
+            minNum_games = int(game['opt_minNum'])
+            maxNum_games = int(game['opt_maxNum'])
+            min_age = int(age_receive.split(',')[0])
+            max_age = int(age_receive.split(',')[1])
+            if minNum_games <= player_receive <= maxNum_games and min_age <= game['opt_age'] <= max_age:
+                filtered_games = game
+                print(filtered_games)
+
+    # 인원수와 장르를 필터링
+    def filter_numAndGenre():
+        find_genre = list(db.gameList.find({'opt_genre': genre_receive}, {'_id': False}))
+        for game in find_genre:
+            minNum_games = int(game['opt_minNum'])
+            maxNum_games = int(game['opt_maxNum'])
+            if minNum_games <= player_receive <= maxNum_games:
+                filtered_games = game
+                print(filtered_games)
+
+    # 연령과 장르를 필터링
+    def filter_ageAndGenre():
+        find_genre = list(db.gameList.find({'opt_genre': genre_receive}, {'_id': False}))
+        for game in find_genre:
+            min_age = int(age_receive.split(',')[0])
+            max_age = int(age_receive.split(',')[1])
+
+            if min_age <= game['opt_age'] <= max_age:
+                filtered_games = game
+                print(filtered_games)
+
+    # 모두를 필터링
+    def filter_all():
+        find_genre = list(db.gameList.find({'opt_genre': genre_receive}, {'_id': False}))
+        for game in find_genre:
+            minNum_games = int(game['opt_minNum'])
+            maxNum_games = int(game['opt_maxNum'])
+            min_age = int(age_receive.split(',')[0])
+            max_age = int(age_receive.split(',')[1])
+            if minNum_games <= player_receive <= maxNum_games and min_age <= game['opt_age'] <= max_age:
+                filtered_games = game
+                print(filtered_games)
 
 
 
-# 전체 리스트 페이지 API
-# 페이지네이션 기능
-# 데이터를 한 페이지당 15 개로 제한하고
-# 다음 데이터부터 페이지를 넘어가면서 출력
-# 현재 84개의 데이터 = 6개의 페이지 생성
-@app.route("/whole/page", methods=['GET'])
-def list_page():
-    ## ajax에서 url을 넘겨준 키값을 통해 현재 게시물 페이지 넘버 확인가능 ##
-    page = request.args.get('page', 1, type=int)
-    ## 한 페이지당 15개의 게시물을 보여줌 ##
-    limit = 15
-    ##skip(배열 또는 리스트 시작숫자)함수 mongoDB 함수 시작부분을 return 시작전 data는 버려짐 ##
-    ##limit(숫자) 제한된 개수를 return해줌 ##
-    game_list = db.gameList.find({}).skip((page - 1) * limit).limit(limit)
+    # 인원수 선입력
+    if player_receive is not None:
+        if age_receive is not None:
+            if genre_receive is not None:
+                filter_all()
+            else:
+                filter_numAndAge()
+        elif genre_receive is not None:
+            filter_numAndGenre()
+        else:
+            filter_playerNum()
 
-    ## db에 저장된 총 게시물의 개수
-    tot_count = db.gameList.find({}).count()
-    last_page_num = math.ceil(tot_count / limit)
+    # 연령 선입력
+    if age_receive is not None:
+        if player_receive is not None:
+            if genre_receive is not None:
+                filter_all()
+            else:
+                filter_numAndAge()
+        elif genre_receive is not None:
+            filter_ageAndGenre()
+        else:
+            filter_playerAge()
 
-    ## Object형식을 json에 필요한 str형식으로 바꿔주기 위한 decode
-    results = []
-    for document in game_list:
-        document['_id'] = str(document['_id'])
-        results.append(document)
+    # 장르 선입력
+    if genre_receive is not None:
+        if player_receive is not None:
+            if age_receive is not None:
+                filter_all()
+            else:
+                filter_numAndGenre()
+        elif age_receive is not None:
+            filter_ageAndGenre()
+        else:
+            filter_playerGenre()
 
-    return jsonify({'list': results,
-                    'limit': limit,
-                    'page': page,
-                    'last_page_num': last_page_num})
+filter_whole()
