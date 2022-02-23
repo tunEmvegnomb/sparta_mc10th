@@ -352,13 +352,13 @@ h1 span:nth-child(14) {
 }
 
 .menu {
-  text-align: 10px;
+  text-align: center;
   position: relative;
   color: #5f6368;
   border: solid 1px #dadce0;
   border-radius: 2vw;
   display: inline-block;
-  padding: auto;
+  /*padding: all;*/
   background-color: white;
   width: 85px;
   height: 35px;
@@ -374,13 +374,13 @@ h1 span:nth-child(14) {
   /* CSS rules go here */
 }
 .menu1 {
-  text-align: 10px;
+  text-align: center;
   position: relative;
   color: #5f6368;
   border: solid 1px #dadce0;
   border-radius: 2vw;
   display: inline-block;
-  padding: auto;
+  /*padding: auto;*/
   background-color: white;
   width: 85px;
   height: 35px;
@@ -393,13 +393,13 @@ h1 span:nth-child(14) {
 }
 
 .menu2 {
-  text-align: 10px;
+  text-align: center;
   position: relative;
   color: #5f6368;
   border: solid 1px #dadce0;
   border-radius: 2vw;
   display: inline-block;
-  padding: auto;
+  /*padding: auto;*/
   background-color: white;
   width: 85px;
   height: 35px;
@@ -412,13 +412,13 @@ h1 span:nth-child(14) {
 }
 
 .menu3 {
-  text-align: 10px;
+  text-align: center;
   position: relative;
   color: #5f6368;
   border: solid 1px #dadce0;
   border-radius: 2vw;
   display: inline-block;
-  padding: auto;
+  /*padding: auto;*/
   background-color: white;
   width: 85px;
   height: 35px;
@@ -431,7 +431,6 @@ h1 span:nth-child(14) {
 }
 
 .clicked_menu {
-  color: ;
   border-color: #0288d1;
   color: #0288d1;
   background: #80deea;
