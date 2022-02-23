@@ -476,11 +476,11 @@ tbody > tr:nth-child(2) > td > img {
   border-top-right-radius: 20px; */
 }
 
-#board-tag > td:first-child {
+#board-link > td:first-child {
   border-bottom-left-radius: 20px;
 }
 
-#board-tag > td:last-child {
+#board-link > td:last-child {
   border-bottom-right-radius: 20px;
 }
 

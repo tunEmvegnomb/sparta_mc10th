@@ -45,6 +45,7 @@
               let tag1 = game["opt_tag1"];
               let tag2 = game["opt_tag2"];
               let tag3 = game["opt_tag3"];
+              let link = game["opt_link"];
               $(".result-sentence").empty();
               for (let i = 0; i < title.length; i++) {
                 $(".result-sentence").append(`<span>${title[i]}</span>`);
@@ -89,9 +90,15 @@
                                           <td>장르</td>
                                           <td>${genre}</td>
                                         </tr>
-                                        <tr id="board-tag">
+                                        <tr>
                                           <td>테마</td>
                                           <td>${tag1}, ${tag2}, ${tag3}</td>
+                                        </tr>
+                                        <tr id="board-link">
+                                          <td>설명링크</td>
+                                          <td>
+                                            <a target="_blank" href=${link}>${link}</a>
+                                          </td>
                                         </tr>
                                       </tbody>
                                     </table>
