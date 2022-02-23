@@ -12,17 +12,17 @@ body {
   overflow-y: auto; */
   /* overflow: hidden; */
 }
-::-webkit-scrollbar {
-  width: 15px; /*스크롤바의 너비*/
-  height: 15px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #6b8e23; /*스크롤바의 색상*/
-  border-radius: 10px; /*스크롤바 라운드*/
-}
-::-webkit-scrollbar-track {
-  background-color: #f0fff0; /*스크롤바 트랙 색상*/
-}
+/*::-webkit-scrollbar {*/
+/*  width: 15px; !*스크롤바의 너비*!*/
+/*  height: 15px;*/
+/*}*/
+/*::-webkit-scrollbar-thumb {*/
+/*  background-color: #6b8e23; !*스크롤바의 색상*!*/
+/*  border-radius: 10px; !*스크롤바 라운드*!*/
+/*}*/
+/*::-webkit-scrollbar-track {*/
+/*  background-color: #f0fff0; !*스크롤바 트랙 색상*!*/
+/*}*/
 
 /* Animation */
 .area {
@@ -352,13 +352,13 @@ h1 span:nth-child(14) {
 }
 
 .menu {
-  text-align: 10px;
+  text-align: center;
   position: relative;
   color: #5f6368;
   border: solid 1px #dadce0;
   border-radius: 2vw;
   display: inline-block;
-  padding: auto;
+  /*padding: all;*/
   background-color: white;
   width: 85px;
   height: 35px;
@@ -374,13 +374,13 @@ h1 span:nth-child(14) {
   /* CSS rules go here */
 }
 .menu1 {
-  text-align: 10px;
+  text-align: center;
   position: relative;
   color: #5f6368;
   border: solid 1px #dadce0;
   border-radius: 2vw;
   display: inline-block;
-  padding: auto;
+  /*padding: auto;*/
   background-color: white;
   width: 85px;
   height: 35px;
@@ -393,13 +393,13 @@ h1 span:nth-child(14) {
 }
 
 .menu2 {
-  text-align: 10px;
+  text-align: center;
   position: relative;
   color: #5f6368;
   border: solid 1px #dadce0;
   border-radius: 2vw;
   display: inline-block;
-  padding: auto;
+  /*padding: auto;*/
   background-color: white;
   width: 85px;
   height: 35px;
@@ -412,13 +412,13 @@ h1 span:nth-child(14) {
 }
 
 .menu3 {
-  text-align: 10px;
+  text-align: center;
   position: relative;
   color: #5f6368;
   border: solid 1px #dadce0;
   border-radius: 2vw;
   display: inline-block;
-  padding: auto;
+  /*padding: auto;*/
   background-color: white;
   width: 85px;
   height: 35px;
@@ -431,7 +431,6 @@ h1 span:nth-child(14) {
 }
 
 .clicked_menu {
-  color: ;
   border-color: #0288d1;
   color: #0288d1;
   background: #80deea;
@@ -490,4 +489,24 @@ footer {
 
 .hover1:hover {
   box-shadow: 200px 0 0 0 rgba(0, 0, 0, 0.5) inset;
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #87eecb #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 13px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #87eecb;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
 }
