@@ -31,52 +31,346 @@
 
     <title>보드게임 추천-Handmade</title>
     <script>
-        // 모달창 on/off 함수
+        // $(document).ready(function () {
+        //   $(".card").click(function () {
+        //     const index = $(this).attr("card-index");
+        //     console.log(index);
+        //   });
+        // });
+
+        //   // 모달창 on/off 함수
+        //   function handleModal() {
+        //     let status = $("#modal").css("display");
+        //     if (status === "none") {
+        //       $("#modal").css("display", "flex");
+        //     } else {
+        //       $("#modal").hide();
+        //     }
+        //   }
+        let boardList = [];
+
         function handleModal() {
-            let status = $("#modal").css("display");
-            if (status === "none") {
+            $(".card").click(function () {
+                const index = $(this).attr("card-index");
+                const clickedBoard = boardList[index];
+                console.log(clickedBoard);
+                $("#modal").remove();
+                let temp_html = `<div id="modal" onclick="handleModal()">
+        <div id="modal-view" onclick="event.stopPropagation()">
+            <div id="close-btn" onclick="handleModal()">&times;</div>
+            <table class="wiki-table" style="width: 100%">
+            <tbody>
+                <tr id="board-title">
+                <td colspan="2">${clickedBoard["opt_name"]}</td>
+                </tr>
+                <tr>
+                <td colspan="2">
+                    <img
+                    class="result-img"
+                    src=${clickedBoard["opt_img"]}
+                    alt="보드게임이미지"
+                    />
+                </td>
+                </tr>
+                <tr>
+                <td>인원</td>
+                <td>${clickedBoard["opt_minNum"]}~${clickedBoard["opt_maxNum"]}명</td>
+                </tr>
+                <tr>
+                <td>연령</td>
+                <td>${clickedBoard["opt_age"]}세 이상</td>
+                </tr>
+                <tr>
+                <td>플레이 시간</td>
+                <td>${clickedBoard["opt_time"]}분</td>
+                </tr>
+                <tr>
+                <td>장르</td>
+                <td>${clickedBoard["opt_genre"]}</td>
+                </tr>
+                <tr id="board-tag">
+                <td>테마</td>
+                <td>${clickedBoard["opt_tag1"]}, ${clickedBoard["opt_tag2"]}, ${clickedBoard["opt_tag3"]}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        </div>`;
+                $("body").append(temp_html);
                 $("#modal").css("display", "flex");
-            } else {
-                $("#modal").hide();
-            }
+            });
+            $("#modal").hide();
         }
 
         $(document).ready(function () {
-            showPage()
+            showPage();
         });
 
-        let pageNo = 1
+        let pageNo = 1;
 
-        function showPage() {
 
-            $.ajax({
-                url: `/whole/page?page=${pageNo}`,
-                type: "GET",
-                data: {},
-                success: function (response) {
-                    let items = response['limit_items']
-                    console.log(items)
-                    if (pageNo === 7) {
+        $.ajax({
+            url: `/whole/page?page=${pageNo}`,
+            type: "GET",
+            data: {},
+            success: function (response) {
+                let items = response['limit_items']
+                console.log(items)
+                if (pageNo === 7) {
 
-                        pageNo = 6
+                    pageNo = 6
+                    showPage();
+                }
+                $('#card-columns').empty();
+
+                for (i = 0; i < items.length; i++) {
+                    let name = items[i]['opt_name']
+                    let img = items[i]['opt_img']
+                    let minNum = items[i]['opt_minNum']
+                    let maxNum = items[i]['opt_maxNum']
+                    let genre = items[i]['opt_genre']
+                    let time = items[i]['opt_time']
+                    let age = items[i]['opt_age']
+                    let tag1 = items[i]['opt_tag1']
+                    let tag2 = items[i]['opt_tag2']
+                    let tag3 = items[i]['opt_tag3']
+
+
+                    function showPage() {
+                        $.ajax({
+                            url: `/whole/page?page=${pageNo}`,
+                            type: "GET",
+                            data: {},
+                            success: function (response) {
+                                let items = response["limit_items"];
+                                boardList = items;
+                                // console.log(items);
+                                $(".card-columns").empty();
+
+                                for (i = 0; i < items.length; i++) {
+                                    let name = items[i]["opt_name"];
+                                    let img = items[i]["opt_img"];
+
+
+                                    let temp_html = `<div class="card" card-index=${i} onclick="handleModal()">
+                                            <img
+                                                    class="card-img-top"
+                                                    src="${img}"
+                                                    alt="Card image cap"
+                                            />
+                                            <div class="card-body">
+                                                <h5 class="card-title">${name}</h5>
+                                            </div>
+
+                                        </div>
+                                        <div id="modal" onclick="handleModal()">
+                                            <div id="modal-view" onclick="event.stopPropagation()">
+                                                <div id="close-btn" onclick="handleModal()">&times;</div>
+                                                <table class="wiki-table" style="width: 100%">
+                                                    <tbody>
+                                                    <tr id="board-title">
+                                                        <td colspan="2">${name}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <img
+                                                                    class="result-img"
+                                                                    src="${img}"
+                                                                    alt="보드게임이미지"
+                                                            />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>인원</td>
+                                                        <td>${minNum}~${maxNum}명</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>연령</td>
+                                                        <td>${age}세 이상</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>플레이 시간</td>
+                                                        <td>${time}분</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>장르</td>
+                                                        <td>${genre}</td>
+                                                    </tr>
+                                                    <tr id="board-tag">
+                                                        <td>테마</td>
+                                                        <td>${tag1},${tag2},${tag3}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>`
+
+                                        < /div>`;
+
+
+                                    $(".card-columns").append(temp_html);
+                                }
+                            },
+                        });
+                    }
+
+                    function nextPage() {
+                        pageNo += 1;
                         showPage();
                     }
-                    $('#card-columns').empty();
 
-                    for (i = 0; i < items.length; i++) {
-                        let name = items[i]['opt_name']
-                        let img = items[i]['opt_img']
-                        let minNum = items[i]['opt_minNum']
-                        let maxNum = items[i]['opt_maxNum']
-                        let genre = items[i]['opt_genre']
-                        let time = items[i]['opt_time']
-                        let age = items[i]['opt_age']
-                        let tag1 = items[i]['opt_tag1']
-                        let tag2 = items[i]['opt_tag2']
-                        let tag3 = items[i]['opt_tag3']
+                    function prevPage() {
+                        pageNo -= 1;
+                        showPage();
+                    }
+
+                    function page_1() {
+                        pageNo = 1;
+                        showPage();
+                    }
+
+                    function page_2() {
+                        pageNo = 2;
+                        showPage();
+                    }
+
+                    function page_3() {
+                        pageNo = 3;
+                        showPage();
+                    }
+
+                    function page_4() {
+                        pageNo = 4;
+                        showPage();
+                    }
+
+                    function page_5() {
+                        pageNo = 5;
+                        showPage();
+                    }
+
+                    function page_6() {
+                        pageNo = 6;
+                        showPage();
+                    }
+
+                    function openclose() {
+                        let status = $("#label-box").css("display");
+                        if (status == "block") {
+                            $("#label-box").hide();
+                        } else {
+                            $("#label-box").show();
+                        }
+                    }
+
+                    function openclose2() {
+                        let status = $("#label-box2").css("display");
+                        if (status == "block") {
+                            $("#label-box2").hide();
+                        } else {
+                            $("#label-box2").show();
+                        }
+                    }
+
+                    function openclose3() {
+                        let status = $("#time").css("display");
+                        if (status == "block") {
+                            $("#time").hide();
+                        } else {
+                            $("#time").show();
+                        }
+                    }
+
+                    function openclose4() {
+                        let status = $("#label-box4").css("display");
+                        if (status == "block") {
+                            $("#label-box4").hide();
+                        } else {
+                            $("#label-box4").show();
+                        }
+                    }
 
 
-                        let temp_html = `<div class="card">
+                    // 선택된 값 저장하는 함수_인원 수
+                    $(document).ready(function () {
+                        $(".rad-design").click(function () {
+                            const index = $(this).attr("rad-index");
+                            //console.log(index);
+                            if (index === "0") player = 2;
+                            else if (index === "1") player = 4;
+                            else if (index === "2") player = 6;
+                            else if (index === "3") player = 8;
+                            //console.log(player);
+                        });
+                    })
+                    // 선택된 값 저장하는 함수_연령
+                    $(document).ready(function () {
+                        $(".rad-design2").click(function () {
+                            const index = $(this).attr("rad-index");
+                            // console.log(index);
+                            if (index === "0") age = [3, 8];
+                            else if (index === "1") age = [8, 14];
+                            else if (index === "2") age = [12, 19];
+                            else if (index === "3") age = [20, 100];
+                            //console.log(age);
+                        });
+                    })
+                    // 선택된 값 저장하는 함수
+                    $(document).ready(function () {
+                        $(".rad-design").click(function () {
+                            const index = $(this).attr("rad-index");
+                            // console.log(index);
+                            if (index === "0") time = [10, 29];
+                            else if (index === "1") time = [30, 59];
+                            else if (index === "2") time = [60, 89];
+                            else if (index === "3") time = [90, 1000];
+                            // console.log(player);
+                        });
+                    })
+
+                    // 선택된 값 저장하는 함수_장르
+                    $(document).ready(function () {
+                        $(".rad-design3").click(function () {
+                            const index = $(this).attr("rad-index");
+                            // console.log(index);
+                            if (index === "0") genre = "가족"
+                            else if (index === "1") genre = "카드"
+                            else if (index === "2") genre = "퍼즐"
+                            else if (index === "3") genre = "전략"
+                            //console.log(genre);
+                        });
+                    })
+
+
+                    // 필터 데이터 출력하는 함수
+                    function getFilter() {
+                        //$('#card-columns').empty();
+
+                        $.ajax({
+                            type: 'post',
+                            url: '/whole/filter',
+                            data: {player_give: player, age_give: age, genre_give: genre},
+                            success: function (response) {
+                                alert('성공!');
+                                console.log(player, age, genre)
+                                let filter = response['filtered_games']
+
+                                //$('#card-columns').empty();
+
+                                for (i = 0; i < filter.length; i++) {
+                                    let name = filter[i]['opt_name']
+                                    let img = filter[i]['opt_img']
+                                    let minNum = filter[i]['opt_minNum']
+                                    let maxNum = filter[i]['opt_maxNum']
+                                    let genre = filter[i]['opt_genre']
+                                    let time = filter[i]['opt_time']
+                                    let age = filter[i]['opt_age']
+                                    let tag1 = filter[i]['opt_tag1']
+                                    let tag2 = filter[i]['opt_tag2']
+                                    let tag3 = filter[i]['opt_tag3']
+
+
+                                    let temp_html = `<div class="card">
                                             <img
                                                     class="card-img-top"
                                                     src="${img}"
@@ -129,194 +423,19 @@
                                             </div>
                                         </div>`
 
-                        $('#card-columns').append(temp_html);
+                                    $('#card-columns').append(temp_html);
+                                }
+                            }
+                        });
                     }
                 }
-            })
-        }
-
-        function nextPage() {
-            pageNo += 1;
-            showPage();
-        }
-
-        function prevPage() {
-            pageNo -= 1;
-            showPage();
-        }
-
-        function page_1() {
-            pageNo = 1
-            showPage()
-        }
-
-        function page_2() {
-            pageNo = 2
-            showPage()
-        }
-
-        function page_3() {
-            pageNo = 3
-            showPage()
-        }
-
-        function page_4() {
-            pageNo = 4
-            showPage()
-        }
-
-        function page_5() {
-            pageNo = 5
-            showPage()
-        }
-
-        function page_6() {
-            pageNo = 6
-            showPage()
-        }
-
-        let player = "";
-        let age = "";
-        let time = "";
-        let genre = "";
-
-        // 선택된 값 저장하는 함수_인원 수
-        $(document).ready(function () {
-            $(".rad-design").click(function () {
-                const index = $(this).attr("rad-index");
-                //console.log(index);
-                if (index === "0") player = 2;
-                else if (index === "1") player = 4;
-                else if (index === "2") player = 6;
-                else if (index === "3") player = 8;
-                //console.log(player);
-            });
-        })
-        // 선택된 값 저장하는 함수_연령
-        $(document).ready(function () {
-            $(".rad-design2").click(function () {
-                const index = $(this).attr("rad-index");
-                // console.log(index);
-                if (index === "0") age = [3, 8];
-                else if (index === "1") age = [8, 14];
-                else if (index === "2") age = [12, 19];
-                else if (index === "3") age = [20, 100];
-                //console.log(age);
-            });
-        })
-        // 선택된 값 저장하는 함수
-        $(document).ready(function () {
-            $(".rad-design").click(function () {
-                const index = $(this).attr("rad-index");
-                // console.log(index);
-                if (index === "0") time = [10, 29];
-                else if (index === "1") time = [30, 59];
-                else if (index === "2") time = [60, 89];
-                else if (index === "3") time = [90, 1000];
-                // console.log(player);
-            });
-        })
-
-        // 선택된 값 저장하는 함수_장르
-        $(document).ready(function () {
-            $(".rad-design3").click(function () {
-                const index = $(this).attr("rad-index");
-                // console.log(index);
-                if (index === "0") genre = "가족"
-                else if (index === "1") genre = "카드"
-                else if (index === "2") genre = "퍼즐"
-                else if (index === "3") genre = "전략"
-                //console.log(genre);
-            });
-        })
+            }
 
 
-        // 필터 데이터 출력하는 함수
-        function getFilter() {
-            //$('#card-columns').empty();
-
-            $.ajax({
-                type: 'post',
-                url: '/whole/filter',
-                data: {player_give: player, age_give: age, genre_give: genre},
-                success: function (response) {
-                    alert('성공!');
-                    console.log(player, age, genre)
-                    let filter = response['filtered_games']
-
-                    //$('#card-columns').empty();
-
-                    for (i = 0; i < filter.length; i++) {
-                        let name = filter[i]['opt_name']
-                        let img = filter[i]['opt_img']
-                        let minNum = filter[i]['opt_minNum']
-                        let maxNum = filter[i]['opt_maxNum']
-                        let genre = filter[i]['opt_genre']
-                        let time = filter[i]['opt_time']
-                        let age = filter[i]['opt_age']
-                        let tag1 = filter[i]['opt_tag1']
-                        let tag2 = filter[i]['opt_tag2']
-                        let tag3 = filter[i]['opt_tag3']
 
 
-                        let temp_html = `<div class="card">
-                                            <img
-                                                    class="card-img-top"
-                                                    src="${img}"
-                                                    alt="Card image cap"
-                                                    onclick="handleModal()"
-                                            />
-                                            <div class="card-body">
-                                                <h5 class="card-title">${name}</h5>
-                                            </div>
-                                        </div>
-                                        <div id="modal" onclick="handleModal()">
-                                            <div id="modal-view" onclick="event.stopPropagation()">
-                                                <div id="close-btn" onclick="handleModal()">&times;</div>
-                                                <table class="wiki-table" style="width: 100%">
-                                                    <tbody>
-                                                    <tr id="board-title">
-                                                        <td colspan="2">${name}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2">
-                                                            <img
-                                                                    class="result-img"
-                                                                    src="${img}"
-                                                                    alt="보드게임이미지"
-                                                            />
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>인원</td>
-                                                        <td>${minNum}~${maxNum}명</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>연령</td>
-                                                        <td>${age}세 이상</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>플레이 시간</td>
-                                                        <td>${time}분</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>장르</td>
-                                                        <td>${genre}</td>
-                                                    </tr>
-                                                    <tr id="board-tag">
-                                                        <td>테마</td>
-                                                        <td>${tag1},${tag2},${tag3}</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>`
 
-                        $('#card-columns').append(temp_html);
-                    }
-                }
-            });
-        }
+
 
 
     </script>
@@ -376,19 +495,18 @@
 </div>
 <div class="body">
     <div class="list">
-        <div class="card-columns" id="card-columns">
-            <!--            <div class="card">-->
-            <!--                <img-->
-            <!--                        class="card-img-top"-->
-            <!--                        src="./../static/boardExample.jpeg"-->
-            <!--                        alt="Card image cap"-->
-            <!--                        onclick="handleModal()"-->
-            <!--                />-->
-            <!--                <div class="card-body">-->
-            <!--                    <h5 class="card-title">부루마불</h5>-->
-            <!--                </div>-->
-            <!--            </div>-->
-
+        <div class="card-columns">
+            <!-- <div class="card">
+              <img
+                class="card-img-top"
+                src="./../static/boardExample.jpeg"
+                alt="Card image cap"
+                onclick="handleModal()"
+              />
+              <div class="card-body">
+                <h5 class="card-title">부루마불</h5>
+              </div>
+            </div> -->
         </div>
         <div id="footer">
             <div class="pagination">
@@ -444,6 +562,7 @@
             <!--            </div>-->
         </section>
         <section>
+            <<<<<<< HEAD
             <div id="content" class="my-5">
                 <div id="filterer" class="collapse">
                     <div class="box border-bottom">
@@ -659,52 +778,235 @@
                                                 </div>
                                                     !-->
                     </div>
-                </div>
-            </div>
+                    =======
+                    <div id="content" class="my-5">
+                        <div id="filterer" class="collapse">
+                            <div class="box border-bottom">
+                                <div class="box-label text-uppercase d-flex align-items-center">
+                                    인원수
+                                    <button
+                                            class="btn ml-auto"
+                                            type="button"
+                                            data-toggle="collapse"
+                                            data-target="#inner-box"
+                                            aria-expanded="false"
+                                            aria-controls="inner-box"
+                                            id="out"
+                                            onclick="outerFilter()"
+                                    ></button>
+                                    <a onclick="openclose()" href="#" class="fas fa-plus"></a>
+                                    >>>>>>> 2b10e5c40010aca1ba6b8d3127e36fd06611c0c8
+                                </div>
+                                <div id="label-box">
+                                    <label class="rad-label">
+                                        <input type="radio" class="rad-input" name="rad"/>
+                                        <div class="rad-design"></div>
+                                        <div class="rad-text">2명</div>
+                                    </label>
+
+                                    <label class="rad-label">
+                                        <input type="radio" class="rad-input" name="rad"/>
+                                        <div class="rad-design"></div>
+                                        <div class="rad-text">4명</div>
+                                    </label>
+
+                                    <label class="rad-label">
+                                        <input type="radio" class="rad-input" name="rad"/>
+                                        <div class="rad-design"></div>
+                                        <div class="rad-text">6명</div>
+                                    </label>
+
+                                    <label class="rad-label">
+                                        <input type="radio" class="rad-input" name="rad"/>
+                                        <div class="rad-design"></div>
+                                        <div class="rad-text">8명이상</div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="box border-bottom">
+                                <div class="box-label text-uppercase d-flex align-items-center">
+                                    게임연령
+                                    <button
+                                            class="btn ml-auto"
+                                            type="button"
+                                            data-toggle="collapse"
+                                            data-target="#inner-box2"
+                                            aria-expanded="false"
+                                            aria-controls="inner-box2"
+                                    >
+                                        <a onclick="openclose2()" href="#" class="fas fa-plus"></a>
+                                    </button>
+                                </div>
+                                <div id="label-box2">
+                                    <label class="rad-label2">
+                                        <input type="radio" class="rad-input2" name="rad2"/>
+                                        <div class="rad-design2"></div>
+                                        <div class="rad-text2">어린이</div>
+                                    </label>
+
+                                    <label class="rad-label2">
+                                        <input type="radio" class="rad-input2" name="rad2"/>
+                                        <div class="rad-design2"></div>
+                                        <div class="rad-text2">12세</div>
+                                    </label>
+
+                                    <label class="rad-label2">
+                                        <input type="radio" class="rad-input2" name="rad2"/>
+                                        <div class="rad-design2"></div>
+                                        <div class="rad-text2">15세</div>
+                                    </label>
+
+                                    <label class="rad-label2">
+                                        <input type="radio" class="rad-input2" name="rad2"/>
+                                        <div class="rad-design2"></div>
+                                        <div class="rad-text2">성인</div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="box border-bottom">
+                                <div class="box-label text-uppercase d-flex align-items-center">
+                                    Play Time
+                                    <button
+                                            class="btn ml-auto"
+                                            type="button"
+                                            data-toggle="collapse"
+                                            data-target="#time"
+                                            aria-expanded="false"
+                                            aria-controls="time"
+                                    >
+                                        <a onclick="openclose3()" href="#" class="fas fa-plus"></a>
+                                    </button>
+                                </div>
+                                <div class="collapse" id="time">
+                                    <div class="middle">
+                                        <div class="multi-range-slider">
+                                            <label for="input-left" id="input-left_value"></label>
+                                            <input
+                                                    type="range"
+                                                    id="input-left"
+                                                    min="0"
+                                                    max="120"
+                                                    value="10"
+                                                    step="10"
+                                            />
+                                            <label for="input-right" id="input-right_value"></label>
+                                            <input
+                                                    type="range"
+                                                    id="input-right"
+                                                    min="0"
+                                                    max="120"
+                                                    value="50"
+                                                    step="10"
+                                            />
+                                            <div class="slider">
+                                                <div class="track"></div>
+                                                <div class="range"></div>
+                                                <div class="thumb left"></div>
+                                                <div class="thumb right"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                            class="d-flex align-items-center justify-content-between mt-2"
+                                    >
+                                        <div>
+                                            <span id="amount-left" class="font-weight-bold"></span>
+                                            min
+                                        </div>
+                                        <div>
+                                            <span id="amount-right" class="font-weight-bold"></span>
+                                            min
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box border-bottom">
+                                <div class="box-label text-uppercase d-flex align-items-center">
+                                    장르
+                                    <button
+                                            class="btn ml-auto"
+                                            type="button"
+                                            data-toggle="collapse"
+                                            data-target="#inner-box3"
+                                            aria-expanded="false"
+                                            aria-controls="inner-box3"
+                                    >
+                                        <a onclick="openclose4()" href="#" class="fas fa-plus"></a>
+                                    </button>
+                                </div>
+                                <div id="label-box4">
+                                    <label class="rad-label3">
+                                        <input type="radio" class="rad-input3" name="rad3"/>
+                                        <div class="rad-design3"></div>
+                                        <div class="rad-text3">가족</div>
+                                    </label>
+
+                                    <label class="rad-label3">
+                                        <input type="radio" class="rad-input3" name="rad3"/>
+                                        <div class="rad-design3"></div>
+                                        <div class="rad-text3">카드</div>
+                                    </label>
+
+                                    <label class="rad-label3">
+                                        <input type="radio" class="rad-input3" name="rad3"/>
+                                        <div class="rad-design3"></div>
+                                        <div class="rad-text3">퍼즐</div>
+                                    </label>
+
+                                    <label class="rad-label3">
+                                        <input type="radio" class="rad-input3" name="rad3"/>
+                                        <div class="rad-design3"></div>
+                                        <div class="rad-text3">전략</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
         </section>
     </nav>
 </div>
-
+<!--
 <div id="modal" onclick="handleModal()">
-    <div id="modal-view" onclick="event.stopPropagation()">
-        <div id="close-btn" onclick="handleModal()">&times;</div>
-        <table class="wiki-table" style="width: 100%">
-            <tbody>
-            <tr id="board-title">
-                <td colspan="2">부루마불</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <img
-                            class="result-img"
-                            src="./../static/boardExample.jpeg"
-                            alt="보드게임이미지"
-                    />
-                </td>
-            </tr>
-            <tr>
-                <td>인원</td>
-                <td>2~4명</td>
-            </tr>
-            <tr>
-                <td>연령</td>
-                <td>8세 이상</td>
-            </tr>
-            <tr>
-                <td>플레이 시간</td>
-                <td>90분</td>
-            </tr>
-            <tr>
-                <td>장르</td>
-                <td>가족</td>
-            </tr>
-            <tr id="board-tag">
-                <td>테마</td>
-                <td>완구, 클래식, 주사위</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+  <div id="modal-view" onclick="event.stopPropagation()">
+    <div id="close-btn" onclick="handleModal()">&times;</div>
+    <table class="wiki-table" style="width: 100%">
+      <tbody>
+        <tr id="board-title">
+          <td colspan="2">부루마불</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <img
+              class="result-img"
+              src="./../static/boardExample.jpeg"
+              alt="보드게임이미지"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>인원</td>
+          <td>2~4명</td>
+        </tr>
+        <tr>
+          <td>연령</td>
+          <td>8세 이상</td>
+        </tr>
+        <tr>
+          <td>플레이 시간</td>
+          <td>90분</td>
+        </tr>
+        <tr>
+          <td>장르</td>
+          <td>가족</td>
+        </tr>
+        <tr id="board-tag">
+          <td>테마</td>
+          <td>완구, 클래식, 주사위</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
 </body>
 </html>
