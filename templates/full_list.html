@@ -254,7 +254,7 @@
                 else if (index === "1") time = [30, 59];
                 else if (index === "2") time = [60, 89];
                 else if (index === "3") time = [90, 1000];
-                // console.log(player);
+                //console.log(time);
             });
         })
 
@@ -281,9 +281,9 @@
                 data: {player_give: player, age_give: age, genre_give: genre},
                 success: function (response) {
                     //alert('성공!');
-                    let filter_case = [player, age, genre]
+                    boardList = [player, age, genre]
 
-                    console.log(filter_case)
+                    console.log(boardList)
                     let filter = response['filtered_games']
                     console.log(filter)
                     //$('#card-columns').empty();
@@ -504,25 +504,25 @@
                         <div id="label-box">
                             <label class="rad-label">
                                 <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
+                                <div class="rad-design" rad-index="0"></div>
                                 <div class="rad-text">2명</div>
                             </label>
 
                             <label class="rad-label">
                                 <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
+                                <div class="rad-design" rad-index="1"></div>
                                 <div class="rad-text">4명</div>
                             </label>
 
                             <label class="rad-label">
                                 <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
+                                <div class="rad-design" rad-index="2"></div>
                                 <div class="rad-text">6명</div>
                             </label>
 
                             <label class="rad-label">
                                 <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
+                                <div class="rad-design" rad-index="3"></div>
                                 <div class="rad-text">8명이상</div>
                             </label>
                         </div>
@@ -544,25 +544,25 @@
                         <div id="label-box2">
                             <label class="rad-label2">
                                 <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
+                                <div class="rad-design2" rad-index="0"></div>
                                 <div class="rad-text2">어린이</div>
                             </label>
 
                             <label class="rad-label2">
                                 <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
+                                <div class="rad-design2" rad-index="1"></div>
                                 <div class="rad-text2">12세</div>
                             </label>
 
                             <label class="rad-label2">
                                 <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
+                                <div class="rad-design2" rad-index="2"></div>
                                 <div class="rad-text2">15세</div>
                             </label>
 
                             <label class="rad-label2">
                                 <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
+                                <div class="rad-design2" rad-index="3"></div>
                                 <div class="rad-text2">성인</div>
                             </label>
                         </div>
@@ -616,25 +616,25 @@
                         <div id="label-box4">
                             <label class="rad-label3">
                                 <input type="radio" class="rad-input3" name="rad3"/>
-                                <div class="rad-design3"></div>
+                                <div class="rad-design3" rad-index="0"></div>
                                 <div class="rad-text3">가족</div>
                             </label>
 
                             <label class="rad-label3">
                                 <input type="radio" class="rad-input3" name="rad3"/>
-                                <div class="rad-design3"></div>
+                                <div class="rad-design3" rad-index="1"></div>
                                 <div class="rad-text3">카드</div>
                             </label>
 
                             <label class="rad-label3">
                                 <input type="radio" class="rad-input3" name="rad3"/>
-                                <div class="rad-design3"></div>
+                                <div class="rad-design3" rad-index="2"></div>
                                 <div class="rad-text3">퍼즐</div>
                             </label>
 
                             <label class="rad-label3">
                                 <input type="radio" class="rad-input3" name="rad3"/>
-                                <div class="rad-design3"></div>
+                                <div class="rad-design3" rad-index="3"></div>
                                 <div class="rad-text3">전략</div>
                             </label>
                         </div>
