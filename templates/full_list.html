@@ -226,7 +226,7 @@
 
 
 
-            $(".rad-label").click(function () {
+            $(".rad-design").click(function () {
                 const index = $(this).attr("rad-index");
                 //console.log(index);
                 if (index === "0") player = 2;
@@ -236,7 +236,7 @@
                 //console.log(player);
             });
 
-            $(".rad-label2").click(function () {
+            $(".rad-design2").click(function () {
                 const index = $(this).attr("rad-index");
                 // console.log(index);
                 if (index === "0") age = [3, 8];
@@ -247,7 +247,7 @@
             });
 
 
-            $(".rad-label").click(function () {
+            $(".rad-design").click(function () {
                 const index = $(this).attr("rad-index");
                 // console.log(index);
                 if (index === "0") time = [10, 29];
@@ -257,7 +257,7 @@
                 //console.log(time);
             });
 
-            $(".rad-label3").click(function () {
+            $(".rad-design3").click(function () {
                 const index = $(this).attr("rad-index");
                 // console.log(index);
                 if (index === "0") genre = "가족"
@@ -267,7 +267,7 @@
                 //console.log(genre);
             });
 
-            //$('#card-columns').empty();
+            $('#card-columns').empty();
             $.ajax({
                 type: 'get',
                 url: `whole/filter?player_give=${player}&age_give=${age}&genre_give=${genre}&time_give=${time}`,
@@ -275,10 +275,10 @@
                 success: function (response) {
                     //alert('성공!');
                     let filterCase = [player, age, genre]
-                    console.log(filterCase)
+                    //console.log(filterCase)
 
                     let filter = response['filtered_games']
-                    console.log(filter)
+                    //console.log(filter)
                     //$('#card-columns').empty();
 
                     for (i = 0; i < filter.length; i++) {
@@ -495,27 +495,27 @@
                             <a onclick="openclose()" href="#" class="fas fa-plus"></a>
                         </div>
                         <div id="label-box">
-                            <label class="rad-label" rad-index="0" onclick="getFilter()">
+                            <label class="rad-label">
                                 <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
+                                <div class="rad-design" rad-index="0" onclick="getFilter()"></div>
                                 <div class="rad-text">2명</div>
                             </label>
 
-                            <label class="rad-label" rad-index="1" onclick="getFilter()">
+                            <label class="rad-label">
                                 <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
+                                <div class="rad-design" rad-index="1" onclick="getFilter()"></div>
                                 <div class="rad-text">4명</div>
                             </label>
 
-                            <label class="rad-label" rad-index="2" onclick="getFilter()">
+                            <label class="rad-label">
                                 <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
+                                <div class="rad-design" rad-index="2" onclick="getFilter()"></div>
                                 <div class="rad-text">6명</div>
                             </label>
 
-                            <label class="rad-label" rad-index="3" onclick="getFilter()">
+                            <label class="rad-label">
                                 <input type="radio" class="rad-input" name="rad"/>
-                                <div class="rad-design"></div>
+                                <div class="rad-design" rad-index="3" onclick="getFilter()"></div>
                                 <div class="rad-text">8명이상</div>
                             </label>
                         </div>
@@ -535,27 +535,27 @@
                             </button>
                         </div>
                         <div id="label-box2">
-                            <label class="rad-label2" rad-index="0" onclick="getFilter()">
+                            <label class="rad-label2">
                                 <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
+                                <div class="rad-design2" rad-index="0" onclick="getFilter()"></div>
                                 <div class="rad-text2">어린이</div>
                             </label>
 
-                            <label class="rad-label2" rad-index="1" onclick="getFilter()">
+                            <label class="rad-label2">
                                 <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
+                                <div class="rad-design2" rad-index="1" onclick="getFilter()"></div>
                                 <div class="rad-text2">12세</div>
                             </label>
 
-                            <label class="rad-label2" rad-index="2" onclick="getFilter()">
+                            <label class="rad-label2">
                                 <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
+                                <div class="rad-design2" rad-index="2" onclick="getFilter()"></div>
                                 <div class="rad-text2">15세</div>
                             </label>
 
-                            <label class="rad-label2" rad-index="3" onclick="getFilter()">
+                            <label class="rad-label2">
                                 <input type="radio" class="rad-input2" name="rad2"/>
-                                <div class="rad-design2"></div>
+                                <div class="rad-design2" rad-index="3" onclick="getFilter()"></div>
                                 <div class="rad-text2">성인</div>
                             </label>
                         </div>
@@ -609,27 +609,27 @@
                             </button>
                         </div>
                         <div id="label-box4">
-                            <label class="rad-label3" rad-index="0" onclick="getFilter()">
+                            <label class="rad-label3">
                                 <input type="radio" class="rad-input3" name="rad3"/>
-                                <div class="rad-design3"></div>
+                                <div class="rad-design3" rad-index="0" onclick="getFilter()"></div>
                                 <div class="rad-text3">가족</div>
                             </label>
 
-                            <label class="rad-label3" rad-index="1" onclick="getFilter()">
+                            <label class="rad-label3">
                                 <input type="radio" class="rad-input3" name="rad3"/>
-                                <div class="rad-design3"></div>
+                                <div class="rad-design3" rad-index="1" onclick="getFilter()"></div>
                                 <div class="rad-text3">카드</div>
                             </label>
 
-                            <label class="rad-label3" rad-index="2" onclick="getFilter()">
+                            <label class="rad-label3">
                                 <input type="radio" class="rad-input3" name="rad3"/>
-                                <div class="rad-design3"></div>
+                                <div class="rad-design3" rad-index="2" onclick="getFilter()"></div>
                                 <div class="rad-text3">퍼즐</div>
                             </label>
 
-                            <label class="rad-label3" rad-index="3" onclick="getFilter()">
+                            <label class="rad-label3">
                                 <input type="radio" class="rad-input3" name="rad3"/>
-                                <div class="rad-design3"></div>
+                                <div class="rad-design3" rad-index="3" onclick="getFilter()"></div>
                                 <div class="rad-text3">전략</div>
                             </label>
                         </div>
