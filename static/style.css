@@ -606,7 +606,25 @@ h1 span:nth-child(14) {
     border-radius: 50%;
 }
 
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #87eecb #ffffff;
+}
 
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 13px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #87eecb;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
 /* For below 2030px screen width */
 /* @media screen and (max-width: 2030px) { */
 /* .banner {

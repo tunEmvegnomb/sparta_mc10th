@@ -483,3 +483,23 @@ tbody > tr:nth-child(2) > td > img {
 #board-tag > td:last-child {
   border-bottom-right-radius: 20px;
 }
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #87eecb #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 13px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #87eecb;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
