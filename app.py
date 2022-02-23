@@ -122,7 +122,7 @@ def filter_whole():
     player_receive = request.args.get('player_give', '')
     age_receive = request.args.get('age_give', '')
     genre_receive = request.args.get('genre_give', '')
-    # player = int(player_receive)
+    print('player: ',player_receive, 'age: ', age_receive, 'genre: ', genre_receive)
     filtered_games = []
     games = list(db.gameList.find({}, {'_id': False}))
 
