@@ -199,11 +199,11 @@
         }
 
         function openclose3() {
-            let status = $("#time").css("display");
+            let status = $("#time-box").css("display");
             if (status == "block") {
-                $("#time").hide();
+                $("#time-box").hide();
             } else {
-                $("#time").show();
+                $("#time-box").show();
             }
         }
 
@@ -213,6 +213,15 @@
                 $("#label-box4").hide();
             } else {
                 $("#label-box4").show();
+            }
+        }
+
+         function openclose5() {
+            let status = $("#tag").css("display");
+            if (status == "block") {
+                $("#tag").hide();
+            } else {
+                $("#tag").show();
             }
         }
 
@@ -567,8 +576,8 @@
                             </label>
                         </div>
                     </div>
-                    <div class="box border-bottom">
-                        <div class="box-label text-uppercase d-flex align-items-center">
+                    <div class="box border-bottom" >
+                        <div class="box-label text-uppercase d-flex align-items-center" >
                             Play Time
                             <button
                                     class="btn ml-auto"
@@ -581,7 +590,8 @@
                                 <a onclick="openclose3()" href="#" class="fas fa-plus"></a>
                             </button>
                         </div>
-                        <div class="wrapper">
+                        <div id="time-box">
+                            <div class="wrapper" >
                             <div class="values">
                              <span id="range1">
                                     0min
@@ -598,6 +608,8 @@
                             </div>
                         </div>
                     </div>
+                        </div>
+
 
                     <div class="box border-bottom">
                         <div class="box-label text-uppercase d-flex align-items-center">
@@ -640,8 +652,8 @@
                         </div>
                     </div>
                     <!--태그-->
-                    <div class="box border-bottom">
-                        <div class="box-label text-uppercase d-flex align-items-center">
+                    <div class="box border-bottom" >
+                        <div  class="box-label text-uppercase d-flex align-items-center">
                             태그
                             <button
                                     class="btn ml-auto"
@@ -651,10 +663,10 @@
                                     aria-expanded="false"
                                     aria-controls="inner-box2"
                             >
-                                <span class="fas fa-plus"></span>
+                                <a onclick="openclose5()" href="#" class="fas fa-plus"></a>
                             </button>
                         </div>
-                        <div class="md-select">
+                        <div class="md-select" id="tag">
                             <label for="ul-id">
                                 <button type="button" class="ng-binding">Select Tags</button>
                             </label>
