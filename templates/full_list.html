@@ -245,7 +245,7 @@
         let time = "";
         let genre = "";
 
-        // 필터 데이터 출력하는 함수
+        // 필터 데이터 출력하는 함수_
         $(document).ready(function () {
             // console.log($(".rad-label").attr("rad-index"));
             $(".rad-label").on("click", function () {
@@ -264,13 +264,31 @@
                     success: function (response) {
                         console.log("받았음");
                         console.log(response["filtered_games"]);
-                        // $("#footer").empty();
+                        $("#footer").empty();
                         $(".card-columns").empty();
+                        let items = response['filtered_games']
+                        for (i = 0; i < items.length; i++) {
+                        let name = items[i]["opt_name"];
+                        let img = items[i]["opt_img"];
+
+                        let temp_html = `<div class="card" card-index=${i} onclick="handleModal()">
+                                            <img
+                                                    class="card-img-top"
+                                                    src="${img}"
+                                                    alt="Card image cap"
+                                            />
+                                            <div class="card-body">
+                                                <h5 class="card-title">${name}</h5>
+                                            </div>
+                                        </div>`;
+
+                        $(".card-columns").append(temp_html);
+                    }
                     },
                 });
             });
 
-            $(".rad-design2").click(function () {
+            $(".rad-label2").click(function () {
                 const index = $(this).attr("rad-index");
                 // console.log(index);
                 if (index === "0") age = [3, 8];
@@ -278,6 +296,36 @@
                 else if (index === "2") age = [12, 19];
                 else if (index === "3") age = [20, 100];
                 //   console.log(age);
+                console.log(`player: ${player}, age: ${age}, genre: ${genre}`);
+                $.ajax({
+                    type: "get",
+                    url: `whole/filter?player_give=${player}&age_give=${age}&genre_give=${genre}&time_give=${time}`,
+                    data: {},
+                    success: function (response) {
+                        console.log("받았음");
+                        console.log(response["filtered_games"]);
+                        $("#footer").empty();
+                        $(".card-columns").empty();
+                        let items = response['filtered_games']
+                        for (i = 0; i < items.length; i++) {
+                        let name = items[i]["opt_name"];
+                        let img = items[i]["opt_img"];
+
+                        let temp_html = `<div class="card" card-index=${i} onclick="handleModal()">
+                                            <img
+                                                    class="card-img-top"
+                                                    src="${img}"
+                                                    alt="Card image cap"
+                                            />
+                                            <div class="card-body">
+                                                <h5 class="card-title">${name}</h5>
+                                            </div>
+                                        </div>`;
+
+                        $(".card-columns").append(temp_html);
+                    }
+                    },
+                });
             });
 
             oldVal_1 = $('#slider-1').val()
@@ -300,8 +348,26 @@
                     success: function (response) {
                         console.log("받았음");
                         console.log(response["filtered_games"]);
-                        // $("#footer").empty();
+                        $("#footer").empty();
                         $(".card-columns").empty();
+                        let items = response['filtered_games']
+                        for (i = 0; i < items.length; i++) {
+                        let name = items[i]["opt_name"];
+                        let img = items[i]["opt_img"];
+
+                        let temp_html = `<div class="card" card-index=${i} onclick="handleModal()">
+                                            <img
+                                                    class="card-img-top"
+                                                    src="${img}"
+                                                    alt="Card image cap"
+                                            />
+                                            <div class="card-body">
+                                                <h5 class="card-title">${name}</h5>
+                                            </div>
+                                        </div>`;
+
+                        $(".card-columns").append(temp_html);
+                    }
                     },
                 });
             });
@@ -323,14 +389,32 @@
                     success: function (response) {
                         console.log("받았음");
                         console.log(response["filtered_games"]);
-                        // $("#footer").empty();
+                        $("#footer").empty();
                         $(".card-columns").empty();
+                        let items = response['filtered_games']
+                        for (i = 0; i < items.length; i++) {
+                        let name = items[i]["opt_name"];
+                        let img = items[i]["opt_img"];
+
+                        let temp_html = `<div class="card" card-index=${i} onclick="handleModal()">
+                                            <img
+                                                    class="card-img-top"
+                                                    src="${img}"
+                                                    alt="Card image cap"
+                                            />
+                                            <div class="card-body">
+                                                <h5 class="card-title">${name}</h5>
+                                            </div>
+                                        </div>`;
+
+                        $(".card-columns").append(temp_html);
+                    }
                     },
                 });
             });
 
 
-            $(".rad-design3").click(function () {
+            $(".rad-label3").click(function () {
                 const index = $(this).attr("rad-index");
                 // console.log(index);
                 if (index === "0") genre = "가족";
@@ -338,6 +422,36 @@
                 else if (index === "2") genre = "퍼즐";
                 else if (index === "3") genre = "전략";
                 //   console.log(genre);
+
+                $.ajax({
+                    type: "get",
+                    url: `whole/filter?player_give=${player}&age_give=${age}&genre_give=${genre}&time_give=${time}`,
+                    data: {},
+                    success: function (response) {
+                        console.log("받았음");
+                        console.log(response["filtered_games"]);
+                        $("#footer").empty();
+                        $(".card-columns").empty();
+                        let items = response['filtered_games']
+                        for (i = 0; i < items.length; i++) {
+                        let name = items[i]["opt_name"];
+                        let img = items[i]["opt_img"];
+
+                        let temp_html = `<div class="card" card-index=${i} onclick="handleModal()">
+                                            <img
+                                                    class="card-img-top"
+                                                    src="${img}"
+                                                    alt="Card image cap"
+                                            />
+                                            <div class="card-body">
+                                                <h5 class="card-title">${name}</h5>
+                                            </div>
+                                        </div>`;
+
+                        $(".card-columns").append(temp_html);
+                    }
+                    },
+                });
             });
             // $.ajax({
             //   type: "get",
