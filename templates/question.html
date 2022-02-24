@@ -115,7 +115,7 @@
 
       // 결과확인 버튼을 눌렀을 때 결과페이지로 이동하는 함수
       function showResult() {
-        console.log(player, age, genre, time);
+        // console.log(player, age, genre, time);
         if (player && age && genre && time) {
           document.location.href = `/result?player=${player}&age=${age}&genre=${genre}&time=${time}`;
         } else {
