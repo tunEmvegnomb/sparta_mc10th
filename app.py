@@ -6,8 +6,8 @@ import random
 
 import math
 
-# client = MongoClient('mongodb://test:test@localhost', 27017)
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb://test:test@localhost', 27017)
+# client = MongoClient('localhost', 27017)
 db = client.mc10th
 
 app = Flask(__name__)
@@ -302,6 +302,7 @@ def filter_tag():
     tag_games = []
     games = db.gameList.find({}, {'_id': False})
     tag_receive = request.args.get('tag_give')
+    print({'tag': tag_receive})
     for game in games:
         tag_1 = game['opt_tag1']
         tag_2 = game['opt_tag2']
