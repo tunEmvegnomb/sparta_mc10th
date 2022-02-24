@@ -28,13 +28,14 @@ def today_random():
     randnum1 = random.randrange(1, 85)
     randnum2 = random.randrange(1, 85)
     randnum3 = random.randrange(1, 85)
-
-    todaygame1 = db.gameList.find_one({'opt_rank': randnum1})['opt_img']
-    todaygame2 = db.gameList.find_one({'opt_rank': randnum2})['opt_img']
-    todaygame3 = db.gameList.find_one({'opt_rank': randnum3})['opt_img']
-
+   
+    todaygame1 = db.gameList.find_one({'opt_rank': randnum1},{'_id':False})
+    todaygame2 = db.gameList.find_one({'opt_rank': randnum2},{'_id':False})
+    todaygame3 = db.gameList.find_one({'opt_rank': randnum3},{'_id':False})
+  
     todaygames = [todaygame1, todaygame2, todaygame3]
-    return jsonify('todaygames', todaygames)
+    # print(todaygames)
+    return jsonify({'todaygames': todaygames})
 
 
 
@@ -122,7 +123,8 @@ def filter_whole():
     player_receive = request.args.get('player_give', '')
     age_receive = request.args.get('age_give', '')
     genre_receive = request.args.get('genre_give', '')
-    # player = int(player_receive)
+    time_receive = request.args.get('time_give', '')
+    print('player: ',player_receive, 'age: ', age_receive, 'genre: ', genre_receive, 'time: ', time_receive)
     filtered_games = []
     games = list(db.gameList.find({}, {'_id': False}))
 
@@ -205,4 +207,6 @@ def filter_whole():
     return jsonify({'filtered_games': filtered_games})
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=3000, debug=True)
+
+
